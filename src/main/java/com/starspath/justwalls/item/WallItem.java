@@ -1,7 +1,6 @@
 package com.starspath.justwalls.item;
 
 import com.mojang.logging.LogUtils;
-import com.starspath.justwalls.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
