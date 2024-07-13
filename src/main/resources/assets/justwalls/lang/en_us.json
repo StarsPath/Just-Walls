@@ -1,9 +1,11 @@
 {
   "item.justwalls.metal_wall": "Metal Wall",
   "item.justwalls.armored_wall": "Armored Wall",
+  "item.justwalls.loot_crate": "Loot Crate",
 
   "block.justwalls.metal_wall": "Metal Wall",
   "block.justwalls.armored_wall": "Armored Wall",
+  "block.justwalls.loot_crate": "Loot Crate",
 
   "creativetabe.just_wall_tab": "Just Walls Mod"
 }

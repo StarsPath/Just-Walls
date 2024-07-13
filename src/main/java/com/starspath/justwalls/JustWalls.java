@@ -77,6 +77,7 @@ public class JustWalls
 //            event.accept(ModItems.WOODEN_WALL_ITEM);
             event.accept(ModItems.METAL_WALL_ITEM);
             event.accept(ModItems.ARMORED_WALL_ITEM);
+            event.accept(ModItems.LOOT_CRATE_ITEM);
         }
     }
 

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
 public class Wall extends Block {
@@ -18,7 +19,7 @@ public class Wall extends Block {
     public static BooleanProperty MASTER = BooleanProperty.create("master");
 
     public Wall(Properties properties) {
-        super(properties);
+        super(properties.pushReaction(PushReaction.BLOCK));
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false));
     }
 

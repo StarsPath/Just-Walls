@@ -15,7 +15,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-import static com.starspath.justwalls.blocks.Wall.MASTER;
+import static com.starspath.justwalls.blocks.LootCrate.MASTER;
+
 
 public class WallItem extends BlockItem {
     public int placementStrategy;
@@ -112,7 +113,7 @@ public class WallItem extends BlockItem {
             if(i == blockPosList.size()/2){
                 state = state.setValue(MASTER, true);
             }
-            LogUtils.getLogger().debug(i + " " + state);
+//            LogUtils.getLogger().debug(i + " " + state);
             level.setBlockAndUpdate(pos, state);
         }
     }

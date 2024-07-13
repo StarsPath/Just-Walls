@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/loot_crate"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/loot_crate",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/loot_crate",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/loot_crate",
+        "y": 270
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"5": "justwalls:block/lootbox",
+		"6": "justwalls:block/lootboxup",
+		"particle": "justwalls:block/armourwall"
+	},
+	"elements": [
+		{
+			"from": [0, 0, -16],
+			"to": [32, 32, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#5"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#6"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"firstperson_righthand": {
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"ground": {
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.3125, 0.3125, 0.3125]
+		},
+		"fixed": {
+			"scale": [0.3, 0.3, 0.3]
+		}
+	}
+}
