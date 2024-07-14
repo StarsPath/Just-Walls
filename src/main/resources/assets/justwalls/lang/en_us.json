@@ -7,5 +7,7 @@
   "block.justwalls.armored_wall": "Armored Wall",
   "block.justwalls.loot_crate": "Loot Crate",
 
-  "creativetabe.just_wall_tab": "Just Walls Mod"
+  "creativetabe.just_wall_tab": "Just Walls Mod",
+
+  "container.justwalls.loot_crate": "Loot Crate"
 }

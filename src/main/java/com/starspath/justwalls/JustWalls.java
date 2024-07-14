@@ -1,6 +1,7 @@
 package com.starspath.justwalls;
 
 import com.mojang.logging.LogUtils;
+import com.starspath.justwalls.init.ModBlockEntity;
 import com.starspath.justwalls.init.ModBlocks;
 import com.starspath.justwalls.init.ModCreativeModeTab;
 import com.starspath.justwalls.init.ModItems;
@@ -46,6 +47,8 @@ public class JustWalls
         ModItems.ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTab.CREATIVE_MODE_TABS.register(modEventBus);
+
+        ModBlockEntity.BLOCK_ENTITIES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

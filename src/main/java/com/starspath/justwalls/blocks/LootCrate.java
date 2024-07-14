@@ -1,19 +1,32 @@
 package com.starspath.justwalls.blocks;
 
+import com.starspath.justwalls.blockEntity.BlockEntityLootCrate;
+import com.starspath.justwalls.init.ModBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.*;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class LootCrate extends Block {
+public class LootCrate extends Block implements EntityBlock {
 
     public static BooleanProperty MASTER = BooleanProperty.create("master");
     public static IntegerProperty ID = IntegerProperty.create("id", 0, 7);
@@ -42,22 +55,15 @@ public class LootCrate extends Block {
 
         if(isMaster){
             masterBreak(level, blockPos, prevBlockState);
+            BlockEntity blockentity = level.getBlockEntity(blockPos);
+            if (blockentity instanceof Container) {
+                Containers.dropContents(level, blockPos, (Container)blockentity);
+                level.updateNeighbourForOutputSignal(blockPos, this);
+            }
             return;
         }
 
-        BlockPos masterPos;
-        int id = prevBlockState.getValue(ID);
-
-        masterPos = switch (id) {
-            default -> blockPos;
-            case 1 -> blockPos.relative(direction.getOpposite());
-            case 2 -> blockPos.relative(direction.getCounterClockWise());
-            case 3 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite());
-            case 4 -> blockPos.below();
-            case 5 -> blockPos.relative(direction.getOpposite()).below();
-            case 6 -> blockPos.relative(direction.getCounterClockWise()).below();
-            case 7 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite()).below();
-        };
+        BlockPos masterPos = getMasterPos(prevBlockState.getValue(ID), blockPos, direction);
 
         if(isMaster(level.getBlockState(masterPos), prevBlockState)){
             LootCrate masterCrate = (LootCrate)level.getBlockState(masterPos).getBlock();
@@ -65,6 +71,16 @@ public class LootCrate extends Block {
         }
 
         super.onRemove(prevBlockState, level, blockPos, nextBlockPos, flag);
+    }
+
+    @Override
+    public boolean propagatesSkylightDown(BlockState blockState, BlockGetter getter, BlockPos blockPos) {
+        return true;
+    }
+
+    @Override
+    public float getShadeBrightness(BlockState p_220080_1_, BlockGetter p_220080_2_, BlockPos p_220080_3_) {
+        return 1.0f;
     }
 
     @Override
@@ -81,8 +97,30 @@ public class LootCrate extends Block {
             return;
         }
 
+        BlockPos masterPos = getMasterPos(blockState.getValue(ID), blockPos, direction);
+//        int id = blockState.getValue(ID);
+//
+//        masterPos = switch (id) {
+//            default -> blockPos;
+//            case 1 -> blockPos.relative(direction.getOpposite());
+//            case 2 -> blockPos.relative(direction.getCounterClockWise());
+//            case 3 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite());
+//            case 4 -> blockPos.below();
+//            case 5 -> blockPos.relative(direction.getOpposite()).below();
+//            case 6 -> blockPos.relative(direction.getCounterClockWise()).below();
+//            case 7 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite()).below();
+//        };
+
+        if(isMaster(levelAccessor.getBlockState(masterPos), blockState)){
+            LootCrate masterCrate = (LootCrate)levelAccessor.getBlockState(masterPos).getBlock();
+            masterCrate.masterBreak(levelAccessor, masterPos, levelAccessor.getBlockState(masterPos));
+        }
+
+        super.destroy(levelAccessor, blockPos, blockState);
+    }
+
+    protected BlockPos getMasterPos(int id, BlockPos blockPos, Direction direction){
         BlockPos masterPos;
-        int id = blockState.getValue(ID);
 
         masterPos = switch (id) {
             default -> blockPos;
@@ -95,12 +133,7 @@ public class LootCrate extends Block {
             case 7 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite()).below();
         };
 
-        if(isMaster(levelAccessor.getBlockState(masterPos), blockState)){
-            LootCrate masterCrate = (LootCrate)levelAccessor.getBlockState(masterPos).getBlock();
-            masterCrate.masterBreak(levelAccessor, masterPos, levelAccessor.getBlockState(masterPos));
-        }
-
-        super.destroy(levelAccessor, blockPos, blockState);
+        return masterPos;
     }
 
     protected Boolean isMaster(BlockState blockState, BlockState self){
@@ -136,5 +169,30 @@ public class LootCrate extends Block {
         for(BlockPos pos: blockPosList){
             levelAccessor.destroyBlock(pos, true);
         }
+    }
+
+    @Override
+    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            BlockPos masterPos = getMasterPos(blockState.getValue(ID), blockPos, blockState.getValue(BlockStateProperties.FACING));
+            BlockEntityLootCrate blockEntityLootCrate = (BlockEntityLootCrate)level.getBlockEntity(masterPos);
+            if (blockEntityLootCrate != null) {
+                NetworkHooks.openScreen(((ServerPlayer)player), blockEntityLootCrate, masterPos);
+                PiglinAi.angerNearbyPiglins(player, true);
+            }
+
+            return InteractionResult.CONSUME;
+        }
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        if(blockState.getValue(MASTER)){
+            return ModBlockEntity.LOOT_CRATE.get().create(blockPos, blockState);
+        }
+        return null;
     }
 }
