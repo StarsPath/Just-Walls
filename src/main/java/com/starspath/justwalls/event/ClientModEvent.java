@@ -16,6 +16,7 @@ public final class ClientModEvent {
     public static void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(()->{
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOOT_CRATE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.METAL_WALL_WINDOW.get(), RenderType.cutout());
         });
     }
 }

@@ -113,7 +113,6 @@ public class WallItem extends BlockItem {
             if(i == blockPosList.size()/2){
                 state = state.setValue(MASTER, true);
             }
-//            LogUtils.getLogger().debug(i + " " + state);
             level.setBlockAndUpdate(pos, state);
         }
     }

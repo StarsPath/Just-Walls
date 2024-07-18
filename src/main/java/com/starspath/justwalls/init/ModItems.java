@@ -3,6 +3,7 @@ package com.starspath.justwalls.init;
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.item.LootCrateItem;
 import com.starspath.justwalls.item.WallItem;
+import com.starspath.justwalls.item.WallWindowItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,6 +25,9 @@ public class ModItems {
     public static final RegistryObject<Item> WOODEN_WALL_ITEM = ITEMS.register("wooden_wall", () -> new WallItem(ModBlocks.WOODEN_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_ITEM = ITEMS.register("metal_wall", () -> new WallItem(ModBlocks.METAL_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_ITEM = ITEMS.register("armored_wall", () -> new WallItem(ModBlocks.ARMORED_WALL.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> METAL_WALL_WINDOW_ITEM = ITEMS.register("metal_wall_window", () -> new WallWindowItem(ModBlocks.METAL_WALL_WINDOW.get(), new Item.Properties()));
+
 
     public static final RegistryObject<Item> LOOT_CRATE_ITEM = ITEMS.register("loot_crate", () -> new LootCrateItem(ModBlocks.LOOT_CRATE.get(), new Item.Properties()));
 }
