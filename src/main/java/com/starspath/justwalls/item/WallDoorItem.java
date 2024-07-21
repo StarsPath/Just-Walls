@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
-public class WallWindowItem extends BlockItem {
-    public WallWindowItem(Block block, Properties properties) {
+public class WallDoorItem extends BlockItem {
+    public WallDoorItem(Block block, Properties properties) {
         super(block, properties);
     }
 

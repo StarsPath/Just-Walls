@@ -1,33 +1,17 @@
 package com.starspath.justwalls.blocks;
 
-import com.mojang.logging.LogUtils;
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
+import com.starspath.justwalls.item.WallDoorFrameItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import org.jetbrains.annotations.Nullable;
 
-public class WallWindow extends MultiBlock {
-
-    public WallWindow(Properties properties) {
+public class WallDoorFrame extends MultiBlock {
+    public WallDoorFrame(Properties properties) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false));
-    }
-
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        return super.getStateForPlacement(blockPlaceContext);
-    }
-
-    @Override
-    public float getShadeBrightness(BlockState p_220080_1_, BlockGetter p_220080_2_, BlockPos p_220080_3_) {
-        return 1.0f;
     }
 
     @Override
@@ -45,12 +29,10 @@ public class WallWindow extends MultiBlock {
         }
 
         for(int i = -1; i <= 1; i++){
-            for(int j = -1; j <= 1; j++){
+            for(int j = 0; j <= 2; j++){
                 BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
                 if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                    LogUtils.getLogger().debug("found master " + i + " " + j);
-
-                    WallWindow masterWall = (WallWindow)level.getBlockState(checkPos).getBlock();
+                    WallDoorFrame masterWall = (WallDoorFrame)level.getBlockState(checkPos).getBlock();
                     masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
                     return;
                 }
@@ -75,12 +57,10 @@ public class WallWindow extends MultiBlock {
         }
 
         for(int i = -1; i <= 1; i++){
-            for(int j = -1; j <= 1; j++){
+            for(int j = 0; j <= 2; j++){
                 BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
                 if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                    LogUtils.getLogger().debug("found master " + i + " " + j);
-
-                    WallWindow masterWall = (WallWindow)levelAccessor.getBlockState(checkPos).getBlock();
+                    WallDoorFrame masterWall = (WallDoorFrame)levelAccessor.getBlockState(checkPos).getBlock();
                     masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
                     return;
                 }
@@ -98,13 +78,9 @@ public class WallWindow extends MultiBlock {
         Direction direction = blockState.getValue(BlockStateProperties.FACING);
 
         for(int i = -1; i <= 1; i++){
-            for(int j = -1; j <= 1; j++){
+            for(int j = 0; j >= -2; j--){
                 BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                BlockState checkBlockState = levelAccessor.getBlockState(checkPos);
-                if(checkBlockState.getBlock() == blockState.getBlock() && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
-                    LogUtils.getLogger().debug("try to break " + i + " " + j);
-                    levelAccessor.destroyBlock(checkPos, true);
-                }
+                levelAccessor.destroyBlock(checkPos, true);
             }
         }
     }

@@ -1,33 +1,20 @@
 package com.starspath.justwalls.blocks;
 
-import com.mojang.logging.LogUtils;
+import com.starspath.justwalls.blocks.abstracts.MultiBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
-public class Wall extends Block {
-
-    public static BooleanProperty MASTER = BooleanProperty.create("master");
+public class Wall extends MultiBlock {
 
     public Wall(Properties properties) {
-        super(properties.pushReaction(PushReaction.BLOCK));
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(BlockStateProperties.FACING);
-        builder.add(MASTER);
     }
 
     @Nullable
@@ -55,8 +42,6 @@ public class Wall extends Block {
                 for(int j = -1; j <= 1; j++){
                     BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
                     if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                        LogUtils.getLogger().debug("found master " + i + " " + j);
-
                         Wall masterWall = (Wall)level.getBlockState(checkPos).getBlock();
                         masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
                         return;
@@ -69,8 +54,6 @@ public class Wall extends Block {
                 for(int j = -1; j <= 1; j++){
                     BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
                     if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                        LogUtils.getLogger().debug("found master " + i + " " + j);
-
                         Wall masterWall = (Wall)level.getBlockState(checkPos).getBlock();
                         masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
                         return;
@@ -101,8 +84,6 @@ public class Wall extends Block {
                 for(int j = -1; j <= 1; j++){
                     BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
                     if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                        LogUtils.getLogger().debug("found master " + i + " " + j);
-
                         Wall masterWall = (Wall)levelAccessor.getBlockState(checkPos).getBlock();
                         masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
                         return;
@@ -115,8 +96,6 @@ public class Wall extends Block {
                 for(int j = -1; j <= 1; j++){
                     BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
                     if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                        LogUtils.getLogger().debug("found master " + i + " " + j);
-
                         Wall masterWall = (Wall)levelAccessor.getBlockState(checkPos).getBlock();
                         masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
                         return;
@@ -141,7 +120,6 @@ public class Wall extends Block {
                     BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
                     BlockState checkBlockState = levelAccessor.getBlockState(checkPos);
                     if(checkBlockState.getBlock() == blockState.getBlock() && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
-                        LogUtils.getLogger().debug("try to break " + i + " " + j);
                         levelAccessor.destroyBlock(checkPos, true);
                     }
                 }

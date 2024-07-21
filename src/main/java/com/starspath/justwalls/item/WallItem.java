@@ -1,8 +1,10 @@
 package com.starspath.justwalls.item;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -15,8 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-import static com.starspath.justwalls.blocks.LootCrate.MASTER;
-
+import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
 public class WallItem extends BlockItem {
     public int placementStrategy;
@@ -30,7 +31,6 @@ public class WallItem extends BlockItem {
         if(level.isClientSide){
             return InteractionResult.PASS;
         }
-        LogUtils.getLogger().debug("placing block");
 
         Player player = blockPlaceContext.getPlayer();
         BlockPos pos = blockPlaceContext.getClickedPos();
@@ -86,6 +86,9 @@ public class WallItem extends BlockItem {
             if(!player.isCreative()){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
+        }
+        else{
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Space Occupied"), false);
         }
 
         LogUtils.getLogger().debug("" + result);

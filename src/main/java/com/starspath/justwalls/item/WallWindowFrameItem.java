@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
-public class WallWindowItem extends BlockItem {
-    public WallWindowItem(Block block, Properties properties) {
+public class WallWindowFrameItem extends BlockItem {
+    public WallWindowFrameItem(Block block, Properties properties) {
         super(block, properties);
     }
 
@@ -66,9 +66,11 @@ public class WallWindowItem extends BlockItem {
     protected void doPlacement(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for(int i = 0; i < blockPosList.size(); i++){
+            if(i == blockPosList.size() / 2)
+                continue;
             BlockPos pos = blockPosList.get(i);
             BlockState state = getPlacementState(blockPlaceContext);
-            if(i == blockPosList.size()/2){
+            if(i == 5){
                 state = state.setValue(MASTER, true);
             }
             level.setBlockAndUpdate(pos, state);

@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.ArrayList;
 
-import static com.starspath.justwalls.blocks.Wall.MASTER;
+import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
 public class LootCrateItem extends BlockItem {
     public LootCrateItem(Block block, Properties properties) {

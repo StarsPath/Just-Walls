@@ -1,6 +1,7 @@
 package com.starspath.justwalls.blocks;
 
 import com.starspath.justwalls.blockEntity.BlockEntityLootCrate;
+import com.starspath.justwalls.blocks.abstracts.MultiBlock;
 import com.starspath.justwalls.init.ModBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,12 +14,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
@@ -26,9 +25,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class LootCrate extends Block implements EntityBlock {
+public class LootCrate extends MultiBlock implements EntityBlock {
 
-    public static BooleanProperty MASTER = BooleanProperty.create("master");
     public static IntegerProperty ID = IntegerProperty.create("id", 0, 7);
 
     public LootCrate(Properties properties) {
@@ -39,8 +37,6 @@ public class LootCrate extends Block implements EntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(BlockStateProperties.FACING);
-        builder.add(MASTER);
         builder.add(ID);
     }
 
