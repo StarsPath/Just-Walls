@@ -9,5 +9,8 @@
 
   "creativetabe.just_wall_tab": "Just Walls Mod",
 
-  "container.justwalls.loot_crate": "Loot Crate"
+  "container.justwalls.loot_crate": "Loot Crate",
+
+  "key.categories.justwalls": "Just Walls Mod",
+  "key.justwalls.gui_key": "Hammer Gui"
 }

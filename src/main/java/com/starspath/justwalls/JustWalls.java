@@ -90,6 +90,8 @@ public class JustWalls
             event.accept(ModItems.ARMORED_WALL_DOOR_FRAME_ITEM);
 
             event.accept(ModItems.LOOT_CRATE_ITEM);
+
+            event.accept(ModItems.SUPER_HAMMER);
         }
     }
 
