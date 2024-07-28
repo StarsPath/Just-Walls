@@ -22,6 +22,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> THATCH_WALL_ITEM = ITEMS.register("thatch_wall", () -> new WallItem(ModBlocks.THATCH_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_WALL_ITEM = ITEMS.register("wooden_wall", () -> new WallItem(ModBlocks.WOODEN_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_ITEM = ITEMS.register("stone_wall", () -> new WallItem(ModBlocks.STONE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_ITEM = ITEMS.register("metal_wall", () -> new WallItem(ModBlocks.METAL_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_ITEM = ITEMS.register("armored_wall", () -> new WallItem(ModBlocks.ARMORED_WALL.get(), new Item.Properties()));
 
@@ -29,10 +30,14 @@ public class ModItems {
     public static final RegistryObject<Item> METAL_WALL_DOOR_ITEM = ITEMS.register("metal_wall_door", () -> new WallDoorItem(ModBlocks.METAL_WALL_DOOR.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> THATCH_WALL_WINDOW_FRAME_ITEM = ITEMS.register("thatch_wall_window_frame", () -> new WallWindowFrameItem(ModBlocks.THATCH_WALL_WINDOW_FRAME.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOODEN_WALL_WINDOW_FRAME_ITEM = ITEMS.register("wooden_wall_window_frame", () -> new WallWindowFrameItem(ModBlocks.WOODEN_WALL_WINDOW_FRAME.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_WINDOW_FRAME_ITEM = ITEMS.register("stone_wall_window_frame", () -> new WallWindowFrameItem(ModBlocks.STONE_WALL_WINDOW_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_WINDOW_FRAME_ITEM = ITEMS.register("metal_wall_window_frame", () -> new WallWindowFrameItem(ModBlocks.METAL_WALL_WINDOW_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_WINDOW_FRAME_ITEM = ITEMS.register("armored_wall_window_frame", () -> new WallWindowFrameItem(ModBlocks.ARMORED_WALL_WINDOW_FRAME.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> THATCH_WALL_DOOR_FRAME_ITEM = ITEMS.register("thatch_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.THATCH_WALL_DOOR_FRAME.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOODEN_WALL_DOOR_FRAME_ITEM = ITEMS.register("wooden_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.WOODEN_WALL_DOOR_FRAME.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_DOOR_FRAME_ITEM = ITEMS.register("stone_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.STONE_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_DOOR_FRAME_ITEM = ITEMS.register("metal_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.METAL_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_DOOR_FRAME_ITEM = ITEMS.register("armored_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.ARMORED_WALL_DOOR_FRAME.get(), new Item.Properties()));
 

@@ -27,10 +27,14 @@ public class ModBlocks {
     public static final RegistryObject<Block> METAL_WALL_DOOR = BLOCKS.register("metal_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     public static final RegistryObject<Block> THATCH_WALL_WINDOW_FRAME = BLOCKS.register("thatch_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2)));
-    public static final RegistryObject<Block> METAL_WALL_WINDOW_FRAME = BLOCKS.register("metal_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
-    public static final RegistryObject<Block> ARMORED_WALL_WINDOW_FRAME = BLOCKS.register("armored_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> WOODEN_WALL_WINDOW_FRAME = BLOCKS.register("wooden_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(5)));
+    public static final RegistryObject<Block> STONE_WALL_WINDOW_FRAME = BLOCKS.register("stone_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(6)));
+    public static final RegistryObject<Block> METAL_WALL_WINDOW_FRAME = BLOCKS.register("metal_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(9)));
+    public static final RegistryObject<Block> ARMORED_WALL_WINDOW_FRAME = BLOCKS.register("armored_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(12)));
 
     public static final RegistryObject<Block> THATCH_WALL_DOOR_FRAME = BLOCKS.register("thatch_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2)));
+    public static final RegistryObject<Block> WOODEN_WALL_DOOR_FRAME = BLOCKS.register("wooden_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(5)));
+    public static final RegistryObject<Block> STONE_WALL_DOOR_FRAME = BLOCKS.register("stone_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(6)));
     public static final RegistryObject<Block> METAL_WALL_DOOR_FRAME = BLOCKS.register("metal_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> ARMORED_WALL_DOOR_FRAME = BLOCKS.register("armored_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
