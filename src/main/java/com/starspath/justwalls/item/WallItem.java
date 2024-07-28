@@ -44,9 +44,6 @@ public class WallItem extends BlockItem {
         else if(blockPlaceContext.getClickedFace().getAxis().isHorizontal()){
             placementStrategy = 2; // place on the side of a block (MASTER ABOVE)
         }
-        else if(blockPlaceContext.getClickedFace().getAxis().isVertical()){
-            placementStrategy = 3; // place while looking up or down (MASTER)
-        }
 
         LogUtils.getLogger().debug("" + placementStrategy);
 
@@ -67,14 +64,6 @@ public class WallItem extends BlockItem {
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
                         BlockPos newPos = pos.relative(direction.getClockWise(), i).above(j);
-                        blockPosList.add(newPos);
-                    }
-                }
-            }
-            case 3 -> {
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        BlockPos newPos = pos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
                         blockPosList.add(newPos);
                     }
                 }
@@ -128,9 +117,6 @@ public class WallItem extends BlockItem {
             facing = blockPlaceContext.getHorizontalDirection();
         }
         else if(placementStrategy == 2){
-            facing = blockPlaceContext.getClickedFace();
-        }
-        else if(placementStrategy == 3){
             facing = blockPlaceContext.getClickedFace();
         }
         else{

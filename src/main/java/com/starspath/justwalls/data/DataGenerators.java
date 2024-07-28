@@ -22,7 +22,7 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         PackOutput packOutput = gen.getPackOutput();
 
-//        gen.addProvider(event.includeServer(), new ModBlockStateProvider(packOutput, existingFileHelper));
+        gen.addProvider(event.includeServer(), new ModBlockStateProvider(packOutput, existingFileHelper));
         gen.addProvider(event.includeServer(), new ModItemModelProvider(packOutput, existingFileHelper));
     }
 }

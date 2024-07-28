@@ -2,6 +2,7 @@ package com.starspath.justwalls.blocks;
 
 import com.mojang.logging.LogUtils;
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -20,9 +21,9 @@ public class WallDoor extends MultiBlock {
 
     public static BooleanProperty OPEN = BooleanProperty.create("open");
 
-    public WallDoor(BlockBehaviour.Properties properties) {
+    public WallDoor(Properties properties, Tiers.TIER tier) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(OPEN, false));
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
     }
 
     @Override

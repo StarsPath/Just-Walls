@@ -2,6 +2,7 @@ package com.starspath.justwalls.blocks;
 
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
 import com.starspath.justwalls.item.WallDoorFrameItem;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -10,8 +11,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class WallDoorFrame extends MultiBlock {
-    public WallDoorFrame(Properties properties) {
+    public WallDoorFrame(Properties properties, Tiers.TIER tier) {
         super(properties);
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
     }
 
     @Override

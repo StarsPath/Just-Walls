@@ -1,11 +1,56 @@
 {
+  "item.justwalls.thatch_wall": "Thatch Wall",
+  "item.justwalls.wooden_wall": "Wooden Wall",
+  "item.justwalls.stone_wall": "Stone Wall",
   "item.justwalls.metal_wall": "Metal Wall",
   "item.justwalls.armored_wall": "Armored Wall",
+
+  "item.justwalls.thatch_wall_floor": "Thatch Floor",
+  "item.justwalls.wooden_wall_floor": "Wooden Floor",
+  "item.justwalls.stone_wall_floor": "Stone Floor",
+  "item.justwalls.metal_wall_floor": "Metal Floor",
+  "item.justwalls.armored_wall_floor": "Armored Floor",
+
+  "item.justwalls.thatch_wall_window_frame": "Thatch Wall Window Frame",
+  "item.justwalls.wooden_wall_window_frame": "Wooden Wall Window Frame",
+  "item.justwalls.stone_wall_window_frame": "Stone Wall Window Frame",
+  "item.justwalls.metal_wall_window_frame": "Metal Wall Window Frame",
+  "item.justwalls.armored_wall_window_frame": "Armored Wall Window Frame",
+
+  "item.justwalls.thatch_wall_door_frame": "Thatch Wall Door Frame",
+  "item.justwalls.wooden_wall_door_frame": "Wooden Wall Door Frame",
+  "item.justwalls.stone_wall_door_frame": "Stone Wall Door Frame",
+  "item.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
+  "item.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
+
   "item.justwalls.loot_crate": "Loot Crate",
 
+  "block.justwalls.thatch_wall": "Thatch Wall",
+  "block.justwalls.wooden_wall": "Wooden Wall",
+  "block.justwalls.stone_wall": "Stone Wall",
   "block.justwalls.metal_wall": "Metal Wall",
   "block.justwalls.armored_wall": "Armored Wall",
+
+  "block.justwalls.thatch_wall_floor": "Thatch Floor",
+  "block.justwalls.wooden_wall_floor": "Wooden Floor",
+  "block.justwalls.stone_wall_floor": "Stone Floor",
+  "block.justwalls.metal_wall_floor": "Metal Floor",
+  "block.justwalls.armored_wall_floor": "Armored Floor",
+
+  "block.justwalls.thatch_wall_window_frame": "Thatch Wall Window Frame",
+  "block.justwalls.wooden_wall_window_frame": "Wooden Wall Window Frame",
+  "block.justwalls.stone_wall_window_frame": "Stone Wall Window Frame",
+  "block.justwalls.metal_wall_window_frame": "Metal Wall Window Frame",
+  "block.justwalls.armored_wall_window_frame": "Armored Wall Window Frame",
+
+  "block.justwalls.thatch_wall_door_frame": "Thatch Wall Door Frame",
+  "block.justwalls.wooden_wall_door_frame": "Wooden Wall Door Frame",
+  "block.justwalls.stone_wall_door_frame": "Stone Wall Door Frame",
+  "block.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
+  "block.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
+
   "block.justwalls.loot_crate": "Loot Crate",
+
 
   "creativetabe.just_wall_tab": "Just Walls Mod",
 

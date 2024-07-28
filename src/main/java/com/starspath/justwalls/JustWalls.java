@@ -84,6 +84,12 @@ public class JustWalls
             event.accept(ModItems.METAL_WALL_ITEM);
             event.accept(ModItems.ARMORED_WALL_ITEM);
 
+            event.accept(ModItems.THATCH_WALL_FLOOR_ITEM);
+            event.accept(ModItems.WOODEN_WALL_FLOOR_ITEM);
+            event.accept(ModItems.STONE_WALL_FLOOR_ITEM);
+            event.accept(ModItems.METAL_WALL_FLOOR_ITEM);
+            event.accept(ModItems.ARMORED_WALL_FLOOR_ITEM);
+
             event.accept(ModItems.METAL_WALL_WINDOW_ITEM);
             event.accept(ModItems.METAL_WALL_DOOR_ITEM);
 
@@ -98,6 +104,12 @@ public class JustWalls
             event.accept(ModItems.STONE_WALL_DOOR_FRAME_ITEM);
             event.accept(ModItems.METAL_WALL_DOOR_FRAME_ITEM);
             event.accept(ModItems.ARMORED_WALL_DOOR_FRAME_ITEM);
+
+            event.accept(ModItems.STRAW_SCRAP);
+            event.accept(ModItems.WOOD_SCRAP);
+            event.accept(ModItems.STONE_SCRAP);
+            event.accept(ModItems.METAL_SCRAP);
+            event.accept(ModItems.ARMORED_SCRAP);
 
             event.accept(ModItems.LOOT_CRATE_ITEM);
 

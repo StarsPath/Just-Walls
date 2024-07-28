@@ -26,6 +26,12 @@ public class ModItems {
     public static final RegistryObject<Item> METAL_WALL_ITEM = ITEMS.register("metal_wall", () -> new WallItem(ModBlocks.METAL_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_ITEM = ITEMS.register("armored_wall", () -> new WallItem(ModBlocks.ARMORED_WALL.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> THATCH_WALL_FLOOR_ITEM = ITEMS.register("thatch_wall_floor", () -> new WallFloorItem(ModBlocks.THATCH_WALL_FLOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOODEN_WALL_FLOOR_ITEM = ITEMS.register("wooden_wall_floor", () -> new WallFloorItem(ModBlocks.WOODEN_WALL_FLOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_FLOOR_ITEM = ITEMS.register("stone_wall_floor", () -> new WallFloorItem(ModBlocks.STONE_WALL_FLOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> METAL_WALL_FLOOR_ITEM = ITEMS.register("metal_wall_floor", () -> new WallFloorItem(ModBlocks.METAL_WALL_FLOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ARMORED_WALL_FLOOR_ITEM = ITEMS.register("armored_wall_floor", () -> new WallFloorItem(ModBlocks.ARMORED_WALL_FLOOR.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> METAL_WALL_WINDOW_ITEM = ITEMS.register("metal_wall_window", () -> new WallWindowItem(ModBlocks.METAL_WALL_WINDOW.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_DOOR_ITEM = ITEMS.register("metal_wall_door", () -> new WallDoorItem(ModBlocks.METAL_WALL_DOOR.get(), new Item.Properties()));
 
@@ -44,4 +50,10 @@ public class ModItems {
     public static final RegistryObject<Item> LOOT_CRATE_ITEM = ITEMS.register("loot_crate", () -> new LootCrateItem(ModBlocks.LOOT_CRATE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> SUPER_HAMMER = ITEMS.register("super_hammer", ()-> new SuperHammer(new Item.Properties()));
+
+    public static final RegistryObject<Item> STRAW_SCRAP = ITEMS.register("straw_scrap", () -> new ConstructionMaterial(new Item.Properties()));
+    public static final RegistryObject<Item> WOOD_SCRAP = ITEMS.register("wood_scrap", () -> new ConstructionMaterial(new Item.Properties()));
+    public static final RegistryObject<Item> STONE_SCRAP = ITEMS.register("stone_scrap", () -> new ConstructionMaterial(new Item.Properties()));
+    public static final RegistryObject<Item> METAL_SCRAP = ITEMS.register("metal_scrap", () -> new ConstructionMaterial(new Item.Properties()));
+    public static final RegistryObject<Item> ARMORED_SCRAP = ITEMS.register("armored_scrap", () -> new ConstructionMaterial(new Item.Properties()));
 }

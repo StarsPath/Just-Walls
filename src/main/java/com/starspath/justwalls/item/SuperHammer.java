@@ -26,10 +26,11 @@ public class SuperHammer extends Item {
 
     public enum TOOL_MODE {
         WALL("wall", ModItems.THATCH_WALL_ITEM.get()),
-        FLOOR("floor", ModItems.THATCH_WALL_ITEM.get()),
+        FLOOR("floor", ModItems.THATCH_WALL_FLOOR_ITEM.get()),
         DOOR_FRAME("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get()),
         WINDOW_FRAME("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get()),
         LOOT_CRATE("loot_crate", ModItems.LOOT_CRATE_ITEM.get()),
+//        PILLAR("loot_crate", ModItems.LOOT_CRATE_ITEM.get()),
         UPGRADE("upgrade", ModItems.SUPER_HAMMER.get());
 
         private final String name;
@@ -67,8 +68,8 @@ public class SuperHammer extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        System.out.println("USE");
-        ItemStack itemStack = player.getItemInHand(interactionHand);
+//        System.out.println("USE");
+//        ItemStack itemStack = player.getItemInHand(interactionHand);
         return super.use(level, player, interactionHand);
     }
 
@@ -79,8 +80,9 @@ public class SuperHammer extends Item {
             return super.useOn(useOnContext);
         }
         TOOL_MODE mode = getMode(useOnContext.getItemInHand());
+        System.out.println(mode);
         switch (mode) {
-            case WALL, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE ->
+            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE ->
                     ((BlockItem) mode.getItem().getItem()).place(new BlockPlaceContext(useOnContext));
         }
 

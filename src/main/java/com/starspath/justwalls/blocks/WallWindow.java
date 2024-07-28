@@ -2,6 +2,7 @@ package com.starspath.justwalls.blocks;
 
 import com.mojang.logging.LogUtils;
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -14,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class WallWindow extends MultiBlock {
 
-    public WallWindow(Properties properties) {
+    public WallWindow(Properties properties, Tiers.TIER tier) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false));
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
     }
 
     @Nullable

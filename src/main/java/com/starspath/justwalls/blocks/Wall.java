@@ -1,9 +1,11 @@
 package com.starspath.justwalls.blocks;
 
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -12,9 +14,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class Wall extends MultiBlock {
 
-    public Wall(Properties properties) {
+    public Wall(Properties properties, Tiers.TIER tier) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false));
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
     }
 
     @Nullable
@@ -37,27 +39,13 @@ public class Wall extends MultiBlock {
             return;
         }
 
-        if(direction.getAxis().isHorizontal()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                    if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                        Wall masterWall = (Wall)level.getBlockState(checkPos).getBlock();
-                        masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
-                        return;
-                    }
-                }
-            }
-        }
-        else if (direction.getAxis().isVertical()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
-                    if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                        Wall masterWall = (Wall)level.getBlockState(checkPos).getBlock();
-                        masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
-                        return;
-                    }
+        for(int i = -1; i <= 1; i++){
+            for(int j = -1; j <= 1; j++){
+                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
+                if(isMaster(level.getBlockState(checkPos), prevBlockState)){
+                    Wall masterWall = (Wall)level.getBlockState(checkPos).getBlock();
+                    masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
+                    return;
                 }
             }
         }
@@ -79,27 +67,13 @@ public class Wall extends MultiBlock {
             return;
         }
 
-        if(direction.getAxis().isHorizontal()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                    if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                        Wall masterWall = (Wall)levelAccessor.getBlockState(checkPos).getBlock();
-                        masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
-                        return;
-                    }
-                }
-            }
-        }
-        else if (direction.getAxis().isVertical()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
-                    if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                        Wall masterWall = (Wall)levelAccessor.getBlockState(checkPos).getBlock();
-                        masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
-                        return;
-                    }
+        for(int i = -1; i <= 1; i++){
+            for(int j = -1; j <= 1; j++){
+                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
+                if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
+                    Wall masterWall = (Wall)levelAccessor.getBlockState(checkPos).getBlock();
+                    masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
+                    return;
                 }
             }
         }
@@ -114,25 +88,12 @@ public class Wall extends MultiBlock {
     protected void masterBreak(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState){
         Direction direction = blockState.getValue(BlockStateProperties.FACING);
 
-        if(direction.getAxis().isHorizontal()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                    BlockState checkBlockState = levelAccessor.getBlockState(checkPos);
-                    if(checkBlockState.getBlock() == blockState.getBlock() && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
-                        levelAccessor.destroyBlock(checkPos, true);
-                    }
-                }
-            }
-        }
-        else if (direction.getAxis().isVertical()){
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
-                    BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
-                    BlockState checkBlockState = levelAccessor.getBlockState(checkPos);
-                    if(checkBlockState.getBlock() == blockState.getBlock() && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
-                        levelAccessor.destroyBlock(checkPos, true);
-                    }
+        for(int i = -1; i <= 1; i++){
+            for(int j = -1; j <= 1; j++){
+                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
+                BlockState checkBlockState = levelAccessor.getBlockState(checkPos);
+                if(checkBlockState.getBlock() == blockState.getBlock() && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
+                    levelAccessor.destroyBlock(checkPos, true);
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.starspath.justwalls;
+package com.starspath.justwalls.utils;
 
 public class Utils {
     public static void debug(Object ... objects){
