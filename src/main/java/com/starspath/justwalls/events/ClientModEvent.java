@@ -1,4 +1,4 @@
-package com.starspath.justwalls.client.handler;
+package com.starspath.justwalls.events;
 
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.client.Keybindings;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = JustWalls.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class ClientModHandler {
+public final class ClientModEvent {
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){

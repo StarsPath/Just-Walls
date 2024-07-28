@@ -2,7 +2,11 @@ package com.starspath.justwalls.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.starspath.justwalls.Network.ServerBoundLoaderPacket;
 import com.starspath.justwalls.Utils;
+import com.starspath.justwalls.init.ModItems;
+import com.starspath.justwalls.init.PacketHandler;
+import com.starspath.justwalls.item.SuperHammer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -11,6 +15,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
@@ -22,7 +30,8 @@ public class RadialMenu extends Screen {
     private static float PRECISION = 2.5f / 360.0f;
     private static int INNER_RADIUS = 50;
     private static int OUTER_RADIUS = 100;
-    private static int SEGMENTS = 6;
+    private static int ITEM_RADIUS = 75;
+    private int SEGMENTS = SuperHammer.TOOL_MODE.values().length;
 
     private final int whiteTextColor = 0xffffffff;
 
@@ -46,6 +55,19 @@ public class RadialMenu extends Screen {
         if(selection > -1){
             drawSelection(centerX, centerY, selection);
         }
+        showItem(guiGraphics, centerX, centerY);
+    }
+
+    private void showItem(GuiGraphics guiGraphics, int centerX, int centerY){
+//        guiGraphics.drawCenteredString(Minecraft.getInstance().font, Component.literal("hello world"), centerX, centerY, 0xFFFFFFFF);
+        for(int i = 0; i < SEGMENTS; i++){
+            double angle = getAngleFor(i, SEGMENTS);
+            int a = (int)(centerX + ITEM_RADIUS * Math.cos(angle));
+            int b = (int)(centerY + ITEM_RADIUS * Math.sin(angle));
+            guiGraphics.drawCenteredString(Minecraft.getInstance().font, Component.translatable(SuperHammer.TOOL_MODE.values()[i].getAlias()), a, b + 8, 0xFFFFFFFF);
+
+            guiGraphics.renderItem(SuperHammer.TOOL_MODE.values()[i].getItem(), a - 8, b - 16, 0);
+        }
     }
 
     private void drawSelection(int centerX, int centerY, int selection){
@@ -61,7 +83,7 @@ public class RadialMenu extends Screen {
 
         float s4 = (float) getAngleFor(selection - 0.5, SEGMENTS);
         float e4 = (float) getAngleFor(selection + 0.5, SEGMENTS);
-        drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s4, e4, new Vector4f(1, 0, 0, 1));
+        drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s4, e4, selectedColor);
 
         tessellator.end();
 
@@ -85,18 +107,6 @@ public class RadialMenu extends Screen {
         float s = (float) getAngleFor(0 - 0.5, 1);
         float e = (float) getAngleFor(0 + 0.5, 1);
         drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s, e, radialButtonColor);
-
-        float s2 = (float) getAngleFor(0 - 0.5, SEGMENTS);
-        float e2 = (float) getAngleFor(0 + 0.5, SEGMENTS);
-        drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s2, e2, selectedColor);
-
-        float s3 = (float) getAngleFor(2 - 0.5, SEGMENTS);
-        float e3 = (float) getAngleFor(2 + 0.5, SEGMENTS);
-        drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s3, e3, selectedColor);
-
-        float s4 = (float) getAngleFor(4 - 0.5, SEGMENTS);
-        float e4 = (float) getAngleFor(4 + 0.5, SEGMENTS);
-        drawPieArc(buffer, centerX, centerY, 0, INNER_RADIUS, OUTER_RADIUS, s4, e4, selectedColor);
 
         tessellator.end();
 
@@ -123,14 +133,32 @@ public class RadialMenu extends Screen {
             if(angleDegrees > s && angleDegrees < e){
                 selection = i;
             }
-//            Utils.debug(i, s, e, angleDegrees, angleDegrees > s && angleDegrees < e);
+//            Utils.debug(selection, s, e, angleDegrees);
         }
+
         return selection;
     }
 
     @Override
-    public boolean mouseClicked(double p_94695_, double p_94696_, int p_94697_) {
-        return super.mouseClicked(p_94695_, p_94696_, p_94697_);
+    public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
+        int centerX = this.width / 2;
+        int centerY = this.height / 2;
+        int selection = getMouseSelection(centerX, centerY, (int)mouseX, (int)mouseY);
+        if(selection < 0){
+            selection = SEGMENTS -1;
+        }
+
+        Player player = getMinecraft().player;
+        if(player != null){
+            getMinecraft().player.closeContainer();
+            ItemStack itemStack = player.getItemInHand(InteractionHand.MAIN_HAND);
+            if(itemStack.getItem() instanceof SuperHammer superHammer){
+                PacketHandler.INSTANCE.sendToServer(new ServerBoundLoaderPacket(selection));
+//                superHammer.setMode(itemStack, SuperHammer.TOOL_MODE.values()[selection]);
+            }
+        }
+
+        return super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     private void drawPieArc(BufferBuilder buffer, float x, float y, float z, float radiusIn, float radiusOut, float startAngle, float endAngle, Vector4f color) {
@@ -169,5 +197,11 @@ public class RadialMenu extends Screen {
             return 0;
         double angle = ((i / numItems) + 0.25) * TWO_PI + Math.PI;
         return angle;
+    }
+
+    @Override
+    public boolean isPauseScreen() {
+        return false;
+//        return super.isPauseScreen();
     }
 }
