@@ -2,6 +2,7 @@ package com.starspath.justwalls.blocks;
 
 import com.mojang.logging.LogUtils;
 import com.starspath.justwalls.blocks.abstracts.MultiBlock;
+import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 
-public class WallWindow extends MultiBlock {
+public class WallWindow extends StructureBlock {
 
     public WallWindow(Properties properties, Tiers.TIER tier) {
         super(properties);
@@ -33,66 +34,30 @@ public class WallWindow extends MultiBlock {
 
     @Override
     public void onRemove(BlockState prevBlockState, Level level, BlockPos blockPos, BlockState newBlockState, boolean flag) {
-        if(level.isClientSide()){
-            return;
-        }
-
-        Direction direction = prevBlockState.getValue(BlockStateProperties.FACING);
-        Boolean isMaster = prevBlockState.getValue(MASTER);
-
-        if(isMaster){
-            masterBreak(level, blockPos, prevBlockState);
-            return;
-        }
-
-        for(int i = -1; i <= 1; i++){
-            for(int j = -1; j <= 1; j++){
-                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                if(isMaster(level.getBlockState(checkPos), prevBlockState)){
-                    LogUtils.getLogger().debug("found master " + i + " " + j);
-
-                    WallWindow masterWall = (WallWindow)level.getBlockState(checkPos).getBlock();
-                    masterWall.masterBreak(level, checkPos, level.getBlockState(checkPos));
-                    return;
-                }
-            }
-        }
-
         super.onRemove(prevBlockState, level, blockPos, newBlockState, flag);
     }
 
     @Override
     public void destroy(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState) {
-        if(levelAccessor.isClientSide()){
-            return;
-        }
-
-        Direction direction = blockState.getValue(BlockStateProperties.FACING);
-        Boolean isMaster = blockState.getValue(MASTER);
-
-        if(isMaster){
-            masterBreak(levelAccessor, blockPos, blockState);
-            return;
-        }
-
-        for(int i = -1; i <= 1; i++){
-            for(int j = -1; j <= 1; j++){
-                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
-                if(isMaster(levelAccessor.getBlockState(checkPos), blockState)){
-                    LogUtils.getLogger().debug("found master " + i + " " + j);
-
-                    WallWindow masterWall = (WallWindow)levelAccessor.getBlockState(checkPos).getBlock();
-                    masterWall.masterBreak(levelAccessor, checkPos, levelAccessor.getBlockState(checkPos));
-                    return;
-                }
-            }
-        }
-
         super.destroy(levelAccessor, blockPos, blockState);
     }
 
     protected Boolean isMaster(BlockState blockState, BlockState self){
         return blockState.getBlock() == self.getBlock() && blockState.getValue(BlockStateProperties.FACING) == self.getValue(BlockStateProperties.FACING) && blockState.getValue(MASTER);
+    }
+
+    @Override
+    protected BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+        Direction direction = blockState.getValue(BlockStateProperties.FACING);
+        for(int i = -1; i <= 1; i++){
+            for(int j = -1; j <= 1; j++){
+                BlockPos checkPos = blockPos.relative(direction.getClockWise(), i).above(j);
+                if(isMaster(level.getBlockState(checkPos), blockState)){
+                    return checkPos;
+                }
+            }
+        }
+        return null;
     }
 
     protected void masterBreak(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState){

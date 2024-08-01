@@ -1,21 +1,23 @@
 package com.starspath.justwalls.item;
 
 import com.starspath.justwalls.JustWalls;
+import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.ModItems;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -23,6 +25,8 @@ import java.util.List;
 public class SuperHammer extends Item {
 
     public static final String modeNBTString = "justwalls.hammermode";
+
+    public final int MATERIAL_COUNT = 18;
 
     public enum TOOL_MODE {
         WALL("wall", ModItems.THATCH_WALL_ITEM.get()),
@@ -80,10 +84,31 @@ public class SuperHammer extends Item {
             return super.useOn(useOnContext);
         }
         TOOL_MODE mode = getMode(useOnContext.getItemInHand());
-        System.out.println(mode);
+//        System.out.println(mode);
+        Player player = useOnContext.getPlayer();
         switch (mode) {
-            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE ->
-                    ((BlockItem) mode.getItem().getItem()).place(new BlockPlaceContext(useOnContext));
+            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE -> {
+                if(!player.isCreative()){
+                    int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
+                    if(playerHas >= MATERIAL_COUNT){
+                        removeSticksFromInventory(player.getInventory(), ModItems.STRAW_SCRAP.get(), MATERIAL_COUNT);
+                    }
+                    else{
+                        player.displayClientMessage(Component.literal("Not enough material " + playerHas + "/" + MATERIAL_COUNT), true);
+                        return InteractionResult.FAIL;
+                    }
+                }
+                ((BlockItem) mode.getItem().getItem()).place(new BlockPlaceContext(useOnContext));
+            }
+
+            case UPGRADE -> {
+                BlockPos blockPos = useOnContext.getClickedPos();
+                BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
+                if(blockState.getBlock() instanceof StructureBlock structureBlock){
+//                    Tiers.TIER tier =  blockState.getValue(StructureBlock.TIER);
+                    structureBlock.upgrade(level, blockPos, blockState);
+                }
+            }
         }
 
         return InteractionResult.SUCCESS;
@@ -118,5 +143,22 @@ public class SuperHammer extends Item {
             return TOOL_MODE.fromString(tag.getString(modeNBTString));
         }
         return TOOL_MODE.WALL;
+    }
+
+    private int countMaterialInInventory(Inventory inventory, Item item){
+        return inventory.items.stream().filter(stack -> stack.getItem() == item).mapToInt(ItemStack::getCount).sum();
+    }
+
+    private void removeSticksFromInventory(Inventory inventory, Item item, int count) {
+        for (ItemStack stack : inventory.items) {
+            if (stack.getItem() == item) {
+                int toRemove = Math.min(stack.getCount(), count);
+                stack.shrink(toRemove);
+                count -= toRemove;
+                if (count <= 0) {
+                    break;
+                }
+            }
+        }
     }
 }

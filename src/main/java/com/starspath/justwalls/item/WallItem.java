@@ -45,8 +45,6 @@ public class WallItem extends BlockItem {
             placementStrategy = 2; // place on the side of a block (MASTER ABOVE)
         }
 
-        LogUtils.getLogger().debug("" + placementStrategy);
-
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
 
         switch (placementStrategy) {
@@ -72,18 +70,14 @@ public class WallItem extends BlockItem {
         boolean result = placementCheck(blockPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
-            if(!player.isCreative()){
+            if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
         }
         else{
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Space Occupied"), false);
+            player.displayClientMessage(Component.literal("Space Occupied"), true);
         }
-
-        LogUtils.getLogger().debug("" + result);
-
         return InteractionResult.SUCCESS;
-//        return super.place(blockPlaceContext);
     }
 
     protected boolean placementCheck(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){

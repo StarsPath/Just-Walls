@@ -4,6 +4,7 @@ import com.starspath.justwalls.blocks.LootCrate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -44,9 +45,15 @@ public class LootCrateItem extends BlockItem {
         blockPosList.add(pos6);
         blockPosList.add(pos7);
 
-        if (placementCheck(blockPosList, blockPlaceContext)){
+        Player player = blockPlaceContext.getPlayer();
+        boolean result = placementCheck(blockPosList, blockPlaceContext);
+        if(result){
             doPlacement(blockPosList, blockPlaceContext);
+            if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
+                blockPlaceContext.getItemInHand().grow(-1);
+            }
         }
+
         return InteractionResult.SUCCESS;
 //        return super.place(blockPlaceContext);
     }

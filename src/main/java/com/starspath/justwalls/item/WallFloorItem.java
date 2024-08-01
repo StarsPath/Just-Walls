@@ -79,12 +79,12 @@ public class WallFloorItem extends BlockItem {
         boolean result = placementCheck(blockPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
-            if(!player.isCreative()){
+            if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
         }
         else{
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Space Occupied"), false);
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Space Occupied"), true);
         }
 
         LogUtils.getLogger().debug("" + result);

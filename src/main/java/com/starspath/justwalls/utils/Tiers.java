@@ -19,5 +19,22 @@ public class Tiers {
         public String getSerializedName() {
             return name;
         }
+
+        public TIER getNext(){
+            switch (name){
+                default -> {
+                    return WOOD;
+                }
+                case "wood" -> {
+                    return STONE;
+                }
+                case "stone" -> {
+                    return METAL;
+                }
+                case "metal" -> {
+                    return ARMOR;
+                }
+            }
+        }
     }
 }

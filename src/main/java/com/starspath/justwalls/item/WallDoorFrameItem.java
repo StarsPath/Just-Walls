@@ -44,7 +44,7 @@ public class WallDoorFrameItem extends BlockItem {
         boolean result = placementCheck(blockPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
-            if(!player.isCreative()){
+            if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
         }
