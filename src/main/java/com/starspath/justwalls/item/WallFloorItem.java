@@ -41,18 +41,6 @@ public class WallFloorItem extends BlockItem {
         else if(blockPlaceContext.getClickedFace().getAxis().isHorizontal()){
             placementStrategy = 2;
         }
-//        if(blockPlaceContext.getClickedPos().getY() == player.getBlockY()){
-//            placementStrategy = 1;
-//        }
-//        else if(blockPlaceContext.getNearestLookingDirection().getAxis().isHorizontal() && blockPlaceContext.getClickedFace() == Direction.UP){
-//            placementStrategy = 1; // place on top of a block but looking horizontal (MASTER)
-//        }
-//        else if(blockPlaceContext.getClickedFace().getAxis().isHorizontal()){
-//            placementStrategy = 2; // place on the side of a block (MASTER ABOVE)
-//        }
-//        else if(blockPlaceContext.getClickedFace().getAxis().isVertical()){
-//            placementStrategy = 3; // place while looking up or down (MASTER)
-//        }
 
         LogUtils.getLogger().debug("" + placementStrategy);
 
@@ -90,7 +78,6 @@ public class WallFloorItem extends BlockItem {
         LogUtils.getLogger().debug("" + result);
 
         return InteractionResult.SUCCESS;
-//        return super.place(blockPlaceContext);
     }
 
     protected boolean placementCheck(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
@@ -119,20 +106,6 @@ public class WallFloorItem extends BlockItem {
     @Nullable
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
-//        Direction facing;
-//        if(placementStrategy == 1){
-//            facing = blockPlaceContext.getHorizontalDirection();
-//        }
-//        else if(placementStrategy == 2){
-//            facing = blockPlaceContext.getClickedFace();
-//        }
-//        else if(placementStrategy == 3){
-//            facing = blockPlaceContext.getClickedFace();
-//        }
-//        else{
-//            facing = blockPlaceContext.getNearestLookingDirection();
-//        }
-
         return getBlock().defaultBlockState()
                 .setValue(BlockStateProperties.FACING, Direction.DOWN)
                 .setValue(MASTER, false);

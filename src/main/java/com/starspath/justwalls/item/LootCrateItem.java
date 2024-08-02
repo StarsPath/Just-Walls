@@ -55,7 +55,6 @@ public class LootCrateItem extends BlockItem {
         }
 
         return InteractionResult.SUCCESS;
-//        return super.place(blockPlaceContext);
     }
 
     protected boolean placementCheck(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext) {

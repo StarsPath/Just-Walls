@@ -2,7 +2,6 @@ package com.starspath.justwalls.data.client;
 
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.init.ModItems;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

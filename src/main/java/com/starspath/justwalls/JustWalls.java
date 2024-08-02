@@ -77,7 +77,6 @@ public class JustWalls
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == ModCreativeModeTab.JUSTWALLS_TAB.getKey()){
-//            event.accept(ModItems.WOODEN_WALL_ITEM);
             event.accept(ModItems.THATCH_WALL_ITEM);
             event.accept(ModItems.WOODEN_WALL_ITEM);
             event.accept(ModItems.STONE_WALL_ITEM);

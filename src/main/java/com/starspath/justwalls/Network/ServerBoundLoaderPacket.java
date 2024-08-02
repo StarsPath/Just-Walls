@@ -32,7 +32,6 @@ public class ServerBoundLoaderPacket {
         ctx.enqueueWork(()->{
             ServerPlayer player = ctx.getSender();
             ItemStack itemStack = player.getItemInHand(InteractionHand.MAIN_HAND);
-//            Item item = itemStack.getItem();
             if(itemStack.getItem() instanceof SuperHammer superHammer){
                 superHammer.setMode(itemStack, SuperHammer.TOOL_MODE.values()[mode]);
             }

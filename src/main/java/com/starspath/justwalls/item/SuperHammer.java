@@ -1,9 +1,7 @@
 package com.starspath.justwalls.item;
 
-import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.ModItems;
-import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -16,7 +14,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -72,8 +69,6 @@ public class SuperHammer extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-//        System.out.println("USE");
-//        ItemStack itemStack = player.getItemInHand(interactionHand);
         return super.use(level, player, interactionHand);
     }
 
@@ -84,7 +79,6 @@ public class SuperHammer extends Item {
             return super.useOn(useOnContext);
         }
         TOOL_MODE mode = getMode(useOnContext.getItemInHand());
-//        System.out.println(mode);
         Player player = useOnContext.getPlayer();
         switch (mode) {
             case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE -> {
@@ -105,14 +99,12 @@ public class SuperHammer extends Item {
                 BlockPos blockPos = useOnContext.getClickedPos();
                 BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
                 if(blockState.getBlock() instanceof StructureBlock structureBlock){
-//                    Tiers.TIER tier =  blockState.getValue(StructureBlock.TIER);
                     structureBlock.upgrade(level, blockPos, blockState);
                 }
             }
         }
 
         return InteractionResult.SUCCESS;
-//        return super.useOn(useOnContext);
     }
 
     @Override

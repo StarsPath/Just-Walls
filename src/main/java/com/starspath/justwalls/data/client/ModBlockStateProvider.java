@@ -18,9 +18,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-//        blockWithItem(ModBlocks.WOODEN_WALL);
-//        blockWithItem(ModBlocks.METAL_WALL);
-//        blockWithItem(ModBlocks.ARMORED_WALL);
         simpleMultiBlock(ModBlocks.THATCH_WALL, "thatch_wall");
         simpleMultiBlock(ModBlocks.THATCH_WALL_FLOOR, "thatch_wall");
         simpleMultiBlock(ModBlocks.THATCH_WALL_DOOR_FRAME, "thatch_wall");
@@ -58,6 +55,5 @@ public class ModBlockStateProvider extends BlockStateProvider {
                                 modLoc(name)
                         )
                 ).build());
-//        this.getVariantBuilder(registryObject.get()).addModels(registryObject.get().)
     }
 }
