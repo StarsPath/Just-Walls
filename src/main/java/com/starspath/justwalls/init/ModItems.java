@@ -1,10 +1,14 @@
 package com.starspath.justwalls.init;
 
 import com.starspath.justwalls.JustWalls;
+import com.starspath.justwalls.blocks.WallPillar;
 import com.starspath.justwalls.item.*;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -46,6 +50,26 @@ public class ModItems {
     public static final RegistryObject<Item> STONE_WALL_DOOR_FRAME_ITEM = ITEMS.register("stone_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.STONE_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> METAL_WALL_DOOR_FRAME_ITEM = ITEMS.register("metal_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.METAL_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_DOOR_FRAME_ITEM = ITEMS.register("armored_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.ARMORED_WALL_DOOR_FRAME.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM = ITEMS.register("thatch_wall_pillar", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOODEN_WALL_PILLAR_ITEM = ITEMS.register("wooden_wall_pillar", () -> new WallPillarItem(ModBlocks.WOODEN_WALL_PILLAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_PILLAR_ITEM = ITEMS.register("stone_wall_pillar", () -> new WallPillarItem(ModBlocks.STONE_WALL_PILLAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> METAL_WALL_PILLAR_ITEM = ITEMS.register("metal_wall_pillar", () -> new WallPillarItem(ModBlocks.METAL_WALL_PILLAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ARMORED_WALL_PILLAR_ITEM = ITEMS.register("armored_wall_pillar", () -> new WallPillarItem(ModBlocks.ARMORED_WALL_PILLAR.get(), new Item.Properties()));
+
+//    public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_4 = ITEMS.register("thatch_wall_pillar_4", () -> new WallPillarItem(
+//            new WallPillar(BlockBehaviour.Properties.copy(ModBlocks.THATCH_WALL_PILLAR.get()), Tiers.TIER.THATCH, 4), new Item.Properties(), 4));
+//    public static final RegistryObject<Item> WOODEN_WALL_PILLAR_ITEM_4 = ITEMS.register("wooden_wall_pillar_4", () -> new WallPillarItem(
+//            new WallPillar(BlockBehaviour.Properties.copy(ModBlocks.WOODEN_WALL_PILLAR.get()), Tiers.TIER.WOOD, 4), new Item.Properties(), 4));
+//    public static final RegistryObject<Item> STONE_WALL_PILLAR_ITEM_4 = ITEMS.register("stone_wall_pillar_4", () -> new WallPillarItem(
+//            new WallPillar(BlockBehaviour.Properties.copy(ModBlocks.STONE_WALL_PILLAR.get()), Tiers.TIER.STONE, 4), new Item.Properties(), 4));
+//    public static final RegistryObject<Item> METAL_WALL_PILLAR_ITEM_4 = ITEMS.register("metal_wall_pillar_4", () -> new WallPillarItem(
+//            new WallPillar(BlockBehaviour.Properties.copy(ModBlocks.METAL_WALL_PILLAR.get()), Tiers.TIER.METAL, 4), new Item.Properties(), 4));
+//    public static final RegistryObject<Item> ARMORED_WALL_PILLAR_ITEM_4 = ITEMS.register("armored_wall_pillar_4", () -> new WallPillarItem(
+//            new WallPillar(BlockBehaviour.Properties.copy(ModBlocks.ARMORED_WALL_PILLAR.get()), Tiers.TIER.ARMOR, 4), new Item.Properties(), 4));
+
+
+
 
     public static final RegistryObject<Item> LOOT_CRATE_ITEM = ITEMS.register("loot_crate", () -> new LootCrateItem(ModBlocks.LOOT_CRATE.get(), new Item.Properties()));
 

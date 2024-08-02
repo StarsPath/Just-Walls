@@ -1,6 +1,5 @@
 package com.starspath.justwalls.item;
 
-import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,10 +18,17 @@ import java.util.ArrayList;
 
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
-public class WallFloorItem extends BlockItem {
-    public int placementStrategy;
-    public WallFloorItem(Block block, Properties properties) {
+public class WallPillarItem extends BlockItem {
+    public int height;
+
+    public WallPillarItem(Block block, Properties properties) {
         super(block, properties);
+        this.height = 3;
+    }
+
+    public WallPillarItem(Block block, Properties properties, int height) {
+        super(block, properties);
+        this.height = height;
     }
 
     @Override
@@ -35,33 +41,12 @@ public class WallFloorItem extends BlockItem {
         Player player = blockPlaceContext.getPlayer();
         BlockPos pos = blockPlaceContext.getClickedPos();
 
-        if(blockPlaceContext.getClickedFace().getAxis().isVertical()){
-            placementStrategy = 1;
-        }
-        else if(blockPlaceContext.getClickedFace().getAxis().isHorizontal()){
-            placementStrategy = 2;
-        }
-
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
 
-        switch (placementStrategy) {
-            case 1 -> {
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        BlockPos newPos = pos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
-                        blockPosList.add(newPos);
-                    }
-                }
-            }
-            case 2 -> {
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        BlockPos newPos = pos.relative(blockPlaceContext.getClickedFace()).relative(Direction.NORTH, i).relative(Direction.EAST, j);
-                        blockPosList.add(newPos);
-                    }
-                }
-            }
+        for(int i = 0; i < height; i++){
+            blockPosList.add(pos.above(i));
         }
+
         boolean result = placementCheck(blockPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
@@ -72,6 +57,7 @@ public class WallFloorItem extends BlockItem {
         else{
             player.displayClientMessage(Component.literal("Space Occupied"), true);
         }
+
         return InteractionResult.SUCCESS;
     }
 
@@ -82,7 +68,6 @@ public class WallFloorItem extends BlockItem {
                 return false;
             }
         }
-
         return true;
     }
 
@@ -91,7 +76,7 @@ public class WallFloorItem extends BlockItem {
         for(int i = 0; i < blockPosList.size(); i++){
             BlockPos pos = blockPosList.get(i);
             BlockState state = getPlacementState(blockPlaceContext);
-            if(i == blockPosList.size()/2){
+            if(i == (blockPosList.size() - 1)/2){
                 state = state.setValue(MASTER, true);
             }
             level.setBlockAndUpdate(pos, state);
@@ -102,7 +87,7 @@ public class WallFloorItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
         return getBlock().defaultBlockState()
-                .setValue(BlockStateProperties.FACING, Direction.DOWN)
+                .setValue(BlockStateProperties.FACING, blockPlaceContext.getHorizontalDirection())
                 .setValue(MASTER, false);
     }
 }

@@ -5,6 +5,7 @@ import com.starspath.justwalls.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -30,8 +31,8 @@ public class SuperHammer extends Item {
         FLOOR("floor", ModItems.THATCH_WALL_FLOOR_ITEM.get()),
         DOOR_FRAME("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get()),
         WINDOW_FRAME("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get()),
+        PILLAR("wall_pillar", ModItems.THATCH_WALL_PILLAR_ITEM.get()),
         LOOT_CRATE("loot_crate", ModItems.LOOT_CRATE_ITEM.get()),
-//        PILLAR("loot_crate", ModItems.LOOT_CRATE_ITEM.get()),
         UPGRADE("upgrade", ModItems.SUPER_HAMMER.get());
 
         private final String name;
@@ -80,8 +81,10 @@ public class SuperHammer extends Item {
         }
         TOOL_MODE mode = getMode(useOnContext.getItemInHand());
         Player player = useOnContext.getPlayer();
+        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 40);
+
         switch (mode) {
-            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, LOOT_CRATE -> {
+            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, PILLAR, LOOT_CRATE -> {
                 if(!player.isCreative()){
                     int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
                     if(playerHas >= MATERIAL_COUNT){
@@ -92,6 +95,7 @@ public class SuperHammer extends Item {
                         return InteractionResult.FAIL;
                     }
                 }
+                level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
                 ((BlockItem) mode.getItem().getItem()).place(new BlockPlaceContext(useOnContext));
             }
 
@@ -100,6 +104,7 @@ public class SuperHammer extends Item {
                 BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
                 if(blockState.getBlock() instanceof StructureBlock structureBlock){
                     structureBlock.upgrade(level, blockPos, blockState);
+                    level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
                 }
             }
         }

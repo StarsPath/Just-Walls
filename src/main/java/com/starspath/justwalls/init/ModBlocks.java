@@ -45,6 +45,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> METAL_WALL_DOOR_FRAME = BLOCKS.register("metal_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(9), Tiers.TIER.METAL));
     public static final RegistryObject<Block> ARMORED_WALL_DOOR_FRAME = BLOCKS.register("armored_wall_door_frame", () -> new WallDoorFrame(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(12), Tiers.TIER.ARMOR));
 
+    public static final RegistryObject<Block> THATCH_WALL_PILLAR = BLOCKS.register("thatch_wall_pillar", () -> new WallPillar(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2), Tiers.TIER.THATCH));
+    public static final RegistryObject<Block> WOODEN_WALL_PILLAR = BLOCKS.register("wooden_wall_pillar", () -> new WallPillar(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(5), Tiers.TIER.WOOD));
+    public static final RegistryObject<Block> STONE_WALL_PILLAR = BLOCKS.register("stone_wall_pillar", () -> new WallPillar(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(6), Tiers.TIER.STONE));
+    public static final RegistryObject<Block> METAL_WALL_PILLAR = BLOCKS.register("metal_wall_pillar", () -> new WallPillar(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(9), Tiers.TIER.METAL));
+    public static final RegistryObject<Block> ARMORED_WALL_PILLAR = BLOCKS.register("armored_wall_pillar", () -> new WallPillar(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(12), Tiers.TIER.ARMOR));
+
     public static final RegistryObject<Block> LOOT_CRATE = BLOCKS.register("loot_crate", () -> new LootCrate(
             BlockBehaviour.Properties.copy(Blocks.CHEST).noOcclusion()));
 }

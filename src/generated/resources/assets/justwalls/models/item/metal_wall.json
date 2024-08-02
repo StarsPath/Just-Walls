@@ -1,3 +1,3 @@
 {
-  "parent": "justwalls:block/metal_wall"
+  "parent": "justwalls:item/metal_wall_inventory"
 }
