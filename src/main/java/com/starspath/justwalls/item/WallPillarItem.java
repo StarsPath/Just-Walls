@@ -1,6 +1,5 @@
 package com.starspath.justwalls.item;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -16,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
+import static com.starspath.justwalls.blocks.WallPillar.HEIGHT;
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
 public class WallPillarItem extends BlockItem {
@@ -40,11 +40,12 @@ public class WallPillarItem extends BlockItem {
 
         Player player = blockPlaceContext.getPlayer();
         BlockPos pos = blockPlaceContext.getClickedPos();
+        Direction direction = blockPlaceContext.getClickedFace();
 
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
 
         for(int i = 0; i < height; i++){
-            blockPosList.add(pos.above(i));
+            blockPosList.add(pos.relative(direction, i));
         }
 
         boolean result = placementCheck(blockPosList, blockPlaceContext);
@@ -87,7 +88,8 @@ public class WallPillarItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
         return getBlock().defaultBlockState()
-                .setValue(BlockStateProperties.FACING, blockPlaceContext.getHorizontalDirection())
+                .setValue(BlockStateProperties.FACING, blockPlaceContext.getClickedFace())
+                .setValue(HEIGHT, height)
                 .setValue(MASTER, false);
     }
 }

@@ -3,7 +3,9 @@ package com.starspath.justwalls.client.handler;
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.client.Keybindings;
 import com.starspath.justwalls.client.RadialMenu;
+import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.item.SuperHammer;
+import com.starspath.justwalls.utils.RadialMenuItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -21,7 +23,7 @@ public class ClientForgeHandler {
         if(Keybindings.INSTANCE.guiKey.consumeClick() && minecraft.player != null){
             ItemStack itemStack = minecraft.player.getItemInHand(InteractionHand.MAIN_HAND);
             if(itemStack.getItem() instanceof SuperHammer){
-                Minecraft.getInstance().setScreen(new RadialMenu());
+                Minecraft.getInstance().setScreen(new RadialMenu(RadialMenuItem.MAIN_MENU));
 //                minecraft.player.displayClientMessage(Component.literal("Key Pressed"), true);
             }
         }

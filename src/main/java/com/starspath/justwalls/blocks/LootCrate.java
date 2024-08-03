@@ -94,18 +94,6 @@ public class LootCrate extends MultiBlock implements EntityBlock {
         }
 
         BlockPos masterPos = getMasterPos(blockState.getValue(ID), blockPos, direction);
-//        int id = blockState.getValue(ID);
-//
-//        masterPos = switch (id) {
-//            default -> blockPos;
-//            case 1 -> blockPos.relative(direction.getOpposite());
-//            case 2 -> blockPos.relative(direction.getCounterClockWise());
-//            case 3 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite());
-//            case 4 -> blockPos.below();
-//            case 5 -> blockPos.relative(direction.getOpposite()).below();
-//            case 6 -> blockPos.relative(direction.getCounterClockWise()).below();
-//            case 7 -> blockPos.relative(direction.getCounterClockWise()).relative(direction.getOpposite()).below();
-//        };
 
         if(isMaster(levelAccessor.getBlockState(masterPos), blockState)){
             LootCrate masterCrate = (LootCrate)levelAccessor.getBlockState(masterPos).getBlock();

@@ -1,0 +1,784 @@
+{
+  "variants": {
+    "facing=down,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=down,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 180
+    },
+    "facing=east,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=north,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90
+    },
+    "facing=south,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=up,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall"
+    },
+    "facing=west,height=3,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=3,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=4,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=false,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=false,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=false,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=false,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=false,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=true,tier=armor": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=true,tier=metal": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=true,tier=stone": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=true,tier=thatch": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=5,master=true,tier=wood": {
+      "model": "justwalls:block/metal_wall",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

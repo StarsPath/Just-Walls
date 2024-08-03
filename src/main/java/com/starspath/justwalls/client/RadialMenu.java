@@ -5,6 +5,8 @@ import com.mojang.blaze3d.vertex.*;
 import com.starspath.justwalls.Network.ServerBoundLoaderPacket;
 import com.starspath.justwalls.init.PacketHandler;
 import com.starspath.justwalls.item.SuperHammer;
+import com.starspath.justwalls.utils.RadialMenuItem;
+import com.starspath.justwalls.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -13,8 +15,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector4f;
+
+import java.util.ArrayList;
 
 import static net.minecraft.util.Mth.TWO_PI;
 
@@ -25,9 +30,16 @@ public class RadialMenu extends Screen {
     private static int INNER_RADIUS = 50;
     private static int OUTER_RADIUS = 100;
     private static int ITEM_RADIUS = 75;
-    private int SEGMENTS = SuperHammer.TOOL_MODE.values().length;
+    private ArrayList<RadialMenuItem> itemList;
+    private int SEGMENTS;
 
     private final int whiteTextColor = 0xffffffff;
+
+    public RadialMenu(ArrayList<RadialMenuItem> itemList){
+        super(Component.literal("Radial Menu Component Literal"));
+        this.itemList = itemList;
+        this.SEGMENTS = itemList.size();
+    }
 
     public RadialMenu(){
         super(Component.literal("Radial Menu Component Literal"));
@@ -58,9 +70,12 @@ public class RadialMenu extends Screen {
             double angle = getAngleFor(i, SEGMENTS);
             int a = (int)(centerX + ITEM_RADIUS * Math.cos(angle));
             int b = (int)(centerY + ITEM_RADIUS * Math.sin(angle));
-            guiGraphics.drawCenteredString(Minecraft.getInstance().font, Component.translatable(SuperHammer.TOOL_MODE.values()[i].getAlias()), a, b + 8, 0xFFFFFFFF);
 
-            guiGraphics.renderItem(SuperHammer.TOOL_MODE.values()[i].getItem(), a - 8, b - 16, 0);
+            if(itemList.get(i) != null){
+                guiGraphics.drawCenteredString(Minecraft.getInstance().font, itemList.get(i).getComponent(), a, b + 8, 0xFFFFFFFF);
+
+                guiGraphics.renderItem(itemList.get(i).getItemToRender(), a - 8, b - 16, 0);
+            }
         }
     }
 
@@ -109,28 +124,33 @@ public class RadialMenu extends Screen {
     }
 
     private int getMouseSelection(int centerX, int centerY, int mouseX, int mouseY){
-        int deltaX = mouseX - centerX;
-        int deltaY = mouseY - centerY;
-        double angleRadians = Math.atan2(deltaY, deltaX);
-        if (angleRadians < 0) {
-            angleRadians += 2 * Math.PI;
-        }
-
-        double angleDegrees = Math.toDegrees(angleRadians);
-
-        int selection = -1;
-        for(int i = 0; i < SEGMENTS; i++){
-            float s = (float) Math.toDegrees(getAngleFor(i - 0.5, SEGMENTS)) % 360;
-            float e = (float) Math.toDegrees(getAngleFor(i + 0.5, SEGMENTS));
-            if(e > 360)
-                e %= 360;
-            if(angleDegrees > s && angleDegrees < e){
-                selection = i;
+        int x = width / 2;
+        int y = height / 2;
+        double a = Math.atan2(mouseY - y, mouseX - x);
+        double d = Math.sqrt(Math.pow(mouseX - x, 2) + Math.pow(mouseY - y, 2));
+        if (SEGMENTS > 0) {
+            double s0 = getAngleFor(0 - 0.5, SEGMENTS);
+            double s1 = getAngleFor(SEGMENTS - 0.5, SEGMENTS);
+            while (a < s0) {
+                a += TWO_PI;
             }
-//            Utils.debug(selection, s, e, angleDegrees);
+            while (a >= s1) {
+                a -= TWO_PI;
+            }
         }
 
-        return selection;
+        int hovered = -1;
+        for (int i = 0; i < SEGMENTS; i++) {
+            float s = (float) getAngleFor(i - 0.5, SEGMENTS);
+            float e = (float) getAngleFor(i + 0.5, SEGMENTS);
+
+            if (a >= s && a < e && d >= INNER_RADIUS && (d < OUTER_RADIUS)) {
+                hovered = i;
+                break;
+            }
+        }
+
+        return hovered;
     }
 
     @Override
@@ -139,15 +159,29 @@ public class RadialMenu extends Screen {
         int centerY = this.height / 2;
         int selection = getMouseSelection(centerX, centerY, (int)mouseX, (int)mouseY);
         if(selection < 0){
-            selection = SEGMENTS -1;
+            return super.mouseClicked(mouseX, mouseY, mouseButton);
         }
 
         Player player = getMinecraft().player;
         if(player != null){
             getMinecraft().player.closeContainer();
+            if(itemList.get(selection).hasNestedMenu()){
+                Minecraft.getInstance().setScreen(new RadialMenu(itemList.get(selection).getNestedMenuItems()));
+                return super.mouseClicked(mouseX, mouseY, mouseButton);
+            }
+
             ItemStack itemStack = player.getItemInHand(InteractionHand.MAIN_HAND);
             if(itemStack.getItem() instanceof SuperHammer superHammer){
-                PacketHandler.INSTANCE.sendToServer(new ServerBoundLoaderPacket(selection));
+
+                String mode = itemList.get(selection).toString();
+                int extra = 0;
+                switch (mode){
+                    case "pillar_3" -> extra = 3;
+                    case "pillar_4" -> extra = 4;
+                    case "pillar_5" -> extra = 5;
+                }
+
+                PacketHandler.INSTANCE.sendToServer(new ServerBoundLoaderPacket(mode, extra));
 //                superHammer.setMode(itemStack, SuperHammer.TOOL_MODE.values()[selection]);
             }
         }

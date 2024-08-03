@@ -8,37 +8,48 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import java.util.ArrayList;
 
 public class WallPillar extends StructureBlock {
-    public int height;
+    public static IntegerProperty HEIGHT = IntegerProperty.create("height", 3, 5);
 
     public WallPillar(Properties properties, Tiers.TIER tier) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
-        this.height = 3;
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, 3));
     }
 
     public WallPillar(Properties properties, Tiers.TIER tier, int height) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
-        this.height = height;
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, height));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(HEIGHT);
     }
 
     @Override
     protected Boolean isMaster(BlockState blockState, BlockState self) {
-        return blockState.getBlock() == self.getBlock() && blockState.getValue(BlockStateProperties.FACING) == self.getValue(BlockStateProperties.FACING) && blockState.getValue(MASTER);
+        return blockState.getBlock() == self.getBlock()
+                && blockState.getValue(BlockStateProperties.FACING) == self.getValue(BlockStateProperties.FACING)
+                && blockState.getValue(MASTER)
+                && blockState.getValue(HEIGHT).equals(self.getValue(HEIGHT))
+                && blockState.getValue(TIER) == self.getValue(TIER);
     }
 
     @Override
     protected BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+        int height = blockState.getValue(HEIGHT);
         int offset = height / 2;
 
         for (int i = 0; i < height; i++) {
             int index = i - offset;
-            BlockPos pos = blockPos.above(index);
+            BlockPos pos = blockPos.relative(blockState.getValue(BlockStateProperties.FACING), index);
             if(isMaster(level.getBlockState(pos), blockState)){
                 return pos;
             }
@@ -50,10 +61,11 @@ public class WallPillar extends StructureBlock {
     protected ArrayList<BlockPos> getChildPos(LevelAccessor level, BlockPos blockPos, BlockState blockState){
         Direction direction = blockState.getValue(BlockStateProperties.FACING);
         ArrayList<BlockPos> childPos = new ArrayList<>();
+        int height = blockState.getValue(HEIGHT);
         int offset = (height - 1) / 2;
         for (int i = 0; i < height; i++) {
             int index = i - offset;
-            BlockPos checkPos = blockPos.above(index);
+            BlockPos checkPos = blockPos.relative(direction, index);
             BlockState checkBlockState = level.getBlockState(checkPos);
             if(checkBlockState.getBlock() == this && checkBlockState.getValue(BlockStateProperties.FACING) == direction){
                 childPos.add(checkPos);

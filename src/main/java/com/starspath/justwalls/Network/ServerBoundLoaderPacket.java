@@ -2,10 +2,8 @@ package com.starspath.justwalls.Network;
 
 import com.starspath.justwalls.item.SuperHammer;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -13,18 +11,25 @@ import java.util.function.Supplier;
 
 public class ServerBoundLoaderPacket {
 
-    public final int mode;
+    public final String name;
+    public final int extra;
 
-    public ServerBoundLoaderPacket(int mode){
-        this.mode = mode;
+    public ServerBoundLoaderPacket(String name){
+        this(name, 0);
+    }
+
+    public ServerBoundLoaderPacket(String name, int extra){
+        this.name = name;
+        this.extra = extra;
     }
 
     public ServerBoundLoaderPacket(FriendlyByteBuf buffer){
-        this(buffer.readInt());
+        this(buffer.readUtf(), buffer.readInt());
     }
 
     public void encode(FriendlyByteBuf buffer){
-        buffer.writeInt(this.mode);
+        buffer.writeUtf(this.name);
+        buffer.writeInt(this.extra);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> context){
@@ -33,7 +38,7 @@ public class ServerBoundLoaderPacket {
             ServerPlayer player = ctx.getSender();
             ItemStack itemStack = player.getItemInHand(InteractionHand.MAIN_HAND);
             if(itemStack.getItem() instanceof SuperHammer superHammer){
-                superHammer.setMode(itemStack, SuperHammer.TOOL_MODE.values()[mode]);
+                superHammer.setMode(itemStack, name, extra);
             }
         });
         ctx.setPacketHandled(true);

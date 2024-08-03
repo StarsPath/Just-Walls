@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -102,10 +103,7 @@ public abstract class StructureBlock extends MultiBlock {
 
                 Tiers.TIER nextTier =  blockState.getValue(TIER).getNext();
                 Block nexTierBlock = getNextTierBlock(nextTier);
-                BlockState newState = nexTierBlock.defaultBlockState()
-                        .setValue(BlockStateProperties.FACING, childState.getValue(BlockStateProperties.FACING))
-                        .setValue(MASTER, childState.getValue(MASTER))
-                        .setValue(TIER, nextTier);
+                BlockState newState = nexTierBlock.withPropertiesOf(childState).setValue(TIER, nextTier);
 
                 level.setBlock(childPos, newState, UPDATE_NONE);
             }

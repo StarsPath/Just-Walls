@@ -1,7 +1,9 @@
 package com.starspath.justwalls.item;
 
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
+import com.starspath.justwalls.client.RadialMenu;
 import com.starspath.justwalls.init.ModItems;
+import com.starspath.justwalls.utils.RadialMenuItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -20,49 +22,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+
 public class SuperHammer extends Item {
 
     public static final String modeNBTString = "justwalls.hammermode";
+    public static final String extraNBTString = "justwalls.hammermode_extra";
 
     public final int MATERIAL_COUNT = 18;
-
-    public enum TOOL_MODE {
-        WALL("wall", ModItems.THATCH_WALL_ITEM.get()),
-        FLOOR("floor", ModItems.THATCH_WALL_FLOOR_ITEM.get()),
-        DOOR_FRAME("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get()),
-        WINDOW_FRAME("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get()),
-        PILLAR("wall_pillar", ModItems.THATCH_WALL_PILLAR_ITEM.get()),
-        LOOT_CRATE("loot_crate", ModItems.LOOT_CRATE_ITEM.get()),
-        UPGRADE("upgrade", ModItems.SUPER_HAMMER.get());
-
-        private final String name;
-        private final Item item;
-
-        TOOL_MODE(String name, Item item) {
-            this.name = name;
-            this.item = item;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        public String getAlias() {
-            return "gui.justwalls.super_hammer." + name;
-        }
-
-        public ItemStack getItem(){ return new ItemStack(item); }
-
-        public static TOOL_MODE fromString(String name){
-            for (TOOL_MODE mode : TOOL_MODE.values()) {
-                if (mode.name.equalsIgnoreCase(name)) {
-                    return mode;
-                }
-            }
-            throw new IllegalArgumentException("No enum constant with dayName " + name);
-        }
-    }
 
     public SuperHammer(Properties properties) {
         super(properties);
@@ -79,12 +45,12 @@ public class SuperHammer extends Item {
         if(level.isClientSide){
             return super.useOn(useOnContext);
         }
-        TOOL_MODE mode = getMode(useOnContext.getItemInHand());
+        String mode = getMode(useOnContext.getItemInHand());
         Player player = useOnContext.getPlayer();
         player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 40);
 
         switch (mode) {
-            case WALL, FLOOR, WINDOW_FRAME, DOOR_FRAME, PILLAR, LOOT_CRATE -> {
+            case "wall", "floor", "door_frame", "window_frame", "pillar_3", "pillar_4", "pillar_5" -> {
                 if(!player.isCreative()){
                     int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
                     if(playerHas >= MATERIAL_COUNT){
@@ -96,10 +62,12 @@ public class SuperHammer extends Item {
                     }
                 }
                 level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
-                ((BlockItem) mode.getItem().getItem()).place(new BlockPlaceContext(useOnContext));
+                level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_DESTROY, player.getSoundSource(), 1.0F, 1.0F);
+                RadialMenuItem radialMenuItem = RadialMenuItem.getRadialMenuItemByName(RadialMenuItem.ALL_ITEMS, mode);
+                ((BlockItem) radialMenuItem.getItemToRender().getItem()).place(new BlockPlaceContext(useOnContext));
             }
 
-            case UPGRADE -> {
+            case "upgrade" -> {
                 BlockPos blockPos = useOnContext.getClickedPos();
                 BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
                 if(blockState.getBlock() instanceof StructureBlock structureBlock){
@@ -121,26 +89,41 @@ public class SuperHammer extends Item {
         super.appendHoverText(itemStack, level, list, tooltipFlag);
     }
 
-    public void setMode(ItemStack itemStack, TOOL_MODE mode){
+    public void setMode(ItemStack itemStack, String mode){
+        setMode(itemStack, mode, 0);
+    }
+
+    public void setMode(ItemStack itemStack, String mode, int extra){
         if(!itemStack.hasTag()){
             CompoundTag tag = new CompoundTag();
-            tag.putString(modeNBTString, mode.toString());
+            tag.putString(modeNBTString, mode);
+            tag.putInt(extraNBTString, extra);
             itemStack.setTag(tag);
         }
         else{
             CompoundTag tag = itemStack.getTag();
-            tag.putString(modeNBTString, mode.toString());
+            tag.putString(modeNBTString, mode);
+            tag.putInt(extraNBTString, extra);
             itemStack.setTag(tag);
         }
     }
 
-    public TOOL_MODE getMode(ItemStack itemStack){
+    public String getMode(ItemStack itemStack){
         if(itemStack.hasTag()){
             CompoundTag tag = itemStack.getTag();
-            return TOOL_MODE.fromString(tag.getString(modeNBTString));
+            return tag.getString(modeNBTString);
         }
-        return TOOL_MODE.WALL;
+        return "";
     }
+
+    public int getExtra(ItemStack itemStack){
+        if(itemStack.hasTag()){
+            CompoundTag tag = itemStack.getTag();
+            return tag.getInt(extraNBTString);
+        }
+        return 0;
+    }
+
 
     private int countMaterialInInventory(Inventory inventory, Item item){
         return inventory.items.stream().filter(stack -> stack.getItem() == item).mapToInt(ItemStack::getCount).sum();
