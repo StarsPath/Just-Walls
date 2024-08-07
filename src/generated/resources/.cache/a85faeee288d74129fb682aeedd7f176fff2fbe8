@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-02T00:00:55.2096675	Item Models: justwalls
+// 1.20.1	2024-08-05T22:42:54.8494256	Item Models: justwalls
 108396fd1420a8a02a1cfc8502df61933c07c730 assets/justwalls/models/item/armored_scrap.json
 88c12c92fb9f226ac5fb4f9cf5d3d1ca1aa91f9b assets/justwalls/models/item/armored_wall.json
 359097472d42b0dc3776345f84148253a828e25a assets/justwalls/models/item/armored_wall_door_frame.json
@@ -20,6 +20,9 @@ d470a73b0f4c274c867924e1e49a292b877c88b5 assets/justwalls/models/item/straw_scra
 a5f38d2ed134aa5317d00f890c2292df59735877 assets/justwalls/models/item/thatch_wall.json
 b876f3098a40553fadf52150a738a0b1bebe4a42 assets/justwalls/models/item/thatch_wall_door_frame.json
 e4e18830168ba982c6f8da08cae56551373fbc60 assets/justwalls/models/item/thatch_wall_floor.json
+f8d7057a58ac8ef163ab42a42bfa04f04b0d05d0 assets/justwalls/models/item/thatch_wall_pillar_3.json
+f8d7057a58ac8ef163ab42a42bfa04f04b0d05d0 assets/justwalls/models/item/thatch_wall_pillar_4.json
+f8d7057a58ac8ef163ab42a42bfa04f04b0d05d0 assets/justwalls/models/item/thatch_wall_pillar_5.json
 7f728232408cda5e86f4dce07eaafd5f4b4f95f8 assets/justwalls/models/item/thatch_wall_window_frame.json
 f3f474b2c8191f7e38cad7a4028bff430fbceef2 assets/justwalls/models/item/wooden_wall.json
 fd1a39b945c218e8e2c84ed511535b8987169674 assets/justwalls/models/item/wooden_wall_door_frame.json

@@ -1,0 +1,19 @@
+{
+  "values": [
+    "justwalls:stone_wall",
+    "justwalls:stone_wall_floor",
+    "justwalls:stone_wall_pillar",
+    "justwalls:stone_wall_window_frame",
+    "justwalls:stone_wall_door_frame",
+    "justwalls:metal_wall",
+    "justwalls:metal_wall_floor",
+    "justwalls:metal_wall_pillar",
+    "justwalls:metal_wall_window_frame",
+    "justwalls:metal_wall_door_frame",
+    "justwalls:armored_wall",
+    "justwalls:armored_wall_floor",
+    "justwalls:armored_wall_pillar",
+    "justwalls:armored_wall_window_frame",
+    "justwalls:armored_wall_door_frame"
+  ]
+}

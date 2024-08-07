@@ -1,7 +1,10 @@
 package com.starspath.justwalls.blocks.abstracts;
 
+import com.starspath.justwalls.Config;
+import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -117,4 +120,18 @@ public abstract class StructureBlock extends MultiBlock {
         }
     }
 
+    public ItemStack getRequiredItemForUpgrade(BlockState blockState){
+        return getRequiredItemForUpgrade(blockState, 9);
+    }
+
+    public ItemStack getRequiredItemForUpgrade(BlockState blockState, int numberBlocks){
+        int materialPerBlock = Config.materialPerBlock;
+        return switch (blockState.getValue(TIER)){
+            case THATCH -> new ItemStack(ModItems.WOOD_SCRAP.get(), numberBlocks * materialPerBlock);
+            case WOOD -> new ItemStack(ModItems.STONE_SCRAP.get(), numberBlocks * materialPerBlock);
+            case STONE -> new ItemStack(ModItems.METAL_SCRAP.get(), numberBlocks * materialPerBlock);
+            case METAL -> new ItemStack(ModItems.ARMORED_SCRAP.get(), numberBlocks * materialPerBlock);
+            default -> new ItemStack(ModItems.STRAW_SCRAP.get(), numberBlocks * materialPerBlock);
+        };
+    }
 }

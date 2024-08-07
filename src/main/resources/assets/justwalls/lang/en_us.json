@@ -23,8 +23,25 @@
   "item.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
   "item.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
 
+  "item.justwalls.thatch_wall_pillar_3": "Thatch Wall Pillar H3",
+  "item.justwalls.thatch_wall_pillar_4": "Thatch Wall Pillar H4",
+  "item.justwalls.thatch_wall_pillar_5": "Thatch Wall Pillar H5",
+  "item.justwalls.wooden_wall_pillar": "Wooden Wall Pillar",
+  "item.justwalls.stone_wall_pillar": "Stone Wall Pillar",
+  "item.justwalls.metal_wall_pillar": "Metal Wall Pillar",
+  "item.justwalls.armored_wall_pillar": "Armored Wall Pillar",
+
   "item.justwalls.loot_crate": "Loot Crate",
   "item.justwalls.super_hammer": "Super Hammer",
+
+  "item.justwalls.straw_scrap": "Straw Scrap",
+  "item.justwalls.wood_scrap": "Wood Scrap",
+  "item.justwalls.stone_scrap": "Stone Scrap",
+  "item.justwalls.metal_scrap": "Metal Scrap",
+  "item.justwalls.armored_scrap": "Refined Metal",
+
+  "tooltip.justwalls.pillar_height": "Height ",
+  "tooltip.justwalls.super_hammer": "Mode: ",
 
   "block.justwalls.thatch_wall": "Thatch Wall",
   "block.justwalls.wooden_wall": "Wooden Wall",
@@ -50,6 +67,15 @@
   "block.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
   "block.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
 
+  "block.justwalls.thatch_wall_pillar": "Thatch Wall Pillar",
+  "block.justwalls.thatch_wall_pillar_3": "Thatch Wall Pillar H3",
+  "block.justwalls.thatch_wall_pillar_4": "Thatch Wall Pillar H4",
+  "block.justwalls.thatch_wall_pillar_5": "Thatch Wall Pillar H5",
+  "block.justwalls.wooden_wall_pillar": "Wooden Wall Pillar",
+  "block.justwalls.stone_wall_pillar": "Stone Wall Pillar",
+  "block.justwalls.metal_wall_pillar": "Metal Wall Pillar",
+  "block.justwalls.armored_wall_pillar": "Armored Wall Pillar",
+
   "block.justwalls.loot_crate": "Loot Crate",
 
 
@@ -65,5 +91,11 @@
   "gui.justwalls.super_hammer.door_frame": "Door Frame",
   "gui.justwalls.super_hammer.window_frame": "Window Frame",
   "gui.justwalls.super_hammer.upgrade": "Upgrade",
-  "gui.justwalls.super_hammer.loot_crate": "Loot Crate"
+  "gui.justwalls.super_hammer.loot_crate": "Loot Crate",
+  "gui.justwalls.super_hammer.wall_pillar": "Pillar [More]",
+  "gui.justwalls.super_hammer.pillar_3": "Pillar Height 3",
+  "gui.justwalls.super_hammer.pillar_4": "Pillar Height 4",
+  "gui.justwalls.super_hammer.pillar_5": "Pillar Height 5",
+
+  "gui.justwalls.not_enough_material": "Not Enough "
 }

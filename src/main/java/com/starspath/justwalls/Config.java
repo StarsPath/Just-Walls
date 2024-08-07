@@ -19,45 +19,91 @@ public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
+    private static final ForgeConfigSpec.IntValue MATERIAL_PER_BLOCK = BUILDER
+            .comment("Amount of material to build or upgrade a tile per block; total material = number of block x this value (default 2)")
+            .defineInRange("materialPerBlock", 2, 1, 7);
 
-    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+//    private static final ForgeConfigSpec.IntValue THATCH_RESISTANCE = BUILDER
+//            .comment("The resistance of thatch blocks default(2)")
+//            .defineInRange("thatchResistance", 2, 1, Integer.MAX_VALUE);
+//
+//    private static final ForgeConfigSpec.IntValue WOODEN_RESISTANCE = BUILDER
+//            .comment("The resistance of wooden blocks default(5)")
+//            .defineInRange("woodenResistance", 5, 1, Integer.MAX_VALUE);
+//
+//    private static final ForgeConfigSpec.IntValue STONE_RESISTANCE = BUILDER
+//            .comment("The resistance of stone blocks default(6)")
+//            .defineInRange("stoneResistance", 6, 1, Integer.MAX_VALUE);
+//
+//    private static final ForgeConfigSpec.IntValue METAL_RESISTANCE = BUILDER
+//            .comment("The resistance of metal blocks default(9)")
+//            .defineInRange("metalResistance", 9, 1, Integer.MAX_VALUE);
+//
+//    private static final ForgeConfigSpec.IntValue ARMORED_RESISTANCE = BUILDER
+//            .comment("The resistance of armored blocks default(12)")
+//            .defineInRange("armoredResistance", 12, 1, Integer.MAX_VALUE);
 
-    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
-
-    // a list of strings that are treated as resource locations for items
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+//    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
+//            .comment("Whether to log the dirt block on common setup")
+//            .define("logDirtBlock", true);
+//
+//    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
+//            .comment("A magic number")
+//            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+//
+//    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
+//            .comment("What you want the introduction message to be for the magic number")
+//            .define("magicNumberIntroduction", "The magic number is... ");
+//
+//    // a list of strings that are treated as resource locations for items
+//    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
+//            .comment("A list of items to log on common setup.")
+//            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
-    public static boolean logDirtBlock;
-    public static int magicNumber;
-    public static String magicNumberIntroduction;
-    public static Set<Item> items;
+    public static int materialPerBlock;
 
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
-    }
+    public static int thatchResistance = 2;
+    public static int woodenResistance = 5;
+    public static int stoneResistance = 6;
+    public static int metalResistance = 9;
+    public static int armoredResistance = 12;
+
+    public static int thatchFlammability;
+    public static int thatchFireSpread;
+
+    public static int woodenFlammability;
+    public static int woodenFireSpread;
+
+
+
+//    public static boolean logDirtBlock;
+//    public static int magicNumber;
+//    public static String magicNumberIntroduction;
+//    public static Set<Item> items;
+//
+//    private static boolean validateItemName(final Object obj)
+//    {
+//        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+//    }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
-
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream()
-                .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
-                .collect(Collectors.toSet());
+        materialPerBlock = MATERIAL_PER_BLOCK.get();
+//        thatchResistance = THATCH_RESISTANCE.get();
+//        woodenResistance = WOODEN_RESISTANCE.get();
+//        stoneResistance = STONE_RESISTANCE.get();
+//        metalResistance = METAL_RESISTANCE.get();
+//        armoredResistance = ARMORED_RESISTANCE.get();
+//        logDirtBlock = LOG_DIRT_BLOCK.get();
+//        magicNumber = MAGIC_NUMBER.get();
+//        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+//
+//        // convert the list of strings into a set of items
+//        items = ITEM_STRINGS.get().stream()
+//                .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
+//                .collect(Collectors.toSet());
     }
 }

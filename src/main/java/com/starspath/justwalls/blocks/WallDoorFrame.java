@@ -2,9 +2,11 @@ package com.starspath.justwalls.blocks;
 
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.ModBlocks;
+import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -72,5 +74,10 @@ public class WallDoorFrame extends StructureBlock {
             }
         }
         return ModBlocks.THATCH_WALL_DOOR_FRAME.get();
+    }
+
+    @Override
+    public ItemStack getRequiredItemForUpgrade(BlockState blockState){
+        return getRequiredItemForUpgrade(blockState, 8);
     }
 }

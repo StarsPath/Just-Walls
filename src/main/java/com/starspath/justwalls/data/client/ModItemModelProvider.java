@@ -44,6 +44,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("metal_wall_door_frame", modLoc("item/metal_wall_door_frame_inventory"));
         withExistingParent("armored_wall_door_frame", modLoc("item/armored_wall_door_frame_inventory"));
 
+        withExistingParent("thatch_wall_pillar_3", modLoc("item/thatch_wall_pillar_inventory"));
+        withExistingParent("thatch_wall_pillar_4", modLoc("item/thatch_wall_pillar_inventory"));
+        withExistingParent("thatch_wall_pillar_5", modLoc("item/thatch_wall_pillar_inventory"));
+
 
         simpleItem(ModItems.STRAW_SCRAP);
         simpleItem(ModItems.WOOD_SCRAP);

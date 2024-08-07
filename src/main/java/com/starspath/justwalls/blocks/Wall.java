@@ -5,6 +5,7 @@ import com.starspath.justwalls.init.ModBlocks;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -74,5 +75,10 @@ public class Wall extends StructureBlock {
             }
         }
         return ModBlocks.THATCH_WALL.get();
+    }
+
+    @Override
+    public ItemStack getRequiredItemForUpgrade(BlockState blockState){
+        return getRequiredItemForUpgrade(blockState, 9);
     }
 }

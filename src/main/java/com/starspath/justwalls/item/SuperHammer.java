@@ -1,9 +1,10 @@
 package com.starspath.justwalls.item;
 
+import com.starspath.justwalls.Config;
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
-import com.starspath.justwalls.client.RadialMenu;
 import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.RadialMenuItem;
+import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -21,6 +22,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import static com.starspath.justwalls.blocks.abstracts.MultiBlock.TIER;
 
 
 public class SuperHammer extends Item {
@@ -52,12 +55,10 @@ public class SuperHammer extends Item {
         switch (mode) {
             case "wall", "floor", "door_frame", "window_frame", "pillar_3", "pillar_4", "pillar_5" -> {
                 if(!player.isCreative()){
-                    int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
-                    if(playerHas >= MATERIAL_COUNT){
-                        removeSticksFromInventory(player.getInventory(), ModItems.STRAW_SCRAP.get(), MATERIAL_COUNT);
-                    }
-                    else{
-                        player.displayClientMessage(Component.literal("Not enough material " + playerHas + "/" + MATERIAL_COUNT), true);
+                    ItemStack itemStack = getRequiredItemForConstruction(mode);
+                    if(!consumeIfAvailable(player, itemStack)){
+                        int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
+                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + MATERIAL_COUNT), true);
                         return InteractionResult.FAIL;
                     }
                 }
@@ -71,6 +72,17 @@ public class SuperHammer extends Item {
                 BlockPos blockPos = useOnContext.getClickedPos();
                 BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
                 if(blockState.getBlock() instanceof StructureBlock structureBlock){
+                    if(blockState.getValue(TIER) == Tiers.TIER.ARMOR){
+                        return InteractionResult.FAIL;
+                    }
+                    if(!player.isCreative()){
+                        ItemStack itemStack = structureBlock.getRequiredItemForUpgrade(blockState);
+                        if(!consumeIfAvailable(player, itemStack)){
+                            int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
+                            player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + MATERIAL_COUNT), true);
+                            return InteractionResult.FAIL;
+                        }
+                    }
                     structureBlock.upgrade(level, blockPos, blockState);
                     level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
                 }
@@ -84,7 +96,7 @@ public class SuperHammer extends Item {
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
         if(itemStack.hasTag()){
             String tag = itemStack.getTag().getString(modeNBTString);
-            list.add(Component.literal(tag));
+            list.add(Component.translatable("tooltip.justwalls.super_hammer").append(Component.translatable("gui.justwalls.super_hammer."+tag)));
         }
         super.appendHoverText(itemStack, level, list, tooltipFlag);
     }
@@ -124,6 +136,14 @@ public class SuperHammer extends Item {
         return 0;
     }
 
+    private boolean consumeIfAvailable(Player player, ItemStack itemStack){
+        int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
+        if(playerHas >= itemStack.getCount()){
+            removeSticksFromInventory(player.getInventory(), itemStack.getItem(), itemStack.getCount());
+            return true;
+        }
+        return false;
+    }
 
     private int countMaterialInInventory(Inventory inventory, Item item){
         return inventory.items.stream().filter(stack -> stack.getItem() == item).mapToInt(ItemStack::getCount).sum();
@@ -140,5 +160,18 @@ public class SuperHammer extends Item {
                 }
             }
         }
+    }
+
+    private ItemStack getRequiredItemForConstruction(String mode){
+        int materialPerBlock = Config.materialPerBlock;
+        return switch (mode){
+            case "wall", "floor" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 9);
+            case "door_frame" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 7);
+            case "window_frame" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 8);
+            case "pillar_3" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 3);
+            case "pillar_4" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 4);
+            case "pillar_5" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 5);
+            default -> new ItemStack(Items.AIR);
+        };
     }
 }
