@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"ambientocclusion": false,
 	"textures": {
 		"0": "justwalls:block/armourwall",
 		"1": "justwalls:block/armoredfloorup",

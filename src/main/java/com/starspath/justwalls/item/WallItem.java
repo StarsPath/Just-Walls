@@ -1,5 +1,6 @@
 package com.starspath.justwalls.item;
 
+import com.starspath.justwalls.blocks.WallPillar;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -44,9 +45,10 @@ public class WallItem extends BlockItem {
         }
 
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
+        ArrayList<BlockPos> pillarPosList = new ArrayList<>();
 
         switch (placementStrategy) {
-            case 1 -> {
+            case 1 -> { // place on ground
                 Direction direction = blockPlaceContext.getHorizontalDirection();
                 for (int i = -1; i <= 1; i++) {
                     for (int j = 0; j <= 2; j++) {
@@ -54,8 +56,14 @@ public class WallItem extends BlockItem {
                         blockPosList.add(newPos);
                     }
                 }
+                for(int i = 0; i <= 2; i++){
+                    BlockPos pillarPos = pos.relative(direction.getClockWise(), -2).above(i);
+                    pillarPosList.add(pillarPos);
+                    BlockPos pillarPos2 = pos.relative(direction.getClockWise(), 2).above(i);
+                    pillarPosList.add(pillarPos2);
+                }
             }
-            case 2 -> {
+            case 2 -> { // place on side of a block
                 Direction direction = blockPlaceContext.getClickedFace();
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
@@ -63,30 +71,48 @@ public class WallItem extends BlockItem {
                         blockPosList.add(newPos);
                     }
                 }
+                for(int i = -1; i <= 1; i++){
+                    BlockPos pillarPos = pos.relative(direction.getClockWise(), -2).above(i);
+                    pillarPosList.add(pillarPos);
+                    BlockPos pillarPos2 = pos.relative(direction.getClockWise(), 2).above(i);
+                    pillarPosList.add(pillarPos2);
+                }
             }
         }
-        boolean result = placementCheck(blockPosList, blockPlaceContext);
+        boolean result = placementCheck(blockPosList, pillarPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
             if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
+            return InteractionResult.SUCCESS;
         }
-        else{
-            player.displayClientMessage(Component.literal("Space Occupied"), true);
-        }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     protected boolean placementCheck(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for (BlockPos pos : blockPosList) {
             if (!level.getBlockState(pos).canBeReplaced()) {
+                Player player = blockPlaceContext.getPlayer();
+                player.displayClientMessage(Component.literal("Space Occupied"), true);
                 return false;
             }
         }
 
         return true;
+    }
+
+    protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> pillarPosList, BlockPlaceContext blockPlaceContext){
+        Level level = blockPlaceContext.getLevel();
+        for(BlockPos pillarPos: pillarPosList){
+            if(!(level.getBlockState(pillarPos).getBlock() instanceof WallPillar)){
+                Player player = blockPlaceContext.getPlayer();
+                player.displayClientMessage(Component.literal("No Pillar Nearby"), true);
+                return false;
+            }
+        }
+        return placementCheck(toPlaceList, blockPlaceContext);
     }
 
     protected void doPlacement(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){

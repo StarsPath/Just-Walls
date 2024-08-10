@@ -4,6 +4,7 @@ import com.starspath.justwalls.Config;
 import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -84,14 +85,14 @@ public abstract class StructureBlock extends MultiBlock {
         super.onRemove(prevBlockState, level, blockPos, newBlockState, flag);
     }
 
-    public void upgrade(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+    public InteractionResult upgrade(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
         if(level.isClientSide()){
-            return;
+            return InteractionResult.PASS;
         }
 
         Boolean isMaster = blockState.getValue(MASTER);
         if(blockState.getValue(TIER) == Tiers.TIER.values()[Tiers.TIER.values().length - 1]){
-            return;
+            return InteractionResult.FAIL;
         }
 
         if(isMaster){
@@ -110,14 +111,15 @@ public abstract class StructureBlock extends MultiBlock {
 
                 level.setBlock(childPos, newState, UPDATE_NONE);
             }
-            return;
+            return InteractionResult.SUCCESS;
         }
 
         BlockPos masterPos = getMasterPos(level, blockPos, blockState);
         if(masterPos != null){
             StructureBlock masterWall = (StructureBlock)level.getBlockState(masterPos).getBlock();
-            masterWall.upgrade(level, masterPos, level.getBlockState(masterPos));
+            return masterWall.upgrade(level, masterPos, level.getBlockState(masterPos));
         }
+        return InteractionResult.FAIL;
     }
 
     public ItemStack getRequiredItemForUpgrade(BlockState blockState){

@@ -54,18 +54,24 @@ public class SuperHammer extends Item {
 
         switch (mode) {
             case "wall", "floor", "door_frame", "window_frame", "pillar_3", "pillar_4", "pillar_5" -> {
-                if(!player.isCreative()){
-                    ItemStack itemStack = getRequiredItemForConstruction(mode);
-                    if(!consumeIfAvailable(player, itemStack)){
-                        int playerHas = countMaterialInInventory(player.getInventory(), ModItems.STRAW_SCRAP.get());
-                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + MATERIAL_COUNT), true);
-                        return InteractionResult.FAIL;
+                RadialMenuItem radialMenuItem = RadialMenuItem.getRadialMenuItemByName(RadialMenuItem.ALL_ITEMS, mode);
+
+                ItemStack itemStack = getRequiredItemForConstruction(mode);
+                int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
+                if(playerHas >= itemStack.getCount() || player.isCreative()){
+                    InteractionResult interactionResult = ((BlockItem) radialMenuItem.getItemToRender().getItem()).place(new BlockPlaceContext(useOnContext));
+                    if(interactionResult == InteractionResult.SUCCESS){
+                        if(!player.isCreative()){
+                            consumeIfAvailable(player, itemStack);
+                        }
+                        level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
+                        level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_DESTROY, player.getSoundSource(), 1.0F, 1.0F);
                     }
                 }
-                level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
-                level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_DESTROY, player.getSoundSource(), 1.0F, 1.0F);
-                RadialMenuItem radialMenuItem = RadialMenuItem.getRadialMenuItemByName(RadialMenuItem.ALL_ITEMS, mode);
-                ((BlockItem) radialMenuItem.getItemToRender().getItem()).place(new BlockPlaceContext(useOnContext));
+                else{
+                    player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                    return InteractionResult.FAIL;
+                }
             }
 
             case "upgrade" -> {
@@ -75,16 +81,22 @@ public class SuperHammer extends Item {
                     if(blockState.getValue(TIER) == Tiers.TIER.ARMOR){
                         return InteractionResult.FAIL;
                     }
-                    if(!player.isCreative()){
-                        ItemStack itemStack = structureBlock.getRequiredItemForUpgrade(blockState);
-                        if(!consumeIfAvailable(player, itemStack)){
-                            int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
-                            player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + MATERIAL_COUNT), true);
-                            return InteractionResult.FAIL;
+                    ItemStack itemStack = structureBlock.getRequiredItemForUpgrade(blockState);
+                    int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
+
+                    if(playerHas >= itemStack.getCount() || player.isCreative()){
+                        InteractionResult interactionResult = structureBlock.upgrade(level, blockPos, blockState);
+                        if(interactionResult == InteractionResult.SUCCESS){
+                            if(!player.isCreative()){
+                                consumeIfAvailable(player, itemStack);
+                            }
+                            level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
                         }
                     }
-                    structureBlock.upgrade(level, blockPos, blockState);
-                    level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
+                    else{
+                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                        return InteractionResult.FAIL;
+                    }
                 }
             }
         }

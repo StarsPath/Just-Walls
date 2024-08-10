@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"ambientocclusion": false,
 	"textures": {
 		"1": "justwalls:block/stone_wall",
 		"particle": "justwalls:block/stone_wall"

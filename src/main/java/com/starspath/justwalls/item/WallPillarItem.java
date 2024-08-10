@@ -1,5 +1,6 @@
 package com.starspath.justwalls.item;
 
+import com.starspath.justwalls.blocks.WallPillar;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -52,33 +53,60 @@ public class WallPillarItem extends BlockItem {
         Direction direction = blockPlaceContext.getClickedFace();
 
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
+        ArrayList<BlockPos> otherPillarPosList  = new ArrayList<>();
 
         for(int i = 0; i < height; i++){
             blockPosList.add(pos.relative(direction, i));
+
+            for(int j = -3; j <=3; j++){
+                for(int k = -3; k <= 3; k++){
+                    if(direction.getAxis().isHorizontal()){
+                        BlockPos otherPillarPos = pos.relative(direction, i).relative(direction.getClockWise(), j).above(k);
+                        otherPillarPosList.add(otherPillarPos);
+                    }
+                    else{
+                        BlockPos otherPillarPos = pos.relative(direction, i).north(j).east(k);
+                        otherPillarPosList.add(otherPillarPos);
+                    }
+                }
+            }
+
         }
 
-        boolean result = placementCheck(blockPosList, blockPlaceContext);
+        boolean result = placementCheck(blockPosList, otherPillarPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
             if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
+            return InteractionResult.SUCCESS;
         }
-        else{
-            player.displayClientMessage(Component.literal("Space Occupied"), true);
-        }
-
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     protected boolean placementCheck(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for (BlockPos pos : blockPosList) {
             if (!level.getBlockState(pos).canBeReplaced()) {
+                Player player = blockPlaceContext.getPlayer();
+                player.displayClientMessage(Component.literal("Space Occupied"), true);
                 return false;
             }
         }
         return true;
+    }
+
+    protected boolean placementCheck(ArrayList<BlockPos> blockPosList, ArrayList<BlockPos> otherPillarPosList, BlockPlaceContext blockPlaceContext){
+        Direction direction = blockPlaceContext.getClickedFace();
+        Level level = blockPlaceContext.getLevel();
+        for (BlockPos otherPillar : otherPillarPosList) {
+            if (level.getBlockState(otherPillar).getBlock() instanceof WallPillar && level.getBlockState(otherPillar).getValue(BlockStateProperties.FACING).getAxis() == direction.getAxis()) {
+                Player player = blockPlaceContext.getPlayer();
+                player.displayClientMessage(Component.literal("Pillar Already Exist"), true);
+                return false;
+            }
+        }
+        return placementCheck(blockPosList, blockPlaceContext);
     }
 
     protected void doPlacement(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
