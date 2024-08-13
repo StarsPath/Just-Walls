@@ -25,11 +25,13 @@ public class ModTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.THATCH_WALL_PILLAR.get())
                 .add(ModBlocks.THATCH_WALL_WINDOW_FRAME.get())
                 .add(ModBlocks.THATCH_WALL_DOOR_FRAME.get())
+                .add(ModBlocks.THATCH_WALL_HATCH.get())
                 .add(ModBlocks.WOODEN_WALL.get())
                 .add(ModBlocks.WOODEN_WALL_FLOOR.get())
                 .add(ModBlocks.WOODEN_WALL_PILLAR.get())
                 .add(ModBlocks.WOODEN_WALL_WINDOW_FRAME.get())
-                .add(ModBlocks.WOODEN_WALL_DOOR_FRAME.get());
+                .add(ModBlocks.WOODEN_WALL_DOOR_FRAME.get())
+                .add(ModBlocks.WOODEN_WALL_HATCH.get());
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.STONE_WALL.get())
@@ -37,15 +39,18 @@ public class ModTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.STONE_WALL_PILLAR.get())
                 .add(ModBlocks.STONE_WALL_WINDOW_FRAME.get())
                 .add(ModBlocks.STONE_WALL_DOOR_FRAME.get())
+                .add(ModBlocks.STONE_WALL_HATCH.get())
                 .add(ModBlocks.METAL_WALL.get())
                 .add(ModBlocks.METAL_WALL_FLOOR.get())
                 .add(ModBlocks.METAL_WALL_PILLAR.get())
                 .add(ModBlocks.METAL_WALL_WINDOW_FRAME.get())
                 .add(ModBlocks.METAL_WALL_DOOR_FRAME.get())
+                .add(ModBlocks.METAL_WALL_HATCH.get())
                 .add(ModBlocks.ARMORED_WALL.get())
                 .add(ModBlocks.ARMORED_WALL_FLOOR.get())
                 .add(ModBlocks.ARMORED_WALL_PILLAR.get())
                 .add(ModBlocks.ARMORED_WALL_WINDOW_FRAME.get())
-                .add(ModBlocks.ARMORED_WALL_DOOR_FRAME.get());
+                .add(ModBlocks.ARMORED_WALL_DOOR_FRAME.get())
+                .add(ModBlocks.ARMORED_WALL_HATCH.get());
     }
 }

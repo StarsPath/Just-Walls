@@ -69,6 +69,7 @@ public class SuperHammer extends Item {
 
         if(mode.equals("wall") ||
             mode.equals("floor") ||
+            mode.equals("hatch") ||
             mode.equals("door_frame") ||
             mode.equals("window_frame") ||
             mode.equals("pillar_2") ||
@@ -177,7 +178,8 @@ public class SuperHammer extends Item {
         return switch (mode){
             case "wall", "floor" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 9);
             case "door_frame" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 7);
-            case "window_frame" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 8);
+            case "window_frame", "hatch" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 8);
+            case "pillar_2" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 2);
             case "pillar_3" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 3);
             case "pillar_4" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 4);
             case "pillar_5" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 5);

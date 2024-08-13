@@ -24,26 +24,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleMultiBlock(ModBlocks.THATCH_WALL_FLOOR, "thatch_wall");
         simpleMultiBlock(ModBlocks.THATCH_WALL_DOOR_FRAME, "thatch_wall");
         simpleMultiBlock(ModBlocks.THATCH_WALL_WINDOW_FRAME, "thatch_wall");
+        simpleMultiBlock(ModBlocks.THATCH_WALL_HATCH, "thatch_wall");
 
         simpleMultiBlock(ModBlocks.WOODEN_WALL, "wooden_wall");
         simpleMultiBlock(ModBlocks.WOODEN_WALL_FLOOR, "wooden_wall");
         simpleMultiBlock(ModBlocks.WOODEN_WALL_DOOR_FRAME, "wooden_wall");
         simpleMultiBlock(ModBlocks.WOODEN_WALL_WINDOW_FRAME, "wooden_wall");
+        simpleMultiBlock(ModBlocks.WOODEN_WALL_HATCH, "wooden_wall");
 
         simpleMultiBlock(ModBlocks.STONE_WALL, "stone_wall");
         simpleMultiBlock(ModBlocks.STONE_WALL_FLOOR, "stone_wall");
         simpleMultiBlock(ModBlocks.STONE_WALL_DOOR_FRAME, "stone_wall");
         simpleMultiBlock(ModBlocks.STONE_WALL_WINDOW_FRAME, "stone_wall");
+        simpleMultiBlock(ModBlocks.STONE_WALL_HATCH, "stone_wall");
 
         simpleMultiBlock(ModBlocks.METAL_WALL, "metal_wall");
         simpleMultiBlock(ModBlocks.METAL_WALL_FLOOR, "metal_wall");
         simpleMultiBlock(ModBlocks.METAL_WALL_DOOR_FRAME, "metal_wall");
         simpleMultiBlock(ModBlocks.METAL_WALL_WINDOW_FRAME, "metal_wall");
+        simpleMultiBlock(ModBlocks.METAL_WALL_HATCH, "metal_wall");
 
         simpleMultiBlock(ModBlocks.ARMORED_WALL, "armored_wall");
         simpleMultiBlock(ModBlocks.ARMORED_WALL_FLOOR, "armored_wall");
         simpleMultiBlock(ModBlocks.ARMORED_WALL_DOOR_FRAME, "armored_wall");
         simpleMultiBlock(ModBlocks.ARMORED_WALL_WINDOW_FRAME, "armored_wall");
+        simpleMultiBlock(ModBlocks.ARMORED_WALL_HATCH, "armored_wall");
 
         directionalBlock(ModBlocks.THATCH_WALL_PILLAR.get(), models().getExistingFile(modLoc("thatch_wall_pillar")));
         directionalBlock(ModBlocks.WOODEN_WALL_PILLAR.get(), models().getExistingFile(modLoc("wooden_wall_pillar")));

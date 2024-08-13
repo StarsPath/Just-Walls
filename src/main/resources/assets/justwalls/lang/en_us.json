@@ -23,6 +23,12 @@
   "item.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
   "item.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
 
+  "item.justwalls.thatch_wall_hatch": "Thatch Hatch",
+  "item.justwalls.wooden_wall_hatch": "Wooden Hatch",
+  "item.justwalls.stone_wall_hatch": "Stone Hatch",
+  "item.justwalls.metal_wall_hatch": "Metal Hatch",
+  "item.justwalls.armored_wall_hatch": "Armored Hatch",
+
   "item.justwalls.thatch_wall_pillar_3": "Thatch Wall Pillar H3",
   "item.justwalls.thatch_wall_pillar_4": "Thatch Wall Pillar H4",
   "item.justwalls.thatch_wall_pillar_5": "Thatch Wall Pillar H5",
@@ -67,6 +73,12 @@
   "block.justwalls.metal_wall_door_frame": "Metal Wall Door Frame",
   "block.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
 
+  "block.justwalls.thatch_wall_hatch": "Thatch Hatch",
+  "block.justwalls.wooden_wall_hatch": "Wooden Hatch",
+  "block.justwalls.stone_wall_hatch": "Stone Hatch",
+  "block.justwalls.metal_wall_hatch": "Metal Hatch",
+  "block.justwalls.armored_wall_hatch": "Armored Hatch",
+
   "block.justwalls.thatch_wall_pillar": "Thatch Wall Pillar",
   "block.justwalls.thatch_wall_pillar_2": "Thatch Wall Pillar H2",
   "block.justwalls.thatch_wall_pillar_3": "Thatch Wall Pillar H3",
@@ -89,6 +101,7 @@
 
   "gui.justwalls.super_hammer.wall": "Wall",
   "gui.justwalls.super_hammer.floor": "Floor",
+  "gui.justwalls.super_hammer.hatch": "Hatch",
   "gui.justwalls.super_hammer.door_frame": "Door Frame",
   "gui.justwalls.super_hammer.window_frame": "Window Frame",
   "gui.justwalls.super_hammer.upgrade": "Upgrade",

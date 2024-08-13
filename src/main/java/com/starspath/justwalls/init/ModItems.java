@@ -54,6 +54,12 @@ public class ModItems {
     public static final RegistryObject<Item> METAL_WALL_DOOR_FRAME_ITEM = ITEMS.register("metal_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.METAL_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_DOOR_FRAME_ITEM = ITEMS.register("armored_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.ARMORED_WALL_DOOR_FRAME.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> THATCH_WALL_HATCH_ITEM = ITEMS.register("thatch_wall_hatch", () -> new WallHatchItem(ModBlocks.THATCH_WALL_HATCH.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOODEN_WALL_HATCH_ITEM = ITEMS.register("wooden_wall_hatch", () -> new WallHatchItem(ModBlocks.WOODEN_WALL_HATCH.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STONE_WALL_HATCH_ITEM = ITEMS.register("stone_wall_hatch", () -> new WallHatchItem(ModBlocks.STONE_WALL_HATCH.get(), new Item.Properties()));
+    public static final RegistryObject<Item> METAL_WALL_HATCH_ITEM = ITEMS.register("metal_wall_hatch", () -> new WallHatchItem(ModBlocks.METAL_WALL_HATCH.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ARMORED_WALL_HATCH_ITEM = ITEMS.register("armored_wall_hatch", () -> new WallHatchItem(ModBlocks.ARMORED_WALL_HATCH.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_2 = ITEMS.register("thatch_wall_pillar_2", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 2));
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_3 = ITEMS.register("thatch_wall_pillar_3", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 3));
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_4 = ITEMS.register("thatch_wall_pillar_4", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 4));

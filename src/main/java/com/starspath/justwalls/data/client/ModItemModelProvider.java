@@ -44,6 +44,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("metal_wall_door_frame", modLoc("item/metal_wall_door_frame_inventory"));
         withExistingParent("armored_wall_door_frame", modLoc("item/armored_wall_door_frame_inventory"));
 
+//        withExistingParent("thatch_wall_hatch", modLoc("item/thatch_wall_hatch_inventory"));
+//        withExistingParent("wooden_wall_hatch", modLoc("item/wooden_wall_hatch_inventory"));
+//        withExistingParent("stone_wall_hatch", modLoc("item/stone_wall_hatch_inventory"));
+//        withExistingParent("metal_wall_hatch", modLoc("item/metal_wall_hatch_inventory"));
+//        withExistingParent("armored_wall_hatch", modLoc("item/armored_wall_hatch_inventory"));
+
         withExistingParent("thatch_wall_pillar_2", modLoc("item/thatch_wall_pillar_inventory"));
         withExistingParent("thatch_wall_pillar_3", modLoc("item/thatch_wall_pillar_inventory"));
         withExistingParent("thatch_wall_pillar_4", modLoc("item/thatch_wall_pillar_inventory"));
