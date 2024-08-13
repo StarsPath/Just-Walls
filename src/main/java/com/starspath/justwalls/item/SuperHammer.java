@@ -5,6 +5,7 @@ import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.RadialMenuItem;
 import com.starspath.justwalls.utils.Tiers;
+import com.starspath.justwalls.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,6 +20,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.BlockSnapshot;
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -50,58 +55,74 @@ public class SuperHammer extends Item {
         }
         String mode = getMode(useOnContext.getItemInHand());
         Player player = useOnContext.getPlayer();
-        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 40);
 
-        switch (mode) {
-            case "wall", "floor", "door_frame", "window_frame", "pillar_3", "pillar_4", "pillar_5" -> {
-                RadialMenuItem radialMenuItem = RadialMenuItem.getRadialMenuItemByName(RadialMenuItem.ALL_ITEMS, mode);
+        BlockEvent.EntityPlaceEvent placeEvent = new BlockEvent.EntityPlaceEvent(
+                BlockSnapshot.create(level.dimension(), level, useOnContext.getClickedPos()),
+                level.getBlockState(useOnContext.getClickedPos()),
+                player
+        );
 
-                ItemStack itemStack = getRequiredItemForConstruction(mode);
-                int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
+        MinecraftForge.EVENT_BUS.post(placeEvent);
+        if (placeEvent.getResult() == Event.Result.DENY || placeEvent.isCanceled()) {
+            return InteractionResult.FAIL;
+        }
+
+        if(mode.equals("wall") ||
+            mode.equals("floor") ||
+            mode.equals("door_frame") ||
+            mode.equals("window_frame") ||
+            mode.equals("pillar_3") ||
+            mode.equals("pillar_4") ||
+            mode.equals("pillar_5")
+        ){
+            RadialMenuItem radialMenuItem = RadialMenuItem.getRadialMenuItemByName(RadialMenuItem.ALL_ITEMS, mode);
+
+            ItemStack itemStack = getRequiredItemForConstruction(mode);
+            int playerHas = Utils.countMaterialInInventory(player.getInventory(), itemStack.getItem());
+            if(playerHas >= itemStack.getCount() || player.isCreative()){
+                InteractionResult interactionResult = ((BlockItem) radialMenuItem.getItemToRender().getItem()).place(new BlockPlaceContext(useOnContext));
+                if(interactionResult == InteractionResult.SUCCESS){
+                    if(!player.isCreative()){
+                        Utils.consumeIfAvailable(player, itemStack);
+                    }
+                    level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
+                    level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_DESTROY, player.getSoundSource(), 1.0F, 1.0F);
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 40);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            else{
+                player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + itemStack.getCount()), true);
+            }
+        }
+        else if (mode.equals("upgrade")) {
+            BlockPos blockPos = useOnContext.getClickedPos();
+            BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
+            if(blockState.getBlock() instanceof StructureBlock structureBlock){
+                if(blockState.getValue(TIER) == Tiers.TIER.values()[Tiers.TIER.values().length - 1]){
+                    return InteractionResult.FAIL;
+                }
+                ItemStack itemStack = structureBlock.getRequiredItemForUpgrade(blockState);
+                int playerHas = Utils.countMaterialInInventory(player.getInventory(), itemStack.getItem());
+
                 if(playerHas >= itemStack.getCount() || player.isCreative()){
-                    InteractionResult interactionResult = ((BlockItem) radialMenuItem.getItemToRender().getItem()).place(new BlockPlaceContext(useOnContext));
+                    InteractionResult interactionResult = structureBlock.upgrade(level, blockPos, blockState);
                     if(interactionResult == InteractionResult.SUCCESS){
                         if(!player.isCreative()){
-                            consumeIfAvailable(player, itemStack);
+                            Utils.consumeIfAvailable(player, itemStack);
                         }
-                        level.playSound(null, useOnContext.getClickedPos(), SoundEvents.WITHER_BREAK_BLOCK, player.getSoundSource(), 1.0F, 1.0F);
-                        level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_DESTROY, player.getSoundSource(), 1.0F, 1.0F);
+                        level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
+                        player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 40);
+                        return InteractionResult.SUCCESS;
                     }
                 }
                 else{
-                    player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + itemStack.getCount()), true);
-                    return InteractionResult.FAIL;
-                }
-            }
-
-            case "upgrade" -> {
-                BlockPos blockPos = useOnContext.getClickedPos();
-                BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
-                if(blockState.getBlock() instanceof StructureBlock structureBlock){
-                    if(blockState.getValue(TIER) == Tiers.TIER.ARMOR){
-                        return InteractionResult.FAIL;
-                    }
-                    ItemStack itemStack = structureBlock.getRequiredItemForUpgrade(blockState);
-                    int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
-
-                    if(playerHas >= itemStack.getCount() || player.isCreative()){
-                        InteractionResult interactionResult = structureBlock.upgrade(level, blockPos, blockState);
-                        if(interactionResult == InteractionResult.SUCCESS){
-                            if(!player.isCreative()){
-                                consumeIfAvailable(player, itemStack);
-                            }
-                            level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
-                        }
-                    }
-                    else{
-                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
-                        return InteractionResult.FAIL;
-                    }
+                    player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
                 }
             }
         }
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.FAIL;
     }
 
     @Override
@@ -148,31 +169,7 @@ public class SuperHammer extends Item {
         return 0;
     }
 
-    private boolean consumeIfAvailable(Player player, ItemStack itemStack){
-        int playerHas = countMaterialInInventory(player.getInventory(), itemStack.getItem());
-        if(playerHas >= itemStack.getCount()){
-            removeSticksFromInventory(player.getInventory(), itemStack.getItem(), itemStack.getCount());
-            return true;
-        }
-        return false;
-    }
 
-    private int countMaterialInInventory(Inventory inventory, Item item){
-        return inventory.items.stream().filter(stack -> stack.getItem() == item).mapToInt(ItemStack::getCount).sum();
-    }
-
-    private void removeSticksFromInventory(Inventory inventory, Item item, int count) {
-        for (ItemStack stack : inventory.items) {
-            if (stack.getItem() == item) {
-                int toRemove = Math.min(stack.getCount(), count);
-                stack.shrink(toRemove);
-                count -= toRemove;
-                if (count <= 0) {
-                    break;
-                }
-            }
-        }
-    }
 
     private ItemStack getRequiredItemForConstruction(String mode){
         int materialPerBlock = Config.materialPerBlock;

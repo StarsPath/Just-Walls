@@ -2,6 +2,7 @@ package com.starspath.justwalls.data.client;
 
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.init.ModBlocks;
+import com.starspath.justwalls.utils.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

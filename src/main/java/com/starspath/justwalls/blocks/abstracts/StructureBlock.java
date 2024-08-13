@@ -1,7 +1,9 @@
 package com.starspath.justwalls.blocks.abstracts;
 
 import com.starspath.justwalls.Config;
+import com.starspath.justwalls.init.ModBlocks;
 import com.starspath.justwalls.init.ModItems;
+import com.starspath.justwalls.utils.ModTags;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -13,6 +15,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -31,6 +34,12 @@ public abstract class StructureBlock extends MultiBlock {
         ArrayList<BlockPos> childPos = getChildPos(levelAccessor, blockPos, blockState);
         childPos.stream().forEach(blockPos1 -> levelAccessor.destroyBlock(blockPos1, true));
     }
+
+    protected void masterBreakNoDrop(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState){
+        ArrayList<BlockPos> childPos = getChildPos(levelAccessor, blockPos, blockState);
+        childPos.stream().forEach(blockPos1 -> levelAccessor.setBlock(blockPos1, Blocks.AIR.defaultBlockState(), UPDATE_SUPPRESS_DROPS));
+    }
+
 
     protected ArrayList<BlockPos> getChildPos(LevelAccessor level, BlockPos blockPos, BlockState blockState){
         return new ArrayList<>();
@@ -99,7 +108,7 @@ public abstract class StructureBlock extends MultiBlock {
             ArrayList<BlockPos> childPosList = getChildPos(level, blockPos, blockState);
             ArrayList<BlockState> childBlockStateList = childPosList.stream().map(blockPos1 -> level.getBlockState(blockPos1)).collect(Collectors.toCollection(ArrayList::new));
 
-            masterBreak(level, blockPos, blockState);
+            masterBreakNoDrop(level, blockPos, blockState);
 
             for(int i = 0; i < childPosList.size(); i++){
                 BlockPos childPos = childPosList.get(i);
@@ -109,7 +118,10 @@ public abstract class StructureBlock extends MultiBlock {
                 Block nexTierBlock = getNextTierBlock(nextTier);
                 BlockState newState = nexTierBlock.withPropertiesOf(childState).setValue(TIER, nextTier);
 
-                level.setBlock(childPos, newState, UPDATE_NONE);
+                boolean success = level.setBlock(childPos, newState, UPDATE_ALL);
+                if(!success){
+                    return InteractionResult.FAIL;
+                }
             }
             return InteractionResult.SUCCESS;
         }
