@@ -68,6 +68,7 @@
   "block.justwalls.armored_wall_door_frame": "Armored Wall Door Frame",
 
   "block.justwalls.thatch_wall_pillar": "Thatch Wall Pillar",
+  "block.justwalls.thatch_wall_pillar_2": "Thatch Wall Pillar H2",
   "block.justwalls.thatch_wall_pillar_3": "Thatch Wall Pillar H3",
   "block.justwalls.thatch_wall_pillar_4": "Thatch Wall Pillar H4",
   "block.justwalls.thatch_wall_pillar_5": "Thatch Wall Pillar H5",
@@ -93,6 +94,7 @@
   "gui.justwalls.super_hammer.upgrade": "Upgrade",
   "gui.justwalls.super_hammer.loot_crate": "Loot Crate",
   "gui.justwalls.super_hammer.wall_pillar": "Pillar [More]",
+  "gui.justwalls.super_hammer.pillar_2": "Pillar Height 2",
   "gui.justwalls.super_hammer.pillar_3": "Pillar Height 3",
   "gui.justwalls.super_hammer.pillar_4": "Pillar Height 4",
   "gui.justwalls.super_hammer.pillar_5": "Pillar Height 5",

@@ -1,5 +1,45 @@
 {
   "variants": {
+    "facing=down,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
+    "facing=down,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 180
+    },
     "facing=down,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar",
       "x": 180
@@ -119,6 +159,56 @@
     "facing=down,height=5,master=true,tier=wood": {
       "model": "justwalls:block/thatch_wall_pillar",
       "x": 180
+    },
+    "facing=east,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 90
     },
     "facing=east,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar",
@@ -270,6 +360,46 @@
       "x": 90,
       "y": 90
     },
+    "facing=north,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
+    "facing=north,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90
+    },
     "facing=north,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar",
       "x": 90
@@ -389,6 +519,56 @@
     "facing=north,height=5,master=true,tier=wood": {
       "model": "justwalls:block/thatch_wall_pillar",
       "x": 90
+    },
+    "facing=south,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 180
     },
     "facing=south,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar",
@@ -540,6 +720,36 @@
       "x": 90,
       "y": 180
     },
+    "facing=up,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=up,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar"
+    },
     "facing=up,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar"
     },
@@ -629,6 +839,56 @@
     },
     "facing=up,height=5,master=true,tier=wood": {
       "model": "justwalls:block/thatch_wall_pillar"
+    },
+    "facing=west,height=2,master=false,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=false,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=false,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=false,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=false,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=true,tier=armor": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=true,tier=metal": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=true,tier=stone": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=true,tier=thatch": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,height=2,master=true,tier=wood": {
+      "model": "justwalls:block/thatch_wall_pillar",
+      "x": 90,
+      "y": 270
     },
     "facing=west,height=3,master=false,tier=armor": {
       "model": "justwalls:block/thatch_wall_pillar",

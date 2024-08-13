@@ -55,12 +55,14 @@ public class RadialMenuItem {
         return null;
     }
 
+    public static final RadialMenuItem PILLAR_2 = new RadialMenuItem("pillar_2", ModItems.THATCH_WALL_PILLAR_ITEM_2.get());
     public static final RadialMenuItem PILLAR_3 = new RadialMenuItem("pillar_3", ModItems.THATCH_WALL_PILLAR_ITEM_3.get());
     public static final RadialMenuItem PILLAR_4 = new RadialMenuItem("pillar_4", ModItems.THATCH_WALL_PILLAR_ITEM_4.get());
     public static final RadialMenuItem PILLAR_5 = new RadialMenuItem("pillar_5", ModItems.THATCH_WALL_PILLAR_ITEM_5.get());
 
     public static final ArrayList<RadialMenuItem> PILLAR_MENU = new ArrayList<>(){
         {
+            add(PILLAR_2);
             add(PILLAR_3);
             add(PILLAR_4);
             add(PILLAR_5);
@@ -87,6 +89,7 @@ public class RadialMenuItem {
 
     public static final ArrayList<RadialMenuItem> ALL_ITEMS = new ArrayList<>(){
         {
+            add(RadialMenuItem.PILLAR_2);
             add(RadialMenuItem.PILLAR_3);
             add(RadialMenuItem.PILLAR_4);
             add(RadialMenuItem.PILLAR_5);

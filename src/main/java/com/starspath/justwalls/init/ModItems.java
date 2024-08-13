@@ -54,6 +54,7 @@ public class ModItems {
     public static final RegistryObject<Item> METAL_WALL_DOOR_FRAME_ITEM = ITEMS.register("metal_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.METAL_WALL_DOOR_FRAME.get(), new Item.Properties()));
     public static final RegistryObject<Item> ARMORED_WALL_DOOR_FRAME_ITEM = ITEMS.register("armored_wall_door_frame", () -> new WallDoorFrameItem(ModBlocks.ARMORED_WALL_DOOR_FRAME.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_2 = ITEMS.register("thatch_wall_pillar_2", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 2));
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_3 = ITEMS.register("thatch_wall_pillar_3", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 3));
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_4 = ITEMS.register("thatch_wall_pillar_4", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 4));
     public static final RegistryObject<Item> THATCH_WALL_PILLAR_ITEM_5 = ITEMS.register("thatch_wall_pillar_5", () -> new WallPillarItem(ModBlocks.THATCH_WALL_PILLAR.get(), new Item.Properties(), 5));

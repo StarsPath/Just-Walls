@@ -71,6 +71,7 @@ public class SuperHammer extends Item {
             mode.equals("floor") ||
             mode.equals("door_frame") ||
             mode.equals("window_frame") ||
+            mode.equals("pillar_2") ||
             mode.equals("pillar_3") ||
             mode.equals("pillar_4") ||
             mode.equals("pillar_5")

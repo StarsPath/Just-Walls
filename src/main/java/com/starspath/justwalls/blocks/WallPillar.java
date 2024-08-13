@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import java.util.ArrayList;
 
 public class WallPillar extends StructureBlock {
-    public static IntegerProperty HEIGHT = IntegerProperty.create("height", 3, 5);
+    public static IntegerProperty HEIGHT = IntegerProperty.create("height", 2, 5);
 
     public WallPillar(Properties properties, Tiers.TIER tier) {
         super(properties);
