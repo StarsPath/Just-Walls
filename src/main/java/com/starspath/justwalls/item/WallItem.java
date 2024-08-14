@@ -1,5 +1,6 @@
 package com.starspath.justwalls.item;
 
+import com.starspath.justwalls.blocks.Wall;
 import com.starspath.justwalls.blocks.WallPillar;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -46,6 +47,7 @@ public class WallItem extends BlockItem {
 
         ArrayList<BlockPos> blockPosList  = new ArrayList<>();
         ArrayList<BlockPos> pillarPosList = new ArrayList<>();
+        ArrayList<BlockPos> otherWallPosList = new ArrayList<>();
 
         switch (placementStrategy) {
             case 1 -> { // place on ground
@@ -54,6 +56,11 @@ public class WallItem extends BlockItem {
                     for (int j = 0; j <= 2; j++) {
                         BlockPos newPos = pos.relative(direction.getClockWise(), i).above(j);
                         blockPosList.add(newPos);
+
+                        for(int k = -2; k <= 2; k++){
+                            BlockPos otherWallPos = newPos.relative(direction, k);
+                            otherWallPosList.add(otherWallPos);
+                        }
                     }
                 }
                 for(int i = 0; i <= 2; i++){
@@ -69,6 +76,11 @@ public class WallItem extends BlockItem {
                     for (int j = -1; j <= 1; j++) {
                         BlockPos newPos = pos.relative(direction.getClockWise(), i).above(j);
                         blockPosList.add(newPos);
+
+                        for(int k = -2; k <= 2; k++){
+                            BlockPos otherWallPos = newPos.relative(direction, k);
+                            otherWallPosList.add(otherWallPos);
+                        }
                     }
                 }
                 for(int i = -1; i <= 1; i++){
@@ -79,7 +91,7 @@ public class WallItem extends BlockItem {
                 }
             }
         }
-        boolean result = placementCheck(blockPosList, pillarPosList, blockPlaceContext);
+        boolean result = placementCheck(blockPosList, pillarPosList, otherWallPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
             if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
@@ -103,12 +115,20 @@ public class WallItem extends BlockItem {
         return true;
     }
 
-    protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> pillarPosList, BlockPlaceContext blockPlaceContext){
+    protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> pillarPosList, ArrayList<BlockPos> otherWallPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for(BlockPos pillarPos: pillarPosList){
             if(!(level.getBlockState(pillarPos).getBlock() instanceof WallPillar)){
                 Player player = blockPlaceContext.getPlayer();
                 player.displayClientMessage(Component.literal("No Pillar Nearby"), true);
+                return false;
+            }
+        }
+
+        for(BlockPos wallPos: otherWallPosList){
+            if(level.getBlockState(wallPos).getBlock() instanceof Wall){
+                Player player = blockPlaceContext.getPlayer();
+                player.displayClientMessage(Component.literal("Wall Too Close"), true);
                 return false;
             }
         }

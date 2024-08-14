@@ -58,8 +58,8 @@ public class WallPillarItem extends BlockItem {
         for(int i = 0; i < height; i++){
             blockPosList.add(pos.relative(direction, i));
 
-            for(int j = -3; j <=3; j++){
-                for(int k = -3; k <= 3; k++){
+            for(int j = -2; j <=2; j++){
+                for(int k = -2; k <= 2; k++){
                     if(direction.getAxis().isHorizontal()){
                         BlockPos otherPillarPos = pos.relative(direction, i).relative(direction.getClockWise(), j).above(k);
                         otherPillarPosList.add(otherPillarPos);

@@ -2,6 +2,7 @@ package com.starspath.justwalls.item;
 
 import com.mojang.logging.LogUtils;
 import com.starspath.justwalls.blocks.WallFloor;
+import com.starspath.justwalls.blocks.WallHatch;
 import com.starspath.justwalls.blocks.WallPillar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -99,9 +100,10 @@ public class WallFloorItem extends BlockItem {
     protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> floorPoslist, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for(BlockPos floorPos: floorPoslist){
-            if(level.getBlockState(floorPos).getBlock() instanceof WallFloor){
+            Block block = level.getBlockState(floorPos).getBlock();
+            if(block instanceof WallHatch || block instanceof WallFloor){
                 Player player = blockPlaceContext.getPlayer();
-                player.displayClientMessage(Component.literal("Floor Already Exist"), true);
+                player.displayClientMessage(Component.literal("Hatch or Floor Already Exist"), true);
                 return false;
             }
         }

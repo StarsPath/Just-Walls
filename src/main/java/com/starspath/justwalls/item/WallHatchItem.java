@@ -1,6 +1,7 @@
 package com.starspath.justwalls.item;
 
 import com.starspath.justwalls.blocks.WallFloor;
+import com.starspath.justwalls.blocks.WallHatch;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -49,7 +50,7 @@ public class WallHatchItem extends BlockItem {
                         BlockPos newPos = pos.relative(Direction.NORTH, i).relative(Direction.EAST, j);
                         blockPosList.add(newPos);
                         for(int k = -2; k <= 2; k++){
-                            BlockPos otherFloorPos = pos.above(k);
+                            BlockPos otherFloorPos = newPos.above(k);
                             otherFloorPosList.add(otherFloorPos);
                         }
                     }
@@ -61,7 +62,7 @@ public class WallHatchItem extends BlockItem {
                         BlockPos newPos = pos.relative(blockPlaceContext.getClickedFace()).relative(Direction.NORTH, i).relative(Direction.EAST, j);
                         blockPosList.add(newPos);
                         for(int k = -2; k <= 2; k++){
-                            BlockPos otherFloorPos = pos.above(k);
+                            BlockPos otherFloorPos = newPos.above(k);
                             otherFloorPosList.add(otherFloorPos);
                         }
                     }
@@ -94,9 +95,10 @@ public class WallHatchItem extends BlockItem {
     protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> floorPoslist, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for(BlockPos floorPos: floorPoslist){
-            if(level.getBlockState(floorPos).getBlock() instanceof WallFloor){
+            Block block = level.getBlockState(floorPos).getBlock();
+            if(block instanceof WallHatch || block instanceof WallFloor){
                 Player player = blockPlaceContext.getPlayer();
-                player.displayClientMessage(Component.literal("Hatch Already Exist"), true);
+                player.displayClientMessage(Component.literal("Hatch or Floor Already Exist"), true);
                 return false;
             }
         }
