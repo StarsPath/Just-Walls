@@ -19,6 +19,7 @@ public final class ClientModEvent {
         event.enqueueWork(()->{
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOOT_CRATE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.METAL_WALL_WINDOW.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.METAL_WALL_DOOR.get(), RenderType.cutout());
         });
     }
 

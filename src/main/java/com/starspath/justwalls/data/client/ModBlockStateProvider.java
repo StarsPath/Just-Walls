@@ -53,7 +53,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         directionalBlock(ModBlocks.THATCH_WALL_PILLAR.get(), models().getExistingFile(modLoc("thatch_wall_pillar")));
         directionalBlock(ModBlocks.WOODEN_WALL_PILLAR.get(), models().getExistingFile(modLoc("wooden_wall_pillar")));
         directionalBlock(ModBlocks.STONE_WALL_PILLAR.get(), models().getExistingFile(modLoc("stone_wall_pillar")));
-        directionalBlock(ModBlocks.METAL_WALL_PILLAR.get(), models().getExistingFile(modLoc("metal_wall")));
+        directionalBlock(ModBlocks.METAL_WALL_PILLAR.get(), models().getExistingFile(modLoc("metal_wall_pillar")));
         directionalBlock(ModBlocks.ARMORED_WALL_PILLAR.get(), models().getExistingFile(modLoc("armored_wall")));
     }
 

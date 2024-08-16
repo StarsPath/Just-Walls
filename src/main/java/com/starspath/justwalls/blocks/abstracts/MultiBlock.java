@@ -11,10 +11,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public abstract class MultiBlock extends Block {
     public static BooleanProperty MASTER = BooleanProperty.create("master");
     public static EnumProperty<Tiers.TIER> TIER = EnumProperty.create("tier", Tiers.TIER.class);
+
+    public static final VoxelShape NULL_SHAPE = Block.box(0, 0, 0, 0, 0, 0);
 
     public MultiBlock(Properties properties) {
         super(properties.pushReaction(PushReaction.BLOCK));

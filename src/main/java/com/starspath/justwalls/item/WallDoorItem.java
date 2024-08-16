@@ -17,6 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
+import static com.starspath.justwalls.blocks.WallDoor.INDEX;
+import static com.starspath.justwalls.blocks.WallDoor.OPEN;
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
 public class WallDoorItem extends BlockItem {
@@ -91,6 +93,8 @@ public class WallDoorItem extends BlockItem {
         for(int i = 0; i < blockPosList.size(); i++){
             BlockPos pos = blockPosList.get(i);
             BlockState state = getPlacementState(blockPlaceContext);
+            state = state.setValue(INDEX, i);
+            state = state.setValue(OPEN, false);
             if(i == blockPosList.size()/2){
                 state = state.setValue(MASTER, true);
             }

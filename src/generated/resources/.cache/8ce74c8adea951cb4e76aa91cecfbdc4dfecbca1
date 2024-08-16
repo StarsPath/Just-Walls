@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-12T23:22:30.3898191	Block States: justwalls
+// 1.20.1	2024-08-14T23:41:10.7239431	Block States: justwalls
 79db228d83d9d194a78a219c1bc5ab8f7e12d4b8 assets/justwalls/blockstates/armored_wall.json
 79db228d83d9d194a78a219c1bc5ab8f7e12d4b8 assets/justwalls/blockstates/armored_wall_door_frame.json
 79db228d83d9d194a78a219c1bc5ab8f7e12d4b8 assets/justwalls/blockstates/armored_wall_floor.json
@@ -9,7 +9,7 @@ a5e4739a6a64a34c3160f41f8ba4006d1187d752 assets/justwalls/blockstates/armored_wa
 70220782c31872bbd4be4a0a8747b22b26121e35 assets/justwalls/blockstates/metal_wall_door_frame.json
 70220782c31872bbd4be4a0a8747b22b26121e35 assets/justwalls/blockstates/metal_wall_floor.json
 70220782c31872bbd4be4a0a8747b22b26121e35 assets/justwalls/blockstates/metal_wall_hatch.json
-3544e6e2d56715fbd58911d82e30931ea19668a7 assets/justwalls/blockstates/metal_wall_pillar.json
+361c252cc47e17d98bb5a1c83d4dd62bfe9cd185 assets/justwalls/blockstates/metal_wall_pillar.json
 70220782c31872bbd4be4a0a8747b22b26121e35 assets/justwalls/blockstates/metal_wall_window_frame.json
 40631bbe3caa06398470074e819e37b229f0c82b assets/justwalls/blockstates/stone_wall.json
 40631bbe3caa06398470074e819e37b229f0c82b assets/justwalls/blockstates/stone_wall_door_frame.json

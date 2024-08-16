@@ -74,22 +74,22 @@ public abstract class StructureBlock extends MultiBlock {
 
     @Override
     public void onRemove(BlockState prevBlockState, Level level, BlockPos blockPos, BlockState newBlockState, boolean flag) {
-        if(level.isClientSide()){
-            return;
-        }
-
-        Boolean isMaster = prevBlockState.getValue(MASTER);
-
-        if(isMaster){
-            masterBreak(level, blockPos, prevBlockState);
-            return;
-        }
-
-        BlockPos masterPos = this.getMasterPos(level, blockPos, prevBlockState);
-        if(masterPos != null) {
-            StructureBlock masterWall = (StructureBlock) level.getBlockState(masterPos).getBlock();
-            masterWall.masterBreak(level, masterPos, level.getBlockState(masterPos));
-        }
+//        if(level.isClientSide()){
+//            return;
+//        }
+//
+//        Boolean isMaster = prevBlockState.getValue(MASTER);
+//
+//        if(isMaster){
+//            masterBreak(level, blockPos, prevBlockState);
+//            return;
+//        }
+//
+//        BlockPos masterPos = this.getMasterPos(level, blockPos, prevBlockState);
+//        if(masterPos != null) {
+//            StructureBlock masterWall = (StructureBlock) level.getBlockState(masterPos).getBlock();
+//            masterWall.masterBreak(level, masterPos, level.getBlockState(masterPos));
+//        }
 
         super.onRemove(prevBlockState, level, blockPos, newBlockState, flag);
     }
