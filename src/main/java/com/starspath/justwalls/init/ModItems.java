@@ -67,6 +67,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> LOOT_CRATE_ITEM = ITEMS.register("loot_crate", () -> new LootCrateItem(ModBlocks.LOOT_CRATE.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> DEBUGGER = ITEMS.register("debugger", ()-> new Debugger(new Item.Properties()));
     public static final RegistryObject<Item> SUPER_HAMMER = ITEMS.register("super_hammer", ()-> new SuperHammer(new Item.Properties()));
 
     public static final RegistryObject<Item> STRAW_SCRAP = ITEMS.register("straw_scrap", () -> new ConstructionMaterial(new Item.Properties()));

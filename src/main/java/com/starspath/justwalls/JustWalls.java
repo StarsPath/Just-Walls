@@ -1,6 +1,7 @@
 package com.starspath.justwalls;
 
 import com.mojang.logging.LogUtils;
+import com.starspath.justwalls.events.TACZEventHandler;
 import com.starspath.justwalls.init.ModBlockEntity;
 import com.starspath.justwalls.init.ModBlocks;
 import com.starspath.justwalls.init.ModCreativeModeTab;
@@ -14,6 +15,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -64,6 +66,9 @@ public class JustWalls
     {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
+        if (ModList.get().isLoaded("tacz")) {
+            MinecraftForge.EVENT_BUS.register(new TACZEventHandler());
+        }
 
 //        if (Config.logDirtBlock)
 //            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
@@ -124,6 +129,7 @@ public class JustWalls
             event.accept(ModItems.LOOT_CRATE_ITEM);
 
             event.accept(ModItems.SUPER_HAMMER);
+            event.accept(ModItems.DEBUGGER);
         }
     }
 

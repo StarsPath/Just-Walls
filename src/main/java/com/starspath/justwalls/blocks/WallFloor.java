@@ -25,7 +25,7 @@ public class WallFloor extends StructureBlock {
     }
 
     @Override
-    protected BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+    public BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
         for(int i = -1; i <= 1; i++){
             for(int j = -1; j <= 1; j++){
                 BlockPos checkPos = blockPos.relative(Direction.NORTH, i).relative(Direction.EAST, j);

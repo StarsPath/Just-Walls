@@ -25,7 +25,7 @@ public class WallWindowFrame extends StructureBlock {
     }
 
     @Override
-    protected BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+    public BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
         Direction direction = blockState.getValue(BlockStateProperties.FACING);
         for(int i = -1; i <= 1; i++){
             for(int j = 0; j <= 2; j++){

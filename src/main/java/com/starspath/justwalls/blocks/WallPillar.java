@@ -45,7 +45,7 @@ public class WallPillar extends StructureBlock {
     }
 
     @Override
-    protected BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+    public BlockPos getMasterPos(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
         int height = blockState.getValue(HEIGHT);
         int offset = height / 2;
 
