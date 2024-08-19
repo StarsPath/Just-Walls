@@ -167,7 +167,7 @@ dependencies {
     // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
     // The "userdev" classifier will be requested and setup by ForgeGradle.
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
-    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
+    // then special handling is done to allow a  setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
@@ -178,9 +178,7 @@ dependencies {
 
     runtimeOnly(fg.deobf("mezz.jei:jei-1.20.1-forge:${jei_version}"))
 
-    implementation fg.deobf('curse.maven:timeless-and-classics-zero-1028108:5529117-sources-5529578')
-//    implementation fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5529578")
-//    runtimeOnly fg.deobf("curse.maven:timeless-and-classics-zero-1028108:5426624")
+//    implementation fg.deobf('curse.maven:timeless-and-classics-zero-1028108:5529117-sources-5529578')
 
 //    runtimeOnly fg.deobf("curse.maven:yetanotherworldprotector-663276:4702337")
 

@@ -32,7 +32,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> ARMORED_WALL_FLOOR = BLOCKS.register("armored_wall_floor", () -> new WallFloor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(Config.armoredResistance), Tiers.TIER.ARMOR));
 
     public static final RegistryObject<Block> METAL_WALL_WINDOW = BLOCKS.register("metal_wall_window", () -> new WallWindow(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(), Tiers.TIER.METAL));
-    public static final RegistryObject<Block> METAL_WALL_DOOR = BLOCKS.register("metal_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(), Tiers.TIER.METAL));
+
+    public static final RegistryObject<Block> THATCH_WALL_DOOR = BLOCKS.register("thatch_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(Config.thatchResistance), Tiers.TIER.THATCH));
+    public static final RegistryObject<Block> WOODEN_WALL_DOOR = BLOCKS.register("wooden_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(Config.woodenResistance), Tiers.TIER.WOOD));
+    public static final RegistryObject<Block> STONE_WALL_DOOR = BLOCKS.register("stone_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(Config.stoneResistance), Tiers.TIER.STONE));
+    public static final RegistryObject<Block> METAL_WALL_DOOR = BLOCKS.register("metal_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(Config.metalResistance), Tiers.TIER.METAL));
+    public static final RegistryObject<Block> ARMORED_WALL_DOOR = BLOCKS.register("armored_wall_door", () -> new WallDoor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(Config.armoredResistance), Tiers.TIER.ARMOR));
 
     public static final RegistryObject<Block> THATCH_WALL_WINDOW_FRAME = BLOCKS.register("thatch_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(Config.thatchResistance), Tiers.TIER.THATCH));
     public static final RegistryObject<Block> WOODEN_WALL_WINDOW_FRAME = BLOCKS.register("wooden_wall_window_frame", () -> new WallWindowFrame(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(Config.woodenResistance), Tiers.TIER.WOOD));

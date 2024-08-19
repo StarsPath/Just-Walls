@@ -70,6 +70,7 @@ public class SuperHammer extends Item {
         if(mode.equals("wall") ||
             mode.equals("floor") ||
             mode.equals("hatch") ||
+            mode.equals("door") ||
             mode.equals("door_frame") ||
             mode.equals("window_frame") ||
             mode.equals("pillar_2") ||

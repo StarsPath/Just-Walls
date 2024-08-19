@@ -1,0 +1,90 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north",
+        "master": "true",
+        "open": "false"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_closed"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "master": "true",
+        "open": "false"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_closed",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "master": "true",
+        "open": "false"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_closed",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "master": "true",
+        "open": "false"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_closed",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "master": "true",
+        "open": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_open"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "master": "true",
+        "open": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_open",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "master": "true",
+        "open": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_open",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "master": "true",
+        "open": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/armored_wall_door_open",
+        "y": 270
+      }
+    }
+  ]
+}

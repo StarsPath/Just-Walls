@@ -10,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -192,7 +193,29 @@ public class WallDoor extends StructureBlock {
 
     @Override
     protected Block getNextTierBlock(Tiers.TIER tier){
-        return ModBlocks.THATCH_WALL.get();
+        switch (tier){
+            case THATCH -> {
+                return ModBlocks.THATCH_WALL_DOOR.get();
+            }
+            case WOOD -> {
+                return ModBlocks.WOODEN_WALL_DOOR.get();
+            }
+            case STONE -> {
+                return ModBlocks.STONE_WALL_DOOR.get();
+            }
+            case METAL -> {
+                return ModBlocks.METAL_WALL_DOOR.get();
+            }
+            case ARMOR -> {
+                return ModBlocks.ARMORED_WALL_DOOR.get();
+            }
+        }
+        return ModBlocks.THATCH_WALL_DOOR.get();
+    }
+
+    @Override
+    public ItemStack getRequiredItemForUpgrade(BlockState blockState){
+        return getRequiredItemForUpgrade(blockState, 9);
     }
 }
 

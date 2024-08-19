@@ -1,5 +1,6 @@
 package com.starspath.justwalls.item;
 
+import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.world.DamageBlockSaveData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -22,11 +23,14 @@ public class Debugger extends Item {
             return InteractionResult.PASS;
         }
 
+        DamageBlockSaveData damageBlockSaveData = DamageBlockSaveData.get(level);
         BlockPos pos = useOnContext.getClickedPos();
         Block block = level.getBlockState(pos).getBlock();
         Player player = useOnContext.getPlayer();
 
-        DamageBlockSaveData damageBlockSaveData = DamageBlockSaveData.get(level);
+        if(block instanceof StructureBlock structureBlock){
+            pos = structureBlock.getMasterPos(level, pos, level.getBlockState(pos));
+        }
 
         int maxHp = damageBlockSaveData.getDefaultResistance(level, pos);
         int currentHp = damageBlockSaveData.hasBlock(pos)? damageBlockSaveData.getBlockHP(pos): maxHp;
