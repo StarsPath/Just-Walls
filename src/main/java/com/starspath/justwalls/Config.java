@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,42 +24,13 @@ public class Config
             .comment("Amount of material to build or upgrade a tile per block; total material = number of block x this value (default 2)")
             .defineInRange("materialPerBlock", 2, 1, 7);
 
-//    private static final ForgeConfigSpec.IntValue THATCH_RESISTANCE = BUILDER
-//            .comment("The resistance of thatch blocks default(2)")
-//            .defineInRange("thatchResistance", 2, 1, Integer.MAX_VALUE);
-//
-//    private static final ForgeConfigSpec.IntValue WOODEN_RESISTANCE = BUILDER
-//            .comment("The resistance of wooden blocks default(5)")
-//            .defineInRange("woodenResistance", 5, 1, Integer.MAX_VALUE);
-//
-//    private static final ForgeConfigSpec.IntValue STONE_RESISTANCE = BUILDER
-//            .comment("The resistance of stone blocks default(6)")
-//            .defineInRange("stoneResistance", 6, 1, Integer.MAX_VALUE);
-//
-//    private static final ForgeConfigSpec.IntValue METAL_RESISTANCE = BUILDER
-//            .comment("The resistance of metal blocks default(9)")
-//            .defineInRange("metalResistance", 9, 1, Integer.MAX_VALUE);
-//
-//    private static final ForgeConfigSpec.IntValue ARMORED_RESISTANCE = BUILDER
-//            .comment("The resistance of armored blocks default(12)")
-//            .defineInRange("armoredResistance", 12, 1, Integer.MAX_VALUE);
+    private static final ForgeConfigSpec.IntValue DESTRUCTION_MODE = BUILDER
+            .comment("Structure Block destruction integration with TACZ mod. 0 - no destruction, 1 - all structure blocks from justwalls, 2 - whitelist, 3 - all blocks")
+            .defineInRange("mode", 1, 0, 3);
 
-//    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-//            .comment("Whether to log the dirt block on common setup")
-//            .define("logDirtBlock", true);
-//
-//    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-//            .comment("A magic number")
-//            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
-//
-//    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-//            .comment("What you want the introduction message to be for the magic number")
-//            .define("magicNumberIntroduction", "The magic number is... ");
-//
-//    // a list of strings that are treated as resource locations for items
-//    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-//            .comment("A list of items to log on common setup.")
-//            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WHITELIST = BUILDER
+            .comment("whitelist for blocks that can be destroyed by TACZ")
+            .defineList("whitelist", Arrays.asList("minecraft:stone"), entry -> true);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -76,6 +48,8 @@ public class Config
     public static int woodenFlammability;
     public static int woodenFireSpread;
 
+    public static int destructionMode = 1;
+    public static List<? extends String> destructionWhiteList;
 
 
 //    public static boolean logDirtBlock;
@@ -92,6 +66,8 @@ public class Config
     static void onLoad(final ModConfigEvent event)
     {
         materialPerBlock = MATERIAL_PER_BLOCK.get();
+        destructionMode = DESTRUCTION_MODE.get();
+        destructionWhiteList = WHITELIST.get();
 //        thatchResistance = THATCH_RESISTANCE.get();
 //        woodenResistance = WOODEN_RESISTANCE.get();
 //        stoneResistance = STONE_RESISTANCE.get();

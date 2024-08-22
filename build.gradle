@@ -178,7 +178,7 @@ dependencies {
 
     runtimeOnly(fg.deobf("mezz.jei:jei-1.20.1-forge:${jei_version}"))
 
-//    implementation fg.deobf('curse.maven:timeless-and-classics-zero-1028108:5529117-sources-5529578')
+    runtimeOnly fg.deobf('curse.maven:timeless-and-classics-zero-1028108:5529117-sources-5529578')
 
 //    runtimeOnly fg.deobf("curse.maven:yetanotherworldprotector-663276:4702337")
 
