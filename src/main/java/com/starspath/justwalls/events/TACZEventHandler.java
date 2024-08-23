@@ -91,26 +91,4 @@ public class TACZEventHandler {
             }
         }
     }
-
-//    @SubscribeEvent
-//    public void TACZHitBlockEventHandler(Event event) throws InvocationTargetException, IllegalAccessException {
-//        if(ammoHitBlockEventClass.isInstance(event)){
-//            Level level = (Level) getLevel.invoke(event);
-//            BlockHitResult blockHitResult = (BlockHitResult)getHitResult.invoke(event);
-//            BlockPos pos = blockHitResult.getBlockPos();
-//            BlockState blockState = level.getBlockState(pos);
-//
-//            Object ammo = entityKineticBulletClass.cast(getAmmo.invoke(event));
-//            float damage = (float)getDamage.invoke(ammo, blockHitResult.getLocation());
-//
-//            DamageBlockSaveData damageBlockSaveData = DamageBlockSaveData.get(level);
-//
-//            if(blockState.getBlock() instanceof StructureBlock structureBlock){
-//                BlockPos masterPos = structureBlock.getMasterPos(level, pos, blockState);
-//                if (damageBlockSaveData.damageBlock(level, masterPos, (int)damage)<=0){
-//                    structureBlock.playerWillDestroy(level, masterPos, blockState, null);
-//                }
-//            }
-//        }
-//    }
 }
