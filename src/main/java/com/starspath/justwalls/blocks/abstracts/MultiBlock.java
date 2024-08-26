@@ -23,6 +23,10 @@ public abstract class MultiBlock extends Block {
         super(properties.pushReaction(PushReaction.BLOCK));
     }
 
+    public MultiBlock(Properties properties, Tiers.TIER tier) {
+        super(properties.pushReaction(PushReaction.BLOCK));
+    }
+
     @Override
     public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         Tiers.TIER tier = state.getValue(TIER);

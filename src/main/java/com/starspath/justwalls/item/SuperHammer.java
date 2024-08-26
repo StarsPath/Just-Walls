@@ -36,8 +36,6 @@ public class SuperHammer extends Item {
     public static final String modeNBTString = "justwalls.hammermode";
     public static final String extraNBTString = "justwalls.hammermode_extra";
 
-    public final int MATERIAL_COUNT = 18;
-
     public SuperHammer(Properties properties) {
         super(properties);
     }
@@ -72,6 +70,7 @@ public class SuperHammer extends Item {
             mode.equals("hatch") ||
             mode.equals("door") ||
             mode.equals("door_frame") ||
+            mode.equals("window") ||
             mode.equals("window_frame") ||
             mode.equals("pillar_2") ||
             mode.equals("pillar_3") ||

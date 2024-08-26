@@ -36,7 +36,7 @@ public class StructureBlockHPScreen {
             String message = "HP: " + currentHp + "/" + maxHp;
             int textWidth = mc.font.width(message);
             int x = (screenWidth - textWidth) / 2;
-            int y = 10; // Distance from the top edge of the screen
+            int y = screenHeight/ 2 + 10; // Distance from the top edge of the screen
 
             // Render the text
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F); // White color

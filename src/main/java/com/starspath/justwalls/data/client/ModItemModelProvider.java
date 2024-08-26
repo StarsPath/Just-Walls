@@ -31,7 +31,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         withExistingParent("loot_crate", modLoc("block/loot_crate"));
 
+        withExistingParent("thatch_wall_window", modLoc("block/thatch_wall_window"));
+        withExistingParent("wooden_wall_window", modLoc("block/wooden_wall_window"));
+        withExistingParent("stone_wall_window", modLoc("block/stone_wall_window"));
         withExistingParent("metal_wall_window", modLoc("block/metal_wall_window"));
+        withExistingParent("armored_wall_window", modLoc("block/armored_wall_window"));
 
         withExistingParent("thatch_wall_door", modLoc("block/thatch_wall_door_closed"));
         withExistingParent("wooden_wall_door", modLoc("block/wooden_wall_door_closed"));

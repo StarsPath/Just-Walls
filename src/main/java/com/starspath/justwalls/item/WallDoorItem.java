@@ -78,13 +78,13 @@ public class WallDoorItem extends BlockItem {
     }
     protected boolean placementCheck(ArrayList<BlockPos> toPlaceList, ArrayList<BlockPos> pillarPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
-        for(BlockPos pillarPos: pillarPosList){
-            if(!(level.getBlockState(pillarPos).getBlock() instanceof WallPillar)){
-                Player player = blockPlaceContext.getPlayer();
-                player.displayClientMessage(Component.literal("No Pillar Nearby"), true);
-                return false;
-            }
-        }
+//        for(BlockPos pillarPos: pillarPosList){
+//            if(!(level.getBlockState(pillarPos).getBlock() instanceof WallPillar)){
+//                Player player = blockPlaceContext.getPlayer();
+//                player.displayClientMessage(Component.literal("No Pillar Nearby"), true);
+//                return false;
+//            }
+//        }
         return placementCheck(toPlaceList, blockPlaceContext);
     }
 

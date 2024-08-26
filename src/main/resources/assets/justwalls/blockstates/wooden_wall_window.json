@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/wooden_wall_window"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/wooden_wall_window",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/wooden_wall_window",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "master": "true"
+      },
+      "apply": {
+        "model": "justwalls:block/wooden_wall_window",
+        "y": 270
+      }
+    }
+  ]
+}

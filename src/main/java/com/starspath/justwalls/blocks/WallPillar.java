@@ -20,7 +20,7 @@ public class WallPillar extends StructureBlock {
     public static IntegerProperty HEIGHT = IntegerProperty.create("height", 2, 5);
 
     public WallPillar(Properties properties, Tiers.TIER tier) {
-        super(properties);
+        super(properties, tier);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, 3));
     }
 

@@ -90,7 +90,11 @@ public class JustWalls
             event.accept(ModItems.METAL_WALL_FLOOR_ITEM);
             event.accept(ModItems.ARMORED_WALL_FLOOR_ITEM);
 
+            event.accept(ModItems.THATCH_WALL_WINDOW_ITEM);
+            event.accept(ModItems.WOODEN_WALL_WINDOW_ITEM);
+            event.accept(ModItems.STONE_WALL_WINDOW_ITEM);
             event.accept(ModItems.METAL_WALL_WINDOW_ITEM);
+            event.accept(ModItems.ARMORED_WALL_WINDOW_ITEM);
 
             event.accept(ModItems.THATCH_WALL_DOOR_ITEM);
             event.accept(ModItems.WOODEN_WALL_DOOR_ITEM);

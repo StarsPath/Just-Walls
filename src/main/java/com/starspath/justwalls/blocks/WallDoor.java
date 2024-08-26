@@ -35,7 +35,7 @@ public class WallDoor extends StructureBlock {
     public static IntegerProperty INDEX = IntegerProperty.create("index", 0, 8);
 
     public WallDoor(Properties properties, Tiers.TIER tier) {
-        super(properties);
+        super(properties, tier);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(INDEX, 0));
     }
 

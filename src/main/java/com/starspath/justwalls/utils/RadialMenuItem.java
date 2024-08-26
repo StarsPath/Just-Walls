@@ -75,6 +75,7 @@ public class RadialMenuItem {
     public static final RadialMenuItem DOOR_FRAME = new RadialMenuItem("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get());
     public static final RadialMenuItem DOOR = new RadialMenuItem("door", ModItems.THATCH_WALL_DOOR_ITEM.get());
     public static final RadialMenuItem WINDOW_FRAME = new RadialMenuItem("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get());
+    public static final RadialMenuItem WINDOW = new RadialMenuItem("window", ModItems.THATCH_WALL_WINDOW_ITEM.get());
     public static final RadialMenuItem WALL_PILLAR = new RadialMenuItem("wall_pillar", ModItems.THATCH_WALL_PILLAR_ITEM_3.get(), PILLAR_MENU);
     public static final RadialMenuItem UPGRADE = new RadialMenuItem("upgrade", ModItems.SUPER_HAMMER.get());
 
@@ -86,6 +87,7 @@ public class RadialMenuItem {
             add(DOOR);
             add(DOOR_FRAME);
             add(WINDOW_FRAME);
+            add(WINDOW);
             add(WALL_PILLAR);
             add(UPGRADE);
         }
@@ -102,6 +104,7 @@ public class RadialMenuItem {
             add(RadialMenuItem.HATCH);
             add(RadialMenuItem.DOOR);
             add(RadialMenuItem.DOOR_FRAME);
+            add(RadialMenuItem.WINDOW);
             add(RadialMenuItem.WINDOW_FRAME);
             add(RadialMenuItem.WALL_PILLAR);
             add(RadialMenuItem.UPGRADE);

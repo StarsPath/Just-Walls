@@ -22,6 +22,10 @@ public abstract class StructureBlock extends MultiBlock {
         super(properties);
     }
 
+    public StructureBlock(Properties properties, Tiers.TIER tier) {
+        super(properties, tier);
+    }
+
 
     protected abstract Boolean isMaster(BlockState blockState, BlockState self);
 

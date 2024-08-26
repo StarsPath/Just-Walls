@@ -17,6 +17,12 @@
   "item.justwalls.metal_wall_window_frame": "Metal Wall Window Frame",
   "item.justwalls.armored_wall_window_frame": "Armored Wall Window Frame",
 
+  "item.justwalls.thatch_wall_window": "Thatch Wall Window",
+  "item.justwalls.wooden_wall_window": "Wooden Wall Window",
+  "item.justwalls.stone_wall_window": "Stone Wall Window",
+  "item.justwalls.metal_wall_window": "Metal Wall Window",
+  "item.justwalls.armored_wall_window": "Armored Wall Window",
+
   "item.justwalls.thatch_wall_door_frame": "Thatch Wall Door Frame",
   "item.justwalls.wooden_wall_door_frame": "Wooden Wall Door Frame",
   "item.justwalls.stone_wall_door_frame": "Stone Wall Door Frame",
@@ -73,6 +79,12 @@
   "block.justwalls.metal_wall_window_frame": "Metal Wall Window Frame",
   "block.justwalls.armored_wall_window_frame": "Armored Wall Window Frame",
 
+  "block.justwalls.thatch_wall_window": "Thatch Wall Window",
+  "block.justwalls.wooden_wall_window": "Wooden Wall Window",
+  "block.justwalls.stone_wall_window": "Stone Wall Window",
+  "block.justwalls.metal_wall_window": "Metal Wall Window",
+  "block.justwalls.armored_wall_window": "Armored Wall Window",
+
   "block.justwalls.thatch_wall_door_frame": "Thatch Wall Door Frame",
   "block.justwalls.wooden_wall_door_frame": "Wooden Wall Door Frame",
   "block.justwalls.stone_wall_door_frame": "Stone Wall Door Frame",
@@ -117,6 +129,7 @@
   "gui.justwalls.super_hammer.door_frame": "Door Frame",
   "gui.justwalls.super_hammer.door": "Door",
   "gui.justwalls.super_hammer.window_frame": "Window Frame",
+  "gui.justwalls.super_hammer.window": "Window",
   "gui.justwalls.super_hammer.upgrade": "Upgrade",
   "gui.justwalls.super_hammer.loot_crate": "Loot Crate",
   "gui.justwalls.super_hammer.wall_pillar": "Pillar [More]",
