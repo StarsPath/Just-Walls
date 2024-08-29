@@ -19,67 +19,69 @@ import java.util.stream.Collectors;
 public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    static final ForgeConfigSpec SPEC;
 
-    private static final ForgeConfigSpec.IntValue MATERIAL_PER_BLOCK = BUILDER
-            .comment("Amount of material to build or upgrade a tile per block; total material = number of block x this value (default 2)")
-            .defineInRange("materialPerBlock", 2, 1, 7);
+    public static final ForgeConfigSpec.IntValue MATERIAL_PER_BLOCK;
+    public static final ForgeConfigSpec.IntValue DESTRUCTION_MODE;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends String>> DESTRUCTION_WHITELIST;
+    public static final ForgeConfigSpec.IntValue MATERIAL_REPAIR;
+    public static final ForgeConfigSpec.DoubleValue REPAIR_PERCENTAGE;
+    public static final ForgeConfigSpec.IntValue REPAIR_AMOUNT;
 
-    private static final ForgeConfigSpec.IntValue DESTRUCTION_MODE = BUILDER
-            .comment("Structure Block destruction integration with TACZ mod. 0 - no destruction, 1 - all structure blocks from justwalls, 2 - whitelist, 3 - all blocks")
-            .defineInRange("mode", 1, 0, 3);
-
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WHITELIST = BUILDER
-            .comment("whitelist for blocks that can be destroyed by TACZ")
-            .defineList("whitelist", Arrays.asList("minecraft:stone"), entry -> true);
-
-    static final ForgeConfigSpec SPEC = BUILDER.build();
-
-    public static int materialPerBlock;
-
-    public static int thatchResistance = 2;
-    public static int woodenResistance = 5;
-    public static int stoneResistance = 6;
-    public static int metalResistance = 9;
-    public static int armoredResistance = 12;
-
-    public static int thatchFlammability;
-    public static int thatchFireSpread;
-
-    public static int woodenFlammability;
-    public static int woodenFireSpread;
-
-    public static int destructionMode = 1;
-    public static List<? extends String> destructionWhiteList;
+    public static final ForgeConfigSpec.DoubleValue THATCH_RESISTANCE;
+    public static final ForgeConfigSpec.DoubleValue WOODEN_RESISTANCE;
+    public static final ForgeConfigSpec.DoubleValue STONE_RESISTANCE;
+    public static final ForgeConfigSpec.DoubleValue METAL_RESISTANCE;
+    public static final ForgeConfigSpec.DoubleValue ARMORED_RESISTANCE;
 
 
-//    public static boolean logDirtBlock;
-//    public static int magicNumber;
-//    public static String magicNumberIntroduction;
-//    public static Set<Item> items;
-//
-//    private static boolean validateItemName(final Object obj)
-//    {
-//        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
-//    }
+    static {
+        BUILDER.push("Hammer Config");
+        MATERIAL_PER_BLOCK = BUILDER
+                .comment("Amount of material to build or upgrade a tile per block; total material = number of block x this value (default 2)")
+                .defineInRange("materialPerBlock", 2, 1, 7);
+        MATERIAL_REPAIR = BUILDER
+                .comment("Amount of material required to repair a structure")
+                .defineInRange("materialRepair", 1, 0, 255);
+        REPAIR_PERCENTAGE = BUILDER
+                .comment("Percentage of Max HP that would be restored to structure when repairing (default 0.2)")
+                .defineInRange("repairPercentage", 0.2, 0, 1);
+        REPAIR_AMOUNT = BUILDER
+                .comment("Amount of HP that would be restored to a structure when repairing. This is added after repairPercentage (default 0)")
+                .defineInRange("repairAmount", 0, 0, Integer.MAX_VALUE);
+        DESTRUCTION_MODE = BUILDER
+                .comment("Structure Block destruction integration with TACZ mod. 0 - no destruction, 1 - all structure blocks from justwalls, 2 - whitelist, 3 - all blocks")
+                .defineInRange("mode", 1, 0, 3);
+        DESTRUCTION_WHITELIST = BUILDER
+                .comment("whitelist for blocks that can be destroyed by TACZ")
+                .defineList("whitelist", Arrays.asList("minecraft:stone"), entry -> true);
+        BUILDER.pop();
+
+        BUILDER.push("Tiers");
+        THATCH_RESISTANCE = BUILDER
+                .comment("Amount of HP multiplier structures with this tier have x100 (default 3 = 300hp)")
+                .defineInRange("thatchResistance", 3, 1, 1000d);
+        WOODEN_RESISTANCE = BUILDER
+                .comment("Amount of HP multiplier structures with this tier have x100 (default 5 = 500hp)")
+                .defineInRange("woodenResistance", 5, 1, 1000d);
+        STONE_RESISTANCE = BUILDER
+                .comment("Amount of HP multiplier structures with this tier have x100 (default 7.5 = 750hp)")
+                .defineInRange("stoneResistance", 7.5, 1, 1000d);
+        METAL_RESISTANCE = BUILDER
+                .comment("Amount of HP multiplier structures with this tier have x100 (default 10 = 1000hp)")
+                .defineInRange("metalResistance", 10, 1, 1000d);
+        ARMORED_RESISTANCE = BUILDER
+                .comment("Amount of HP multiplier structures with this tier have x100 (default 12.5 = 1250hp)")
+                .defineInRange("armoredResistance", 12.5, 1, 1000d);
+        BUILDER.pop();
+
+
+        SPEC = BUILDER.build();
+    }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        materialPerBlock = MATERIAL_PER_BLOCK.get();
-        destructionMode = DESTRUCTION_MODE.get();
-        destructionWhiteList = WHITELIST.get();
-//        thatchResistance = THATCH_RESISTANCE.get();
-//        woodenResistance = WOODEN_RESISTANCE.get();
-//        stoneResistance = STONE_RESISTANCE.get();
-//        metalResistance = METAL_RESISTANCE.get();
-//        armoredResistance = ARMORED_RESISTANCE.get();
-//        logDirtBlock = LOG_DIRT_BLOCK.get();
-//        magicNumber = MAGIC_NUMBER.get();
-//        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
-//
-//        // convert the list of strings into a set of items
-//        items = ITEM_STRINGS.get().stream()
-//                .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
-//                .collect(Collectors.toSet());
+
     }
 }

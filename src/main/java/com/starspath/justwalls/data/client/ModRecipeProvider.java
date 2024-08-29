@@ -56,14 +56,15 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.METAL_SCRAP.get(), 2)
                 .pattern("AB")
-                .pattern("BA")
+                .pattern("BC")
                 .define('A', Items.IRON_NUGGET)
-                .define('B', Items.IRON_INGOT)
+                .define('B', Items.COPPER_INGOT)
+                .define('C', Items.IRON_INGOT)
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_NUGGET))
                 .save(consumer);
 
-        oreSmelting(consumer, List.of(ModItems.METAL_SCRAP.get()), RecipeCategory.MISC, ModItems.ARMORED_SCRAP.get(), 0.25f, 200, "armored_scrap");
-        oreBlasting(consumer, List.of(ModItems.METAL_SCRAP.get()), RecipeCategory.MISC, ModItems.ARMORED_SCRAP.get(), 0.25f, 100, "armored_scrap");
+        oreSmelting(consumer, List.of(ModItems.METAL_SCRAP.get()), RecipeCategory.MISC, ModItems.ARMORED_SCRAP.get(), 0.25f, 400, "armored_scrap");
+        oreBlasting(consumer, List.of(ModItems.METAL_SCRAP.get()), RecipeCategory.MISC, ModItems.ARMORED_SCRAP.get(), 0.25f, 200, "armored_scrap");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SUPER_HAMMER.get())
                 .requires(ModItems.STRAW_SCRAP.get())

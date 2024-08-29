@@ -6,12 +6,15 @@
       "item": "minecraft:iron_nugget"
     },
     "B": {
+      "item": "minecraft:copper_ingot"
+    },
+    "C": {
       "item": "minecraft:iron_ingot"
     }
   },
   "pattern": [
     "AB",
-    "BA"
+    "BC"
   ],
   "result": {
     "count": 2,

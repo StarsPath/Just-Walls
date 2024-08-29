@@ -15,6 +15,11 @@ import java.util.ArrayList;
 
 public class WallFloor extends StructureBlock {
 
+    public WallFloor(Tiers.TIER tier){
+        super(tier);
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));
+    }
+
     public WallFloor(Properties properties, Tiers.TIER tier) {
         super(properties, tier);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier));

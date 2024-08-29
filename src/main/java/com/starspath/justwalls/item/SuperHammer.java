@@ -6,6 +6,7 @@ import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.RadialMenuItem;
 import com.starspath.justwalls.utils.Tiers;
 import com.starspath.justwalls.utils.Utils;
+import com.starspath.justwalls.world.DamageBlockSaveData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -124,6 +125,35 @@ public class SuperHammer extends Item {
             }
         }
 
+        else if(mode.equals("repair")){
+            BlockPos blockPos = useOnContext.getClickedPos();
+            BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
+            if(blockState.getBlock() instanceof StructureBlock structureBlock){
+                DamageBlockSaveData damageBlockSaveData = DamageBlockSaveData.get(level);
+                if(damageBlockSaveData.hasBlock(blockPos) && damageBlockSaveData.blockFullHP(level, blockPos)){
+                    player.displayClientMessage(Component.literal("Already Full HP"), true);
+                    return InteractionResult.FAIL;
+                }
+                else{
+                    ItemStack itemStack = structureBlock.getRequiredItemForRepair(blockState);
+                    int playerHas = Utils.countMaterialInInventory(player.getInventory(), itemStack.getItem());
+                    if(playerHas >= itemStack.getCount() || player.isCreative()){
+                        InteractionResult interactionResult = structureBlock.repair(level, blockPos, blockState);
+                        if(interactionResult == InteractionResult.SUCCESS){
+                            if(!player.isCreative()){
+                                Utils.consumeIfAvailable(player, itemStack);
+                            }
+                            level.playSound(null, useOnContext.getClickedPos(), SoundEvents.ANVIL_USE, player.getSoundSource(), 1.0F, 1.0F);
+                            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
+                            return InteractionResult.SUCCESS;
+                        }
+                    }
+                    else{
+                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                    }
+                }
+            }
+        }
         return InteractionResult.FAIL;
     }
 
@@ -174,7 +204,7 @@ public class SuperHammer extends Item {
 
 
     private ItemStack getRequiredItemForConstruction(String mode){
-        int materialPerBlock = Config.materialPerBlock;
+        int materialPerBlock = Config.MATERIAL_PER_BLOCK.get();
         return switch (mode){
             case "wall", "floor" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 9);
             case "door_frame" -> new ItemStack(ModItems.STRAW_SCRAP.get(), materialPerBlock * 7);

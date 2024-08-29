@@ -29,8 +29,8 @@ public class TACZEventHandler {
     private final Method getAmmo;
     private final Method getDamage;
 
-    private final int destructionMode = Config.destructionMode;
-    private final List<? extends String> whiteList = Config.destructionWhiteList;
+    private final int destructionMode = Config.DESTRUCTION_MODE.get();
+    private final List<? extends String> whiteList = Config.DESTRUCTION_WHITELIST.get();
 
 
     public TACZEventHandler(Class<?> ammoHitBlockEventClass, Class<?> entityKineticBulletClass) throws NoSuchMethodException {

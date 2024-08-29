@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-13T20:08:25.6604567	Recipes
+// 1.20.1	2024-08-28T23:21:55.5754175	Recipes
 af47a9dd524c5ea68d30e2d33891d757399dabc8 data/justwalls/advancements/recipes/misc/armored_scrap_from_blasting_metal_scrap.json
 96e375f51d06890132fa10e4669226407f58d952 data/justwalls/advancements/recipes/misc/armored_scrap_from_smelting_metal_scrap.json
 9b8c3d72063998986877a243a8991b79d856bb6f data/justwalls/advancements/recipes/misc/metal_scrap.json
@@ -6,9 +6,9 @@ af47a9dd524c5ea68d30e2d33891d757399dabc8 data/justwalls/advancements/recipes/mis
 b8d8590eb8eb3e9c1df9528847bb832315f00c0b data/justwalls/advancements/recipes/misc/straw_scrap.json
 a1299d25c98e81073ad1cac3c9ae8cde52445b6f data/justwalls/advancements/recipes/misc/super_hammer.json
 884774ad0d7e801a99adac4f39ee3320e3acd652 data/justwalls/advancements/recipes/misc/wood_scrap.json
-1db860b1e99de1862369ada71be0728695b365d0 data/justwalls/recipes/armored_scrap_from_blasting_metal_scrap.json
-9f9401b9ed20c132b66e430566ecb592e75a6a0e data/justwalls/recipes/armored_scrap_from_smelting_metal_scrap.json
-46265fcd534fb6b0f3f9deb34c6db69787c09e26 data/justwalls/recipes/metal_scrap.json
+2f2672ff0feec42d35bd6e89e47c95a60488935f data/justwalls/recipes/armored_scrap_from_blasting_metal_scrap.json
+ede3f8ef2da73ce1dbd4c9048eaa19e0e8a9c146 data/justwalls/recipes/armored_scrap_from_smelting_metal_scrap.json
+5a0f9ee354e7db295018671a72ddcb9afa023b4c data/justwalls/recipes/metal_scrap.json
 3efad6bc4e93774da8c87803e6b9e6bec05df3e5 data/justwalls/recipes/stone_scrap.json
 306aed32f96f82daca3e623b7ae92210fcaa2b97 data/justwalls/recipes/straw_scrap.json
 3caff380c07242cd08f9744e0660dd14af173559 data/justwalls/recipes/super_hammer.json

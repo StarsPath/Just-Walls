@@ -19,14 +19,14 @@ import java.util.ArrayList;
 public class WallPillar extends StructureBlock {
     public static IntegerProperty HEIGHT = IntegerProperty.create("height", 2, 5);
 
-    public WallPillar(Properties properties, Tiers.TIER tier) {
-        super(properties, tier);
+    public WallPillar(Tiers.TIER tier){
+        super(tier);
         registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, 3));
     }
 
-    public WallPillar(Properties properties, Tiers.TIER tier, int height) {
-        super(properties);
-        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, height));
+    public WallPillar(Properties properties, Tiers.TIER tier) {
+        super(properties, tier);
+        registerDefaultState(defaultBlockState().setValue(BlockStateProperties.FACING, Direction.NORTH).setValue(MASTER, false).setValue(TIER, tier).setValue(HEIGHT, 3));
     }
 
     @Override
