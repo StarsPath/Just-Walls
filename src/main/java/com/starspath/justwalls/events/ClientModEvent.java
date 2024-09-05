@@ -1,7 +1,6 @@
 package com.starspath.justwalls.events;
 
 import com.starspath.justwalls.JustWalls;
-import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.client.Keybindings;
 import com.starspath.justwalls.init.ModBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -24,7 +23,6 @@ public final class ClientModEvent {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL_WINDOW.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.METAL_WALL_WINDOW.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ARMORED_WALL_WINDOW.get(), RenderType.cutout());
-//            ItemBlockRenderTypes.setRenderLayer(ModBlocks.METAL_WALL_DOOR.get(), RenderType.cutout());
         });
     }
 

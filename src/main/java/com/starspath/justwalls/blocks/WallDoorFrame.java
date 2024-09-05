@@ -2,7 +2,6 @@ package com.starspath.justwalls.blocks;
 
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.ModBlocks;
-import com.starspath.justwalls.init.ModItems;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

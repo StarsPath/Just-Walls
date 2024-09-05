@@ -60,6 +60,17 @@ public class RadialMenuItem {
     public static final RadialMenuItem PILLAR_4 = new RadialMenuItem("pillar_4", ModItems.THATCH_WALL_PILLAR_ITEM_4.get());
     public static final RadialMenuItem PILLAR_5 = new RadialMenuItem("pillar_5", ModItems.THATCH_WALL_PILLAR_ITEM_5.get());
 
+    public static final RadialMenuItem WALL = new RadialMenuItem("wall", ModItems.THATCH_WALL_ITEM.get());
+    public static final RadialMenuItem FLOOR = new RadialMenuItem("floor", ModItems.THATCH_WALL_FLOOR_ITEM.get());
+    public static final RadialMenuItem HATCH = new RadialMenuItem("hatch", ModItems.THATCH_WALL_HATCH_ITEM.get());
+    public static final RadialMenuItem DOOR_FRAME = new RadialMenuItem("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get());
+    public static final RadialMenuItem DOOR = new RadialMenuItem("door", ModItems.THATCH_WALL_DOOR_ITEM.get());
+    public static final RadialMenuItem WINDOW_FRAME = new RadialMenuItem("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get());
+    public static final RadialMenuItem WINDOW = new RadialMenuItem("window", ModItems.THATCH_WALL_WINDOW_ITEM.get());
+    public static final RadialMenuItem UPGRADE = new RadialMenuItem("upgrade", ModItems.SUPER_HAMMER.get());
+    public static final RadialMenuItem REPAIR = new RadialMenuItem("repair", ModItems.SUPER_HAMMER.get());
+    public static final RadialMenuItem DESTROY = new RadialMenuItem("destroy", ModItems.SUPER_HAMMER.get());
+
     public static final ArrayList<RadialMenuItem> PILLAR_MENU = new ArrayList<>(){
         {
             add(PILLAR_2);
@@ -69,29 +80,43 @@ public class RadialMenuItem {
         }
     };
 
-    public static final RadialMenuItem WALL = new RadialMenuItem("wall", ModItems.THATCH_WALL_ITEM.get());
-    public static final RadialMenuItem FLOOR = new RadialMenuItem("floor", ModItems.THATCH_WALL_FLOOR_ITEM.get());
-    public static final RadialMenuItem HATCH = new RadialMenuItem("hatch", ModItems.THATCH_WALL_HATCH_ITEM.get());
-    public static final RadialMenuItem DOOR_FRAME = new RadialMenuItem("door_frame", ModItems.THATCH_WALL_DOOR_FRAME_ITEM.get());
-    public static final RadialMenuItem DOOR = new RadialMenuItem("door", ModItems.THATCH_WALL_DOOR_ITEM.get());
-    public static final RadialMenuItem WINDOW_FRAME = new RadialMenuItem("window_frame", ModItems.THATCH_WALL_WINDOW_FRAME_ITEM.get());
-    public static final RadialMenuItem WINDOW = new RadialMenuItem("window", ModItems.THATCH_WALL_WINDOW_ITEM.get());
+    public static final ArrayList<RadialMenuItem> WALL_MENU = new ArrayList<>(){
+        {
+            add(WALL);
+            add(DOOR_FRAME);
+            add(DOOR);
+            add(WINDOW_FRAME);
+            add(WINDOW);
+        }
+    };
+
+    public static final ArrayList<RadialMenuItem> FLOOR_MENU = new ArrayList<>(){
+        {
+            add(FLOOR);
+            add(HATCH);
+        }
+    };
+
     public static final RadialMenuItem WALL_PILLAR = new RadialMenuItem("wall_pillar", ModItems.THATCH_WALL_PILLAR_ITEM_3.get(), PILLAR_MENU);
-    public static final RadialMenuItem UPGRADE = new RadialMenuItem("upgrade", ModItems.SUPER_HAMMER.get());
-    public static final RadialMenuItem REPAIR = new RadialMenuItem("repair", ModItems.SUPER_HAMMER.get());
+    public static final RadialMenuItem WALLS = new RadialMenuItem("wall_menu", ModItems.THATCH_WALL_ITEM.get(), WALL_MENU);
+    public static final RadialMenuItem FLOORS = new RadialMenuItem("floor_menu", ModItems.THATCH_WALL_FLOOR_ITEM.get(), FLOOR_MENU);
+
 
     public static final ArrayList<RadialMenuItem> MAIN_MENU = new ArrayList<>(){
         {
-            add(WALL);
-            add(FLOOR);
-            add(HATCH);
-            add(DOOR);
-            add(DOOR_FRAME);
-            add(WINDOW_FRAME);
-            add(WINDOW);
+//            add(WALL);
+//            add(FLOOR);
+//            add(HATCH);
+//            add(DOOR);
+//            add(DOOR_FRAME);
+//            add(WINDOW_FRAME);
+//            add(WINDOW);
+            add(WALLS);
+            add(FLOORS);
             add(WALL_PILLAR);
             add(UPGRADE);
             add(REPAIR);
+            add(DESTROY);
         }
     };
 
@@ -111,6 +136,7 @@ public class RadialMenuItem {
             add(WALL_PILLAR);
             add(UPGRADE);
             add(REPAIR);
+            add(DESTROY);
         }
     };
 }

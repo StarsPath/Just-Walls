@@ -132,12 +132,18 @@
   "gui.justwalls.super_hammer.window": "Window",
   "gui.justwalls.super_hammer.upgrade": "Upgrade",
   "gui.justwalls.super_hammer.repair": "Repair",
+  "gui.justwalls.super_hammer.destroy": "Destroy",
   "gui.justwalls.super_hammer.loot_crate": "Loot Crate",
   "gui.justwalls.super_hammer.wall_pillar": "Pillar [More]",
+  "gui.justwalls.super_hammer.wall_menu": "Walls [More]",
+  "gui.justwalls.super_hammer.floor_menu": "Floors [More]",
   "gui.justwalls.super_hammer.pillar_2": "Pillar Height 2",
   "gui.justwalls.super_hammer.pillar_3": "Pillar Height 3",
   "gui.justwalls.super_hammer.pillar_4": "Pillar Height 4",
   "gui.justwalls.super_hammer.pillar_5": "Pillar Height 5",
 
-  "gui.justwalls.not_enough_material": "Not Enough "
+  "message.justwalls.not_enough_material": "Not Enough ",
+  "message.justwalls.wall_full_hp": "Already Full HP",
+  "message.justwalls.wall_space_occupied": "Space Occupied",
+  "message.justwalls.not_in_grace": "Not In Grace Period"
 }

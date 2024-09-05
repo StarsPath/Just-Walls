@@ -2,7 +2,6 @@ package com.starspath.justwalls.data;
 
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.data.client.*;
-import com.starspath.justwalls.data.loot.ModBlockLootProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

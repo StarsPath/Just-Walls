@@ -39,6 +39,7 @@ public class DamageBlockSaveData extends SavedData {
 
     public void setBlockHP(BlockPos pos, int hp){
         storage.put(pos.asLong(), hp);
+        setDirty();
     }
 
     public int getBlockHP(BlockPos pos){
@@ -84,10 +85,10 @@ public class DamageBlockSaveData extends SavedData {
     public CompoundTag save(CompoundTag tag) {
         ListTag list = new ListTag();
         storage.forEach((longPos, currentHp) -> {
-            CompoundTag manaTag = new CompoundTag();
-            manaTag.putLong("pos", longPos);
-            manaTag.putInt("currentHp", currentHp);
-            list.add(manaTag);
+            CompoundTag damageTag = new CompoundTag();
+            damageTag.putLong("pos", longPos);
+            damageTag.putInt("currentHp", currentHp);
+            list.add(damageTag);
         });
         tag.put("blockDamages", list);
         return tag;

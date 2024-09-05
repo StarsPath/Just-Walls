@@ -1,8 +1,6 @@
 package com.starspath.justwalls.Network;
 
 import com.starspath.justwalls.client.StructureBlockHPScreen;
-import com.starspath.justwalls.utils.Utils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

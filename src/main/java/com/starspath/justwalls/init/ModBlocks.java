@@ -1,18 +1,14 @@
 package com.starspath.justwalls.init;
 
-import com.starspath.justwalls.Config;
 import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.blocks.*;
 import com.starspath.justwalls.utils.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
 
 public class ModBlocks {
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace

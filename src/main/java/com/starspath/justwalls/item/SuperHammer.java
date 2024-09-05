@@ -7,6 +7,7 @@ import com.starspath.justwalls.utils.RadialMenuItem;
 import com.starspath.justwalls.utils.Tiers;
 import com.starspath.justwalls.utils.Utils;
 import com.starspath.justwalls.world.DamageBlockSaveData;
+import com.starspath.justwalls.world.StructureTimerSaveData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -14,7 +15,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -95,7 +95,7 @@ public class SuperHammer extends Item {
                 }
             }
             else{
-                player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                player.displayClientMessage(Component.translatable("message.justwalls.not_enough_material").append(Component.translatable(ModItems.STRAW_SCRAP.get().getDescriptionId())).append(" " + playerHas + "/" + itemStack.getCount()), true);
             }
         }
         else if (mode.equals("upgrade")) {
@@ -120,7 +120,7 @@ public class SuperHammer extends Item {
                     }
                 }
                 else{
-                    player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                    player.displayClientMessage(Component.translatable("message.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
                 }
             }
         }
@@ -132,7 +132,7 @@ public class SuperHammer extends Item {
                 DamageBlockSaveData damageBlockSaveData = DamageBlockSaveData.get(level);
                 blockPos = structureBlock.getMasterPos(level, blockPos, blockState);
                 if(damageBlockSaveData.hasBlock(blockPos) && damageBlockSaveData.blockFullHP(level, blockPos)){
-                    player.displayClientMessage(Component.literal("Already Full HP"), true);
+                    player.displayClientMessage(Component.translatable("message.justwalls.wall_full_hp"), true);
                     return InteractionResult.FAIL;
                 }
                 else{
@@ -150,8 +150,25 @@ public class SuperHammer extends Item {
                         }
                     }
                     else{
-                        player.displayClientMessage(Component.translatable("gui.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
+                        player.displayClientMessage(Component.translatable("message.justwalls.not_enough_material").append(itemStack.getHoverName()).append(" " + playerHas + "/" + itemStack.getCount()), true);
                     }
+                }
+            }
+        }
+        else if(mode.equals("destroy")){
+            BlockPos blockPos = useOnContext.getClickedPos();
+            BlockState blockState = level.getBlockState(useOnContext.getClickedPos());
+            if(blockState.getBlock() instanceof StructureBlock structureBlock){
+                BlockPos masterPos = structureBlock.getMasterPos(level, blockPos, blockState);
+                StructureTimerSaveData structureTimerSaveData = StructureTimerSaveData.get(level);
+                if(structureTimerSaveData.inGracePeriod(level, masterPos)){
+                    structureBlock.playerWillDestroy(level, masterPos, level.getBlockState(masterPos), player);
+                    level.playSound(null, useOnContext.getClickedPos(), SoundEvents.SHIELD_BREAK, player.getSoundSource(), 1.0F, 1.0F);
+                    player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 20);
+                    return InteractionResult.SUCCESS;
+                }
+                else {
+                    player.displayClientMessage(Component.translatable("message.justwalls.not_in_grace"), true);
                 }
             }
         }

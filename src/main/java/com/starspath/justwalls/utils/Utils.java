@@ -74,4 +74,17 @@ public class Utils {
             case METAL, ARMOR -> BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK);
         };
     }
+
+    public static String formatTicksToTime(long ticks) {
+        // Convert ticks to total seconds
+        long totalSeconds = ticks / 20;
+
+        // Calculate hours, minutes, and remaining seconds
+        long hours = totalSeconds / 3600;
+        long minutes = (totalSeconds % 3600) / 60;
+        long seconds = totalSeconds % 60;
+
+        // Format the result as "hours:minutes:seconds"
+        return String.format("%d:%02d:%02d", hours, minutes, seconds);
+    }
 }

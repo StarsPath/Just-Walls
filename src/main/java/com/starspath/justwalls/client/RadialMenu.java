@@ -6,7 +6,6 @@ import com.starspath.justwalls.Network.ServerBoundLoaderPacket;
 import com.starspath.justwalls.init.PacketHandler;
 import com.starspath.justwalls.item.SuperHammer;
 import com.starspath.justwalls.utils.RadialMenuItem;
-import com.starspath.justwalls.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -15,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector4f;
 

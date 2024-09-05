@@ -2,7 +2,6 @@ package com.starspath.justwalls.Network;
 
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.init.PacketHandler;
-import com.starspath.justwalls.utils.Utils;
 import com.starspath.justwalls.world.DamageBlockSaveData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;

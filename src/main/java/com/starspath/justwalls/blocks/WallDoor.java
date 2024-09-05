@@ -47,28 +47,6 @@ public class WallDoor extends StructureBlock {
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return getCollisionShape(blockState, blockGetter, blockPos, collisionContext);
-//        int index = blockState.getValue(INDEX);
-//        Direction direction = blockState.getValue(BlockStateProperties.FACING);
-//        VoxelShape result = switch (index){
-//            case 0, 1 -> DoorVoxelShapes.doorTrim();
-//            case 6, 7 -> DoorVoxelShapes.rotateShape180Degrees(DoorVoxelShapes.doorTrim());
-//            case 2 -> DoorVoxelShapes.doorCorner();
-//            case 8 -> DoorVoxelShapes.rotateShape180Degrees(DoorVoxelShapes.doorCorner());
-//            case 3, 4 -> DoorVoxelShapes.doorCenter();
-//            case 5 -> DoorVoxelShapes.doorTop();
-//            default -> super.getShape(blockState, blockGetter, blockPos, collisionContext);
-//        };
-//
-//        if(direction == Direction.SOUTH){
-//            return DoorVoxelShapes.rotateShape180Degrees(result);
-//        }
-//        if(direction == Direction.WEST){
-//            return DoorVoxelShapes.rotateShape90DegreesCounterClockwise(result);
-//        }
-//        if(direction == Direction.EAST){
-//            return DoorVoxelShapes.rotateShape90DegreesClockwise(result);
-//        }
-//        return result;
     }
 
     @Override

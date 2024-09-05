@@ -1,12 +1,11 @@
 package com.starspath.justwalls.item;
 
-import com.starspath.justwalls.blocks.WallPillar;
+import com.starspath.justwalls.item.abstracts.StructureBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -18,8 +17,8 @@ import java.util.ArrayList;
 
 import static com.starspath.justwalls.blocks.abstracts.MultiBlock.MASTER;
 
-public class WallDoorFrameItem extends BlockItem {
-    public WallDoorFrameItem(Block block, Properties properties) {
+public class WallDoorFrameBlockItem extends StructureBlockItem {
+    public WallDoorFrameBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 
@@ -67,7 +66,7 @@ public class WallDoorFrameItem extends BlockItem {
         for (BlockPos pos : blockPosList) {
             if (!level.getBlockState(pos).canBeReplaced()) {
                 Player player = blockPlaceContext.getPlayer();
-                player.displayClientMessage(Component.literal("Space Occupied"), true);
+                player.displayClientMessage(Component.translatable("message.justwalls.wall_space_occupied"), true);
                 return false;
             }
         }
@@ -86,6 +85,7 @@ public class WallDoorFrameItem extends BlockItem {
         return placementCheck(toPlaceList, blockPlaceContext);
     }
 
+    @Override
     protected void doPlacement(ArrayList<BlockPos> blockPosList, BlockPlaceContext blockPlaceContext){
         Level level = blockPlaceContext.getLevel();
         for(int i = 0; i < blockPosList.size(); i++){
@@ -95,6 +95,7 @@ public class WallDoorFrameItem extends BlockItem {
             BlockState state = getPlacementState(blockPlaceContext);
             if(i == 5){
                 state = state.setValue(MASTER, true);
+                updateMasterPlacedTime(level, pos);
             }
             level.setBlockAndUpdate(pos, state);
         }

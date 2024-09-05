@@ -4,7 +4,6 @@ import com.starspath.justwalls.JustWalls;
 import com.starspath.justwalls.Network.ServerBoundHoverOverBlockPacket;
 import com.starspath.justwalls.client.StructureBlockHPScreen;
 import com.starspath.justwalls.init.PacketHandler;
-import com.starspath.justwalls.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;

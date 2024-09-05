@@ -2,6 +2,7 @@ package com.starspath.justwalls.item;
 
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
 import com.starspath.justwalls.world.DamageBlockSaveData;
+import com.starspath.justwalls.world.StructureTimerSaveData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -35,7 +36,10 @@ public class Debugger extends Item {
         int maxHp = damageBlockSaveData.getDefaultResistance(level, pos);
         int currentHp = damageBlockSaveData.hasBlock(pos)? damageBlockSaveData.getBlockHP(pos): maxHp;
 
+        StructureTimerSaveData structureTimerSaveData = StructureTimerSaveData.get(level);
+
         player.displayClientMessage(Component.literal(block + " " + currentHp + "/" + maxHp), false);
+        player.displayClientMessage(structureTimerSaveData.getGraceTime(level, pos), false);
 
         return super.useOn(useOnContext);
     }

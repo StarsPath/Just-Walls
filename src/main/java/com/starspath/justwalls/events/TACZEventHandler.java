@@ -2,10 +2,8 @@ package com.starspath.justwalls.events;
 
 import com.starspath.justwalls.Config;
 import com.starspath.justwalls.blocks.abstracts.StructureBlock;
-import com.starspath.justwalls.utils.Utils;
 import com.starspath.justwalls.world.DamageBlockSaveData;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
