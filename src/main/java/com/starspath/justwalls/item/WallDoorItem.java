@@ -55,7 +55,7 @@ public class WallDoorItem extends StructureBlockItem {
         boolean result = placementCheck(blockPosList, pillarPosList, blockPlaceContext);
         if(result){
             doPlacement(blockPosList, blockPlaceContext);
-            if(!player.isCreative()){
+            if(!player.isCreative() && blockPlaceContext.getItemInHand().getItem() == this){
                 blockPlaceContext.getItemInHand().grow(-1);
             }
             return InteractionResult.SUCCESS;
